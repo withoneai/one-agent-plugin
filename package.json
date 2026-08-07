@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "validate": "node scripts/validate.mjs",
-    "generate": "node scripts/generate-platform-plugins.mjs"
+    "generate": "node scripts/generate-platform-plugins.mjs",
+    "test": "node --test"
   },
   "devDependencies": {
     "ajv": "^8.17.1"
