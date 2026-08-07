@@ -57,7 +57,7 @@ These plugins are derived from One's knowledge base, so they carry the [One-Know
 ```bash
 npm install
 npm run validate                    # this plugin
-npm run validate platforms/*        # every generated plugin
+npm run validate platforms/one-*    # every generated plugin
 ```
 
 The validator checks `plugin.json` and `mcp.json` against the official 1.0.0 JSON Schemas (vendored under `schemas/`, since the spec forbids fetching a schema at load time), then checks the requirements the schemas cannot express: name constraints (§5.5), plugin root containment (§4.1), HTTPS and no-credentials rules for remote servers (§7.2.1), reserved environment names (§9.2), spec version match between the two files (§10.1), and Agent Skills frontmatter on every skill.
