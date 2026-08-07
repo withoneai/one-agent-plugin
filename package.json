@@ -1,0 +1,12 @@
+{
+  "name": "@withone/one-agent-plugin",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate.mjs"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1"
+  }
+}

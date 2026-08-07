@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "one",
+  "version": "1.0.0",
+  "description": "Connect your agent to 500+ apps through One. One MCP server, four tools, 80,000+ actions with real API documentation, no OAuth tokens to manage.",
+  "author": {
+    "name": "One Systems, Inc.",
+    "email": "support@withone.ai",
+    "url": "https://www.withone.ai"
+  },
+  "homepage": "https://www.withone.ai/products/mcp",
+  "repository": "https://github.com/withoneai/one-agent-plugin",
+  "license": "MIT",
+  "keywords": [
+    "integrations",
+    "mcp",
+    "api",
+    "gmail",
+    "slack",
+    "stripe",
+    "shopify",
+    "hubspot",
+    "quickbooks",
+    "linear",
+    "notion",
+    "oauth"
+  ]
+}
