@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "one-agenty",
+  "version": "1.0.0",
+  "description": "Agenty in your agent through One. 71 actions with real API documentation, OAuth handled, no tokens to manage.",
+  "author": {
+    "name": "One Systems, Inc.",
+    "email": "support@withone.ai",
+    "url": "https://www.withone.ai"
+  },
+  "homepage": "https://www.withone.ai/knowledge/agenty",
+  "repository": "https://github.com/withoneai/one-agent-plugin",
+  "license": "One-Knowledge-1.0",
+  "keywords": [
+    "agenty",
+    "integrations",
+    "mcp",
+    "api",
+    "web scraping"
+  ]
+}

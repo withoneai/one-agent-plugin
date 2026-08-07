@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "one-pilvio",
+  "version": "1.0.0",
+  "description": "Pilvio in your agent through One. 111 actions with real API documentation, OAuth handled, no tokens to manage.",
+  "author": {
+    "name": "One Systems, Inc.",
+    "email": "support@withone.ai",
+    "url": "https://www.withone.ai"
+  },
+  "homepage": "https://www.withone.ai/knowledge/pilvio",
+  "repository": "https://github.com/withoneai/one-agent-plugin",
+  "license": "One-Knowledge-1.0",
+  "keywords": [
+    "pilvio",
+    "integrations",
+    "mcp",
+    "api",
+    "field service & maintenance"
+  ]
+}

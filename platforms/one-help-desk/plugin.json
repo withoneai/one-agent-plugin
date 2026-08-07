@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "one-help-desk",
+  "version": "1.0.0",
+  "description": "HelpDesk in your agent through One. 137 actions with real API documentation, OAuth handled, no tokens to manage.",
+  "author": {
+    "name": "One Systems, Inc.",
+    "email": "support@withone.ai",
+    "url": "https://www.withone.ai"
+  },
+  "homepage": "https://www.withone.ai/knowledge/help-desk",
+  "repository": "https://github.com/withoneai/one-agent-plugin",
+  "license": "One-Knowledge-1.0",
+  "keywords": [
+    "help-desk",
+    "integrations",
+    "mcp",
+    "api",
+    "helpdesk & ticketing"
+  ]
+}

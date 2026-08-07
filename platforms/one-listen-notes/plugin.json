@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "one-listen-notes",
+  "version": "1.0.0",
+  "description": "Listen Notes in your agent through One. 26 actions with real API documentation, OAuth handled, no tokens to manage.",
+  "author": {
+    "name": "One Systems, Inc.",
+    "email": "support@withone.ai",
+    "url": "https://www.withone.ai"
+  },
+  "homepage": "https://www.withone.ai/knowledge/listen-notes",
+  "repository": "https://github.com/withoneai/one-agent-plugin",
+  "license": "One-Knowledge-1.0",
+  "keywords": [
+    "listen-notes",
+    "integrations",
+    "mcp",
+    "api",
+    "search & indexing"
+  ]
+}

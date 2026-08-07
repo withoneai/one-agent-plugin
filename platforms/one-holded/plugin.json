@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "one-holded",
+  "version": "1.0.0",
+  "description": "Holded in your agent through One. 136 actions with real API documentation, OAuth handled, no tokens to manage.",
+  "author": {
+    "name": "One Systems, Inc.",
+    "email": "support@withone.ai",
+    "url": "https://www.withone.ai"
+  },
+  "homepage": "https://www.withone.ai/knowledge/holded",
+  "repository": "https://github.com/withoneai/one-agent-plugin",
+  "license": "One-Knowledge-1.0",
+  "keywords": [
+    "holded",
+    "integrations",
+    "mcp",
+    "api",
+    "accounting"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "one-people-data-labs",
+  "version": "1.0.0",
+  "description": "PeopleDataLabs in your agent through One. 21 actions with real API documentation, OAuth handled, no tokens to manage.",
+  "author": {
+    "name": "One Systems, Inc.",
+    "email": "support@withone.ai",
+    "url": "https://www.withone.ai"
+  },
+  "homepage": "https://www.withone.ai/knowledge/people-data-labs",
+  "repository": "https://github.com/withoneai/one-agent-plugin",
+  "license": "One-Knowledge-1.0",
+  "keywords": [
+    "people-data-labs",
+    "integrations",
+    "mcp",
+    "api",
+    "lead generation & enrichment"
+  ]
+}

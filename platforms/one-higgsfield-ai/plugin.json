@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "one-higgsfield-ai",
+  "version": "1.0.0",
+  "description": "Higgsfield.ai in your agent through One. 50 actions with real API documentation, OAuth handled, no tokens to manage.",
+  "author": {
+    "name": "One Systems, Inc.",
+    "email": "support@withone.ai",
+    "url": "https://www.withone.ai"
+  },
+  "homepage": "https://www.withone.ai/knowledge/higgsfield-ai",
+  "repository": "https://github.com/withoneai/one-agent-plugin",
+  "license": "One-Knowledge-1.0",
+  "keywords": [
+    "higgsfield-ai",
+    "integrations",
+    "mcp",
+    "api",
+    "generative media"
+  ]
+}

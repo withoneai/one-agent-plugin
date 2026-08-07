@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "one-mongo-db-atlas-administration",
+  "version": "1.0.0",
+  "description": "MongoDB Atlas Administration in your agent through One. 467 actions with real API documentation, OAuth handled, no tokens to manage.",
+  "author": {
+    "name": "One Systems, Inc.",
+    "email": "support@withone.ai",
+    "url": "https://www.withone.ai"
+  },
+  "homepage": "https://www.withone.ai/knowledge/mongo-db-atlas-administration",
+  "repository": "https://github.com/withoneai/one-agent-plugin",
+  "license": "One-Knowledge-1.0",
+  "keywords": [
+    "mongo-db-atlas-administration",
+    "integrations",
+    "mcp",
+    "api",
+    "database"
+  ]
+}

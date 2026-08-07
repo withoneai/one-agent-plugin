@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "validate": "node scripts/validate.mjs"
+    "validate": "node scripts/validate.mjs",
+    "generate": "node scripts/generate-platform-plugins.mjs"
   },
   "devDependencies": {
     "ajv": "^8.17.1"

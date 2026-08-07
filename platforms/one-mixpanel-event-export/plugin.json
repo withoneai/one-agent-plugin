@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "one-mixpanel-event-export",
+  "version": "1.0.0",
+  "description": "Mixpanel Event Export in your agent through One. 2 actions with real API documentation, OAuth handled, no tokens to manage.",
+  "author": {
+    "name": "One Systems, Inc.",
+    "email": "support@withone.ai",
+    "url": "https://www.withone.ai"
+  },
+  "homepage": "https://www.withone.ai/knowledge/mixpanel-event-export",
+  "repository": "https://github.com/withoneai/one-agent-plugin",
+  "license": "One-Knowledge-1.0",
+  "keywords": [
+    "mixpanel-event-export",
+    "integrations",
+    "mcp",
+    "api",
+    "product analytics"
+  ]
+}

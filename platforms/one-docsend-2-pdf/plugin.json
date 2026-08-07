@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "one-docsend-2-pdf",
+  "version": "1.0.0",
+  "description": "Docsend2pdf in your agent through One. 1 actions with real API documentation, OAuth handled, no tokens to manage.",
+  "author": {
+    "name": "One Systems, Inc.",
+    "email": "support@withone.ai",
+    "url": "https://www.withone.ai"
+  },
+  "homepage": "https://www.withone.ai/knowledge/docsend-2-pdf",
+  "repository": "https://github.com/withoneai/one-agent-plugin",
+  "license": "One-Knowledge-1.0",
+  "keywords": [
+    "docsend-2-pdf",
+    "integrations",
+    "mcp",
+    "api",
+    "file conversion & generation"
+  ]
+}

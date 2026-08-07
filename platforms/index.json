@@ -1,0 +1,3256 @@
+{
+  "spec": "1.0.0",
+  "count": 650,
+  "plugins": [
+    {
+      "pluginName": "one-bird",
+      "slug": "bird",
+      "actions": 3592
+    },
+    {
+      "pluginName": "one-share-point",
+      "slug": "share-point",
+      "actions": 3334
+    },
+    {
+      "pluginName": "one-cloudflare",
+      "slug": "cloudflare",
+      "actions": 3204
+    },
+    {
+      "pluginName": "one-procore",
+      "slug": "procore",
+      "actions": 2841
+    },
+    {
+      "pluginName": "one-zoom",
+      "slug": "zoom",
+      "actions": 1748
+    },
+    {
+      "pluginName": "one-data-robot",
+      "slug": "data-robot",
+      "actions": 1687
+    },
+    {
+      "pluginName": "one-one-drive",
+      "slug": "one-drive",
+      "actions": 1514
+    },
+    {
+      "pluginName": "one-fal-ai",
+      "slug": "fal-ai",
+      "actions": 1453
+    },
+    {
+      "pluginName": "one-twilio",
+      "slug": "twilio",
+      "actions": 1437
+    },
+    {
+      "pluginName": "one-alchemy",
+      "slug": "alchemy",
+      "actions": 1418
+    },
+    {
+      "pluginName": "one-teams",
+      "slug": "teams",
+      "actions": 1296
+    },
+    {
+      "pluginName": "one-hubspot",
+      "slug": "hubspot",
+      "actions": 1184
+    },
+    {
+      "pluginName": "one-posthog",
+      "slug": "posthog",
+      "actions": 1182
+    },
+    {
+      "pluginName": "one-telnyx",
+      "slug": "telnyx",
+      "actions": 1163
+    },
+    {
+      "pluginName": "one-git-lab",
+      "slug": "git-lab",
+      "actions": 1124
+    },
+    {
+      "pluginName": "one-github",
+      "slug": "github",
+      "actions": 1093
+    },
+    {
+      "pluginName": "one-datadog",
+      "slug": "datadog",
+      "actions": 1090
+    },
+    {
+      "pluginName": "one-netsuite",
+      "slug": "netsuite",
+      "actions": 1032
+    },
+    {
+      "pluginName": "one-google-compute-engine",
+      "slug": "google-compute-engine",
+      "actions": 977
+    },
+    {
+      "pluginName": "one-zendesk",
+      "slug": "zendesk",
+      "actions": 885
+    },
+    {
+      "pluginName": "one-shopify-admin",
+      "slug": "shopify-admin",
+      "actions": 796
+    },
+    {
+      "pluginName": "one-amazon-ads",
+      "slug": "amazon-ads",
+      "actions": 792
+    },
+    {
+      "pluginName": "one-jira",
+      "slug": "jira",
+      "actions": 784
+    },
+    {
+      "pluginName": "one-zoho",
+      "slug": "zoho",
+      "actions": 759
+    },
+    {
+      "pluginName": "one-businessmap",
+      "slug": "businessmap",
+      "actions": 742
+    },
+    {
+      "pluginName": "one-simplero",
+      "slug": "simplero",
+      "actions": 719
+    },
+    {
+      "pluginName": "one-jump-cloud",
+      "slug": "jump-cloud",
+      "actions": 703
+    },
+    {
+      "pluginName": "one-big-commerce",
+      "slug": "big-commerce",
+      "actions": 642
+    },
+    {
+      "pluginName": "one-stripe",
+      "slug": "stripe",
+      "actions": 587
+    },
+    {
+      "pluginName": "one-vector-shift",
+      "slug": "vector-shift",
+      "actions": 586
+    },
+    {
+      "pluginName": "one-workiom",
+      "slug": "workiom",
+      "actions": 568
+    },
+    {
+      "pluginName": "one-outlook-calendar",
+      "slug": "outlook-calendar",
+      "actions": 561
+    },
+    {
+      "pluginName": "one-rootly",
+      "slug": "rootly",
+      "actions": 557
+    },
+    {
+      "pluginName": "one-elasticsearch",
+      "slug": "elasticsearch",
+      "actions": 550
+    },
+    {
+      "pluginName": "one-productive",
+      "slug": "productive",
+      "actions": 544
+    },
+    {
+      "pluginName": "one-turbot-pipes",
+      "slug": "turbot-pipes",
+      "actions": 544
+    },
+    {
+      "pluginName": "one-plain",
+      "slug": "plain",
+      "actions": 493
+    },
+    {
+      "pluginName": "one-linear",
+      "slug": "linear",
+      "actions": 488
+    },
+    {
+      "pluginName": "one-ring-central",
+      "slug": "ring-central",
+      "actions": 485
+    },
+    {
+      "pluginName": "one-xero",
+      "slug": "xero",
+      "actions": 475
+    },
+    {
+      "pluginName": "one-gitea",
+      "slug": "gitea",
+      "actions": 471
+    },
+    {
+      "pluginName": "one-mongo-db-atlas-administration",
+      "slug": "mongo-db-atlas-administration",
+      "actions": 467
+    },
+    {
+      "pluginName": "one-api-verve",
+      "slug": "api-verve",
+      "actions": 459
+    },
+    {
+      "pluginName": "one-make",
+      "slug": "make",
+      "actions": 441
+    },
+    {
+      "pluginName": "one-linked-in",
+      "slug": "linked-in",
+      "actions": 427
+    },
+    {
+      "pluginName": "one-supervisely",
+      "slug": "supervisely",
+      "actions": 427
+    },
+    {
+      "pluginName": "one-adyen",
+      "slug": "adyen",
+      "actions": 426
+    },
+    {
+      "pluginName": "one-high-level",
+      "slug": "high-level",
+      "actions": 413
+    },
+    {
+      "pluginName": "one-chargebee",
+      "slug": "chargebee",
+      "actions": 409
+    },
+    {
+      "pluginName": "one-pro-workflow",
+      "slug": "pro-workflow",
+      "actions": 403
+    },
+    {
+      "pluginName": "one-deel",
+      "slug": "deel",
+      "actions": 398
+    },
+    {
+      "pluginName": "one-auth0-management",
+      "slug": "auth0-management",
+      "actions": 390
+    },
+    {
+      "pluginName": "one-btcpay-server",
+      "slug": "btcpay-server",
+      "actions": 390
+    },
+    {
+      "pluginName": "one-sendgrid",
+      "slug": "sendgrid",
+      "actions": 389
+    },
+    {
+      "pluginName": "one-sling",
+      "slug": "sling",
+      "actions": 384
+    },
+    {
+      "pluginName": "one-launchdarkly",
+      "slug": "launchdarkly",
+      "actions": 380
+    },
+    {
+      "pluginName": "one-safetyculture",
+      "slug": "safetyculture",
+      "actions": 379
+    },
+    {
+      "pluginName": "one-contentful-content-management",
+      "slug": "contentful-content-management",
+      "actions": 371
+    },
+    {
+      "pluginName": "one-cert-central",
+      "slug": "cert-central",
+      "actions": 360
+    },
+    {
+      "pluginName": "one-benchmark-email",
+      "slug": "benchmark-email",
+      "actions": 348
+    },
+    {
+      "pluginName": "one-files-com",
+      "slug": "files-com",
+      "actions": 347
+    },
+    {
+      "pluginName": "one-chat-bot-kit",
+      "slug": "chat-bot-kit",
+      "actions": 346
+    },
+    {
+      "pluginName": "one-encodian",
+      "slug": "encodian",
+      "actions": 345
+    },
+    {
+      "pluginName": "one-crowdin",
+      "slug": "crowdin",
+      "actions": 338
+    },
+    {
+      "pluginName": "one-share-file",
+      "slug": "share-file",
+      "actions": 336
+    },
+    {
+      "pluginName": "one-convert-api",
+      "slug": "convert-api",
+      "actions": 331
+    },
+    {
+      "pluginName": "one-square",
+      "slug": "square",
+      "actions": 327
+    },
+    {
+      "pluginName": "one-active-campaign",
+      "slug": "active-campaign",
+      "actions": 321
+    },
+    {
+      "pluginName": "one-grafana",
+      "slug": "grafana",
+      "actions": 321
+    },
+    {
+      "pluginName": "one-pipedrive",
+      "slug": "pipedrive",
+      "actions": 312
+    },
+    {
+      "pluginName": "one-slack",
+      "slug": "slack",
+      "actions": 306
+    },
+    {
+      "pluginName": "one-klaviyo",
+      "slug": "klaviyo",
+      "actions": 304
+    },
+    {
+      "pluginName": "one-box",
+      "slug": "box",
+      "actions": 296
+    },
+    {
+      "pluginName": "one-moneybird",
+      "slug": "moneybird",
+      "actions": 296
+    },
+    {
+      "pluginName": "one-bunny-net",
+      "slug": "bunny-net",
+      "actions": 293
+    },
+    {
+      "pluginName": "one-clio",
+      "slug": "clio",
+      "actions": 289
+    },
+    {
+      "pluginName": "one-mistral-ai",
+      "slug": "mistral-ai",
+      "actions": 289
+    },
+    {
+      "pluginName": "one-brevo",
+      "slug": "brevo",
+      "actions": 288
+    },
+    {
+      "pluginName": "one-moco",
+      "slug": "moco",
+      "actions": 288
+    },
+    {
+      "pluginName": "one-mailchimp-marketing",
+      "slug": "mailchimp-marketing",
+      "actions": 282
+    },
+    {
+      "pluginName": "one-cal-com",
+      "slug": "cal-com",
+      "actions": 280
+    },
+    {
+      "pluginName": "one-clover",
+      "slug": "clover",
+      "actions": 279
+    },
+    {
+      "pluginName": "one-codacy",
+      "slug": "codacy",
+      "actions": 279
+    },
+    {
+      "pluginName": "one-sage-accounting",
+      "slug": "sage-accounting",
+      "actions": 279
+    },
+    {
+      "pluginName": "one-outlook-mail",
+      "slug": "outlook-mail",
+      "actions": 278
+    },
+    {
+      "pluginName": "one-bamboo-hr",
+      "slug": "bamboo-hr",
+      "actions": 277
+    },
+    {
+      "pluginName": "one-dns-filter",
+      "slug": "dns-filter",
+      "actions": 275
+    },
+    {
+      "pluginName": "one-toggl-track",
+      "slug": "toggl-track",
+      "actions": 274
+    },
+    {
+      "pluginName": "one-close",
+      "slug": "close",
+      "actions": 272
+    },
+    {
+      "pluginName": "one-sage-sales-management",
+      "slug": "sage-sales-management",
+      "actions": 266
+    },
+    {
+      "pluginName": "one-sendbird",
+      "slug": "sendbird",
+      "actions": 262
+    },
+    {
+      "pluginName": "one-microsoft-dynamics-365-business-central",
+      "slug": "microsoft-dynamics-365-business-central",
+      "actions": 260
+    },
+    {
+      "pluginName": "one-elevenlabs",
+      "slug": "elevenlabs",
+      "actions": 259
+    },
+    {
+      "pluginName": "one-trello",
+      "slug": "trello",
+      "actions": 256
+    },
+    {
+      "pluginName": "one-mailgun",
+      "slug": "mailgun",
+      "actions": 254
+    },
+    {
+      "pluginName": "one-monday",
+      "slug": "monday",
+      "actions": 253
+    },
+    {
+      "pluginName": "one-postman",
+      "slug": "postman",
+      "actions": 244
+    },
+    {
+      "pluginName": "one-fireberry",
+      "slug": "fireberry",
+      "actions": 243
+    },
+    {
+      "pluginName": "one-freshdesk",
+      "slug": "freshdesk",
+      "actions": 243
+    },
+    {
+      "pluginName": "one-rentman",
+      "slug": "rentman",
+      "actions": 242
+    },
+    {
+      "pluginName": "one-ngrok",
+      "slug": "ngrok",
+      "actions": 241
+    },
+    {
+      "pluginName": "one-openai",
+      "slug": "openai",
+      "actions": 241
+    },
+    {
+      "pluginName": "one-contentstack-content-management",
+      "slug": "contentstack-content-management",
+      "actions": 240
+    },
+    {
+      "pluginName": "one-quickbooks",
+      "slug": "quickbooks",
+      "actions": 240
+    },
+    {
+      "pluginName": "one-front",
+      "slug": "front",
+      "actions": 238
+    },
+    {
+      "pluginName": "one-word-press",
+      "slug": "word-press",
+      "actions": 230
+    },
+    {
+      "pluginName": "one-discord",
+      "slug": "discord",
+      "actions": 229
+    },
+    {
+      "pluginName": "one-prismatic",
+      "slug": "prismatic",
+      "actions": 229
+    },
+    {
+      "pluginName": "one-seqera",
+      "slug": "seqera",
+      "actions": 229
+    },
+    {
+      "pluginName": "one-cats",
+      "slug": "cats",
+      "actions": 224
+    },
+    {
+      "pluginName": "one-here",
+      "slug": "here",
+      "actions": 224
+    },
+    {
+      "pluginName": "one-asana",
+      "slug": "asana",
+      "actions": 223
+    },
+    {
+      "pluginName": "one-booqable",
+      "slug": "booqable",
+      "actions": 222
+    },
+    {
+      "pluginName": "one-vercel",
+      "slug": "vercel",
+      "actions": 222
+    },
+    {
+      "pluginName": "one-conductor",
+      "slug": "conductor",
+      "actions": 220
+    },
+    {
+      "pluginName": "one-bluesky",
+      "slug": "bluesky",
+      "actions": 210
+    },
+    {
+      "pluginName": "one-bookingmood",
+      "slug": "bookingmood",
+      "actions": 210
+    },
+    {
+      "pluginName": "one-sentry",
+      "slug": "sentry",
+      "actions": 209
+    },
+    {
+      "pluginName": "one-api-ninjas",
+      "slug": "api-ninjas",
+      "actions": 207
+    },
+    {
+      "pluginName": "one-clerk",
+      "slug": "clerk",
+      "actions": 206
+    },
+    {
+      "pluginName": "one-central-station-crm",
+      "slug": "central-station-crm",
+      "actions": 197
+    },
+    {
+      "pluginName": "one-miro",
+      "slug": "miro",
+      "actions": 197
+    },
+    {
+      "pluginName": "one-render",
+      "slug": "render",
+      "actions": 196
+    },
+    {
+      "pluginName": "one-wrike",
+      "slug": "wrike",
+      "actions": 195
+    },
+    {
+      "pluginName": "one-the-colony",
+      "slug": "the-colony",
+      "actions": 190
+    },
+    {
+      "pluginName": "one-algolia",
+      "slug": "algolia",
+      "actions": 189
+    },
+    {
+      "pluginName": "one-click-send",
+      "slug": "click-send",
+      "actions": 188
+    },
+    {
+      "pluginName": "one-griptape",
+      "slug": "griptape",
+      "actions": 188
+    },
+    {
+      "pluginName": "one-sauce-labs",
+      "slug": "sauce-labs",
+      "actions": 188
+    },
+    {
+      "pluginName": "one-simla",
+      "slug": "simla",
+      "actions": 188
+    },
+    {
+      "pluginName": "one-twelve-data",
+      "slug": "twelve-data",
+      "actions": 185
+    },
+    {
+      "pluginName": "one-nylas",
+      "slug": "nylas",
+      "actions": 180
+    },
+    {
+      "pluginName": "one-daytona",
+      "slug": "daytona",
+      "actions": 179
+    },
+    {
+      "pluginName": "one-persona",
+      "slug": "persona",
+      "actions": 179
+    },
+    {
+      "pluginName": "one-ashby",
+      "slug": "ashby",
+      "actions": 177
+    },
+    {
+      "pluginName": "one-kaleido",
+      "slug": "kaleido",
+      "actions": 177
+    },
+    {
+      "pluginName": "one-google-ads",
+      "slug": "google-ads",
+      "actions": 173
+    },
+    {
+      "pluginName": "one-kie-ai",
+      "slug": "kie-ai",
+      "actions": 171
+    },
+    {
+      "pluginName": "one-click-up",
+      "slug": "click-up",
+      "actions": 170
+    },
+    {
+      "pluginName": "one-repair-shopr",
+      "slug": "repair-shopr",
+      "actions": 169
+    },
+    {
+      "pluginName": "one-instantly-ai",
+      "slug": "instantly-ai",
+      "actions": 167
+    },
+    {
+      "pluginName": "one-nocodb",
+      "slug": "nocodb",
+      "actions": 167
+    },
+    {
+      "pluginName": "one-agiled",
+      "slug": "agiled",
+      "actions": 166
+    },
+    {
+      "pluginName": "one-telegram-bot",
+      "slug": "telegram-bot",
+      "actions": 166
+    },
+    {
+      "pluginName": "one-freshbooks",
+      "slug": "freshbooks",
+      "actions": 163
+    },
+    {
+      "pluginName": "one-customer-io",
+      "slug": "customer-io",
+      "actions": 162
+    },
+    {
+      "pluginName": "one-faraday",
+      "slug": "faraday",
+      "actions": 161
+    },
+    {
+      "pluginName": "one-intercom",
+      "slug": "intercom",
+      "actions": 161
+    },
+    {
+      "pluginName": "one-one-page-crm",
+      "slug": "one-page-crm",
+      "actions": 161
+    },
+    {
+      "pluginName": "one-autodesk",
+      "slug": "autodesk",
+      "actions": 160
+    },
+    {
+      "pluginName": "one-maintain-x",
+      "slug": "maintain-x",
+      "actions": 160
+    },
+    {
+      "pluginName": "one-virus-total",
+      "slug": "virus-total",
+      "actions": 160
+    },
+    {
+      "pluginName": "one-kommo",
+      "slug": "kommo",
+      "actions": 159
+    },
+    {
+      "pluginName": "one-cloudinary",
+      "slug": "cloudinary",
+      "actions": 157
+    },
+    {
+      "pluginName": "one-follow-up-boss",
+      "slug": "follow-up-boss",
+      "actions": 156
+    },
+    {
+      "pluginName": "one-clockify",
+      "slug": "clockify",
+      "actions": 155
+    },
+    {
+      "pluginName": "one-sevdesk",
+      "slug": "sevdesk",
+      "actions": 154
+    },
+    {
+      "pluginName": "one-truvera",
+      "slug": "truvera",
+      "actions": 154
+    },
+    {
+      "pluginName": "one-salesforce",
+      "slug": "salesforce",
+      "actions": 150
+    },
+    {
+      "pluginName": "one-7-shifts",
+      "slug": "7-shifts",
+      "actions": 148
+    },
+    {
+      "pluginName": "one-similarweb",
+      "slug": "similarweb",
+      "actions": 148
+    },
+    {
+      "pluginName": "one-x",
+      "slug": "x",
+      "actions": 148
+    },
+    {
+      "pluginName": "one-netlify",
+      "slug": "netlify",
+      "actions": 147
+    },
+    {
+      "pluginName": "one-outlook-contacts",
+      "slug": "outlook-contacts",
+      "actions": 147
+    },
+    {
+      "pluginName": "one-massive",
+      "slug": "massive",
+      "actions": 146
+    },
+    {
+      "pluginName": "one-cockroach-labs",
+      "slug": "cockroach-labs",
+      "actions": 144
+    },
+    {
+      "pluginName": "one-time-camp",
+      "slug": "time-camp",
+      "actions": 144
+    },
+    {
+      "pluginName": "one-connecteam",
+      "slug": "connecteam",
+      "actions": 143
+    },
+    {
+      "pluginName": "one-shortcut",
+      "slug": "shortcut",
+      "actions": 142
+    },
+    {
+      "pluginName": "one-bug-snag",
+      "slug": "bug-snag",
+      "actions": 141
+    },
+    {
+      "pluginName": "one-woocommerce",
+      "slug": "woocommerce",
+      "actions": 139
+    },
+    {
+      "pluginName": "one-neon",
+      "slug": "neon",
+      "actions": 138
+    },
+    {
+      "pluginName": "one-help-desk",
+      "slug": "help-desk",
+      "actions": 137
+    },
+    {
+      "pluginName": "one-holded",
+      "slug": "holded",
+      "actions": 136
+    },
+    {
+      "pluginName": "one-razorpay",
+      "slug": "razorpay",
+      "actions": 136
+    },
+    {
+      "pluginName": "one-search-api",
+      "slug": "search-api",
+      "actions": 135
+    },
+    {
+      "pluginName": "one-hub-planner",
+      "slug": "hub-planner",
+      "actions": 134
+    },
+    {
+      "pluginName": "one-bluebeam",
+      "slug": "bluebeam",
+      "actions": 133
+    },
+    {
+      "pluginName": "one-capsule",
+      "slug": "capsule",
+      "actions": 132
+    },
+    {
+      "pluginName": "one-hoop",
+      "slug": "hoop",
+      "actions": 128
+    },
+    {
+      "pluginName": "one-doppler-secretops",
+      "slug": "doppler-secretops",
+      "actions": 127
+    },
+    {
+      "pluginName": "one-svix",
+      "slug": "svix",
+      "actions": 127
+    },
+    {
+      "pluginName": "one-recall-ai",
+      "slug": "recall-ai",
+      "actions": 126
+    },
+    {
+      "pluginName": "one-revolt",
+      "slug": "revolt",
+      "actions": 125
+    },
+    {
+      "pluginName": "one-coda",
+      "slug": "coda",
+      "actions": 124
+    },
+    {
+      "pluginName": "one-xquik",
+      "slug": "xquik",
+      "actions": 123
+    },
+    {
+      "pluginName": "one-zeplin",
+      "slug": "zeplin",
+      "actions": 123
+    },
+    {
+      "pluginName": "one-klipfolio",
+      "slug": "klipfolio",
+      "actions": 122
+    },
+    {
+      "pluginName": "one-dropbox",
+      "slug": "dropbox",
+      "actions": 121
+    },
+    {
+      "pluginName": "one-apify",
+      "slug": "apify",
+      "actions": 120
+    },
+    {
+      "pluginName": "one-grist",
+      "slug": "grist",
+      "actions": 120
+    },
+    {
+      "pluginName": "one-label-traxx",
+      "slug": "label-traxx",
+      "actions": 119
+    },
+    {
+      "pluginName": "one-panda-doc",
+      "slug": "panda-doc",
+      "actions": 117
+    },
+    {
+      "pluginName": "one-paystack",
+      "slug": "paystack",
+      "actions": 117
+    },
+    {
+      "pluginName": "one-hookdeck",
+      "slug": "hookdeck",
+      "actions": 116
+    },
+    {
+      "pluginName": "one-q2",
+      "slug": "q2",
+      "actions": 115
+    },
+    {
+      "pluginName": "one-swagger-hub",
+      "slug": "swagger-hub",
+      "actions": 114
+    },
+    {
+      "pluginName": "one-whatsapp-business",
+      "slug": "whatsapp-business",
+      "actions": 114
+    },
+    {
+      "pluginName": "one-yespo",
+      "slug": "yespo",
+      "actions": 113
+    },
+    {
+      "pluginName": "one-data-for-seo",
+      "slug": "data-for-seo",
+      "actions": 112
+    },
+    {
+      "pluginName": "one-kernel",
+      "slug": "kernel",
+      "actions": 112
+    },
+    {
+      "pluginName": "one-outline",
+      "slug": "outline",
+      "actions": 112
+    },
+    {
+      "pluginName": "one-acculynx",
+      "slug": "acculynx",
+      "actions": 111
+    },
+    {
+      "pluginName": "one-botpress",
+      "slug": "botpress",
+      "actions": 111
+    },
+    {
+      "pluginName": "one-circle-ci",
+      "slug": "circle-ci",
+      "actions": 111
+    },
+    {
+      "pluginName": "one-gorgias",
+      "slug": "gorgias",
+      "actions": 111
+    },
+    {
+      "pluginName": "one-pilvio",
+      "slug": "pilvio",
+      "actions": 111
+    },
+    {
+      "pluginName": "one-mailtrap",
+      "slug": "mailtrap",
+      "actions": 110
+    },
+    {
+      "pluginName": "one-affinda",
+      "slug": "affinda",
+      "actions": 109
+    },
+    {
+      "pluginName": "one-nutshell",
+      "slug": "nutshell",
+      "actions": 109
+    },
+    {
+      "pluginName": "one-zixflow",
+      "slug": "zixflow",
+      "actions": 108
+    },
+    {
+      "pluginName": "one-brex",
+      "slug": "brex",
+      "actions": 107
+    },
+    {
+      "pluginName": "one-buildkite",
+      "slug": "buildkite",
+      "actions": 107
+    },
+    {
+      "pluginName": "one-webflow",
+      "slug": "webflow",
+      "actions": 106
+    },
+    {
+      "pluginName": "one-etsy",
+      "slug": "etsy",
+      "actions": 105
+    },
+    {
+      "pluginName": "one-pdf4me",
+      "slug": "pdf4me",
+      "actions": 105
+    },
+    {
+      "pluginName": "one-bright-data",
+      "slug": "bright-data",
+      "actions": 103
+    },
+    {
+      "pluginName": "one-everhour",
+      "slug": "everhour",
+      "actions": 103
+    },
+    {
+      "pluginName": "one-float",
+      "slug": "float",
+      "actions": 102
+    },
+    {
+      "pluginName": "one-rippling",
+      "slug": "rippling",
+      "actions": 102
+    },
+    {
+      "pluginName": "one-blaze-meter-performance",
+      "slug": "blaze-meter-performance",
+      "actions": 101
+    },
+    {
+      "pluginName": "one-rollbar",
+      "slug": "rollbar",
+      "actions": 100
+    },
+    {
+      "pluginName": "one-airtable",
+      "slug": "airtable",
+      "actions": 99
+    },
+    {
+      "pluginName": "one-weaviate",
+      "slug": "weaviate",
+      "actions": 98
+    },
+    {
+      "pluginName": "one-mailersend",
+      "slug": "mailersend",
+      "actions": 97
+    },
+    {
+      "pluginName": "one-mapbox",
+      "slug": "mapbox",
+      "actions": 97
+    },
+    {
+      "pluginName": "one-laravel-cloud",
+      "slug": "laravel-cloud",
+      "actions": 96
+    },
+    {
+      "pluginName": "one-ship-engine",
+      "slug": "ship-engine",
+      "actions": 96
+    },
+    {
+      "pluginName": "one-spotify-web",
+      "slug": "spotify-web",
+      "actions": 96
+    },
+    {
+      "pluginName": "one-ahrefs",
+      "slug": "ahrefs",
+      "actions": 95
+    },
+    {
+      "pluginName": "one-ch-meetings",
+      "slug": "ch-meetings",
+      "actions": 95
+    },
+    {
+      "pluginName": "one-honeybadger",
+      "slug": "honeybadger",
+      "actions": 95
+    },
+    {
+      "pluginName": "one-deliveroo",
+      "slug": "deliveroo",
+      "actions": 94
+    },
+    {
+      "pluginName": "one-one-desk",
+      "slug": "one-desk",
+      "actions": 93
+    },
+    {
+      "pluginName": "one-paradym",
+      "slug": "paradym",
+      "actions": 93
+    },
+    {
+      "pluginName": "one-productlane",
+      "slug": "productlane",
+      "actions": 92
+    },
+    {
+      "pluginName": "one-quaderno",
+      "slug": "quaderno",
+      "actions": 92
+    },
+    {
+      "pluginName": "one-agent-mail",
+      "slug": "agent-mail",
+      "actions": 91
+    },
+    {
+      "pluginName": "one-ayrshare",
+      "slug": "ayrshare",
+      "actions": 91
+    },
+    {
+      "pluginName": "one-vapi",
+      "slug": "vapi",
+      "actions": 91
+    },
+    {
+      "pluginName": "one-unipile",
+      "slug": "unipile",
+      "actions": 90
+    },
+    {
+      "pluginName": "one-mailerlite",
+      "slug": "mailerlite",
+      "actions": 89
+    },
+    {
+      "pluginName": "one-todoist",
+      "slug": "todoist",
+      "actions": 89
+    },
+    {
+      "pluginName": "one-retell-ai",
+      "slug": "retell-ai",
+      "actions": 87
+    },
+    {
+      "pluginName": "one-bold-sign",
+      "slug": "bold-sign",
+      "actions": 85
+    },
+    {
+      "pluginName": "one-anchor-browser",
+      "slug": "anchor-browser",
+      "actions": 84
+    },
+    {
+      "pluginName": "one-eodhd",
+      "slug": "eodhd",
+      "actions": 83
+    },
+    {
+      "pluginName": "one-octave",
+      "slug": "octave",
+      "actions": 83
+    },
+    {
+      "pluginName": "one-youtube-data",
+      "slug": "youtube-data",
+      "actions": 83
+    },
+    {
+      "pluginName": "one-lemlist",
+      "slug": "lemlist",
+      "actions": 82
+    },
+    {
+      "pluginName": "one-no-crm-io",
+      "slug": "no-crm-io",
+      "actions": 82
+    },
+    {
+      "pluginName": "one-streamtime",
+      "slug": "streamtime",
+      "actions": 82
+    },
+    {
+      "pluginName": "one-harmonic-ai",
+      "slug": "harmonic-ai",
+      "actions": 81
+    },
+    {
+      "pluginName": "one-nozbe",
+      "slug": "nozbe",
+      "actions": 81
+    },
+    {
+      "pluginName": "one-ship-station",
+      "slug": "ship-station",
+      "actions": 80
+    },
+    {
+      "pluginName": "one-tomtom",
+      "slug": "tomtom",
+      "actions": 80
+    },
+    {
+      "pluginName": "one-blaze-meter-functional",
+      "slug": "blaze-meter-functional",
+      "actions": 79
+    },
+    {
+      "pluginName": "one-gemini",
+      "slug": "gemini",
+      "actions": 79
+    },
+    {
+      "pluginName": "one-gmail",
+      "slug": "gmail",
+      "actions": 79
+    },
+    {
+      "pluginName": "one-lob",
+      "slug": "lob",
+      "actions": 79
+    },
+    {
+      "pluginName": "one-codemagic",
+      "slug": "codemagic",
+      "actions": 78
+    },
+    {
+      "pluginName": "one-tapfiliate",
+      "slug": "tapfiliate",
+      "actions": 78
+    },
+    {
+      "pluginName": "one-attio",
+      "slug": "attio",
+      "actions": 77
+    },
+    {
+      "pluginName": "one-maple-billing",
+      "slug": "maple-billing",
+      "actions": 77
+    },
+    {
+      "pluginName": "one-omnisend",
+      "slug": "omnisend",
+      "actions": 77
+    },
+    {
+      "pluginName": "one-opensea",
+      "slug": "opensea",
+      "actions": 77
+    },
+    {
+      "pluginName": "one-runscope",
+      "slug": "runscope",
+      "actions": 77
+    },
+    {
+      "pluginName": "one-supabase",
+      "slug": "supabase",
+      "actions": 77
+    },
+    {
+      "pluginName": "one-dailybot",
+      "slug": "dailybot",
+      "actions": 76
+    },
+    {
+      "pluginName": "one-rocketlane",
+      "slug": "rocketlane",
+      "actions": 76
+    },
+    {
+      "pluginName": "one-timely",
+      "slug": "timely",
+      "actions": 76
+    },
+    {
+      "pluginName": "one-reply-io",
+      "slug": "reply-io",
+      "actions": 75
+    },
+    {
+      "pluginName": "one-shopify-storefront",
+      "slug": "shopify-storefront",
+      "actions": 75
+    },
+    {
+      "pluginName": "one-vitally",
+      "slug": "vitally",
+      "actions": 75
+    },
+    {
+      "pluginName": "one-click-house",
+      "slug": "click-house",
+      "actions": 74
+    },
+    {
+      "pluginName": "one-doppler",
+      "slug": "doppler",
+      "actions": 74
+    },
+    {
+      "pluginName": "one-workable",
+      "slug": "workable",
+      "actions": 74
+    },
+    {
+      "pluginName": "one-dropbox-sign",
+      "slug": "dropbox-sign",
+      "actions": 73
+    },
+    {
+      "pluginName": "one-lodgify",
+      "slug": "lodgify",
+      "actions": 73
+    },
+    {
+      "pluginName": "one-mailcoach",
+      "slug": "mailcoach",
+      "actions": 73
+    },
+    {
+      "pluginName": "one-open-weather",
+      "slug": "open-weather",
+      "actions": 73
+    },
+    {
+      "pluginName": "one-rudder-stack",
+      "slug": "rudder-stack",
+      "actions": 73
+    },
+    {
+      "pluginName": "one-salesflare",
+      "slug": "salesflare",
+      "actions": 72
+    },
+    {
+      "pluginName": "one-scrapingdog",
+      "slug": "scrapingdog",
+      "actions": 72
+    },
+    {
+      "pluginName": "one-agenty",
+      "slug": "agenty",
+      "actions": 71
+    },
+    {
+      "pluginName": "one-college-football-data",
+      "slug": "college-football-data",
+      "actions": 71
+    },
+    {
+      "pluginName": "one-shippo",
+      "slug": "shippo",
+      "actions": 70
+    },
+    {
+      "pluginName": "one-beehiiv",
+      "slug": "beehiiv",
+      "actions": 69
+    },
+    {
+      "pluginName": "one-pinecone",
+      "slug": "pinecone",
+      "actions": 69
+    },
+    {
+      "pluginName": "one-givebutter",
+      "slug": "givebutter",
+      "actions": 68
+    },
+    {
+      "pluginName": "one-pdf-co",
+      "slug": "pdf-co",
+      "actions": 68
+    },
+    {
+      "pluginName": "one-puzzle-io",
+      "slug": "puzzle-io",
+      "actions": 68
+    },
+    {
+      "pluginName": "one-ship-bob",
+      "slug": "ship-bob",
+      "actions": 68
+    },
+    {
+      "pluginName": "one-smtp-2-go",
+      "slug": "smtp-2-go",
+      "actions": 68
+    },
+    {
+      "pluginName": "one-resend",
+      "slug": "resend",
+      "actions": 67
+    },
+    {
+      "pluginName": "one-exa",
+      "slug": "exa",
+      "actions": 66
+    },
+    {
+      "pluginName": "one-google-analytics",
+      "slug": "google-analytics",
+      "actions": 66
+    },
+    {
+      "pluginName": "one-post-grid-print-mail",
+      "slug": "post-grid-print-mail",
+      "actions": 66
+    },
+    {
+      "pluginName": "one-postmark",
+      "slug": "postmark",
+      "actions": 66
+    },
+    {
+      "pluginName": "one-project-mark",
+      "slug": "project-mark",
+      "actions": 66
+    },
+    {
+      "pluginName": "one-gong",
+      "slug": "gong",
+      "actions": 65
+    },
+    {
+      "pluginName": "one-xata",
+      "slug": "xata",
+      "actions": 65
+    },
+    {
+      "pluginName": "one-mem-ai",
+      "slug": "mem-ai",
+      "actions": 64
+    },
+    {
+      "pluginName": "one-once-hub",
+      "slug": "once-hub",
+      "actions": 64
+    },
+    {
+      "pluginName": "one-voiceflow",
+      "slug": "voiceflow",
+      "actions": 64
+    },
+    {
+      "pluginName": "one-phantom-buster",
+      "slug": "phantom-buster",
+      "actions": 63
+    },
+    {
+      "pluginName": "one-salesmate",
+      "slug": "salesmate",
+      "actions": 63
+    },
+    {
+      "pluginName": "one-addresszen",
+      "slug": "addresszen",
+      "actions": 62
+    },
+    {
+      "pluginName": "one-breathe",
+      "slug": "breathe",
+      "actions": 62
+    },
+    {
+      "pluginName": "one-hey-gen",
+      "slug": "hey-gen",
+      "actions": 62
+    },
+    {
+      "pluginName": "one-benzinga",
+      "slug": "benzinga",
+      "actions": 61
+    },
+    {
+      "pluginName": "one-breezy",
+      "slug": "breezy",
+      "actions": 61
+    },
+    {
+      "pluginName": "one-meta",
+      "slug": "meta",
+      "actions": 61
+    },
+    {
+      "pluginName": "one-paperform",
+      "slug": "paperform",
+      "actions": 61
+    },
+    {
+      "pluginName": "one-affinity-co",
+      "slug": "affinity-co",
+      "actions": 59
+    },
+    {
+      "pluginName": "one-job-nimbus",
+      "slug": "job-nimbus",
+      "actions": 59
+    },
+    {
+      "pluginName": "one-n8n",
+      "slug": "n8n",
+      "actions": 59
+    },
+    {
+      "pluginName": "one-scrape-graph-ai",
+      "slug": "scrape-graph-ai",
+      "actions": 59
+    },
+    {
+      "pluginName": "one-uptime-robot",
+      "slug": "uptime-robot",
+      "actions": 59
+    },
+    {
+      "pluginName": "one-dovetail",
+      "slug": "dovetail",
+      "actions": 58
+    },
+    {
+      "pluginName": "one-lmnt",
+      "slug": "lmnt",
+      "actions": 58
+    },
+    {
+      "pluginName": "one-new-relic",
+      "slug": "new-relic",
+      "actions": 58
+    },
+    {
+      "pluginName": "one-google-drive",
+      "slug": "google-drive",
+      "actions": 57
+    },
+    {
+      "pluginName": "one-loyverse",
+      "slug": "loyverse",
+      "actions": 57
+    },
+    {
+      "pluginName": "one-productboard",
+      "slug": "productboard",
+      "actions": 57
+    },
+    {
+      "pluginName": "one-2-chat",
+      "slug": "2-chat",
+      "actions": 56
+    },
+    {
+      "pluginName": "one-e2b",
+      "slug": "e2b",
+      "actions": 56
+    },
+    {
+      "pluginName": "one-jotform",
+      "slug": "jotform",
+      "actions": 56
+    },
+    {
+      "pluginName": "one-onesignal",
+      "slug": "onesignal",
+      "actions": 56
+    },
+    {
+      "pluginName": "one-bannerbear",
+      "slug": "bannerbear",
+      "actions": 55
+    },
+    {
+      "pluginName": "one-gift-up",
+      "slug": "gift-up",
+      "actions": 55
+    },
+    {
+      "pluginName": "one-langbase",
+      "slug": "langbase",
+      "actions": 55
+    },
+    {
+      "pluginName": "one-short-io",
+      "slug": "short-io",
+      "actions": 55
+    },
+    {
+      "pluginName": "one-solcast",
+      "slug": "solcast",
+      "actions": 55
+    },
+    {
+      "pluginName": "one-stormboard",
+      "slug": "stormboard",
+      "actions": 55
+    },
+    {
+      "pluginName": "one-serp-api",
+      "slug": "serp-api",
+      "actions": 54
+    },
+    {
+      "pluginName": "one-apollo",
+      "slug": "apollo",
+      "actions": 53
+    },
+    {
+      "pluginName": "one-docker-hub",
+      "slug": "docker-hub",
+      "actions": 53
+    },
+    {
+      "pluginName": "one-dub",
+      "slug": "dub",
+      "actions": 53
+    },
+    {
+      "pluginName": "one-grafana-cloud",
+      "slug": "grafana-cloud",
+      "actions": 53
+    },
+    {
+      "pluginName": "one-ip-info",
+      "slug": "ip-info",
+      "actions": 53
+    },
+    {
+      "pluginName": "one-the-dog-api",
+      "slug": "the-dog-api",
+      "actions": 53
+    },
+    {
+      "pluginName": "one-hyper-browser",
+      "slug": "hyper-browser",
+      "actions": 52
+    },
+    {
+      "pluginName": "one-lexware",
+      "slug": "lexware",
+      "actions": 52
+    },
+    {
+      "pluginName": "one-mem0",
+      "slug": "mem0",
+      "actions": 52
+    },
+    {
+      "pluginName": "one-nango",
+      "slug": "nango",
+      "actions": 52
+    },
+    {
+      "pluginName": "one-calendly",
+      "slug": "calendly",
+      "actions": 51
+    },
+    {
+      "pluginName": "one-coinranking",
+      "slug": "coinranking",
+      "actions": 51
+    },
+    {
+      "pluginName": "one-coin-market-cap",
+      "slug": "coin-market-cap",
+      "actions": 51
+    },
+    {
+      "pluginName": "one-higgsfield-ai",
+      "slug": "higgsfield-ai",
+      "actions": 50
+    },
+    {
+      "pluginName": "one-pingdom",
+      "slug": "pingdom",
+      "actions": 50
+    },
+    {
+      "pluginName": "one-support-bee",
+      "slug": "support-bee",
+      "actions": 50
+    },
+    {
+      "pluginName": "one-hex",
+      "slug": "hex",
+      "actions": 49
+    },
+    {
+      "pluginName": "one-ordinal",
+      "slug": "ordinal",
+      "actions": 49
+    },
+    {
+      "pluginName": "one-turso",
+      "slug": "turso",
+      "actions": 49
+    },
+    {
+      "pluginName": "one-canva",
+      "slug": "canva",
+      "actions": 48
+    },
+    {
+      "pluginName": "one-cardly",
+      "slug": "cardly",
+      "actions": 48
+    },
+    {
+      "pluginName": "one-company-enrich",
+      "slug": "company-enrich",
+      "actions": 48
+    },
+    {
+      "pluginName": "one-honey-hive",
+      "slug": "honey-hive",
+      "actions": 48
+    },
+    {
+      "pluginName": "one-imagekit-io",
+      "slug": "imagekit-io",
+      "actions": 48
+    },
+    {
+      "pluginName": "one-send-fox",
+      "slug": "send-fox",
+      "actions": 48
+    },
+    {
+      "pluginName": "one-shopify",
+      "slug": "shopify",
+      "actions": 48
+    },
+    {
+      "pluginName": "one-tomba",
+      "slug": "tomba",
+      "actions": 48
+    },
+    {
+      "pluginName": "one-bigquery",
+      "slug": "bigquery",
+      "actions": 47
+    },
+    {
+      "pluginName": "one-handwrytten",
+      "slug": "handwrytten",
+      "actions": 47
+    },
+    {
+      "pluginName": "one-typeform",
+      "slug": "typeform",
+      "actions": 47
+    },
+    {
+      "pluginName": "one-bug-bug",
+      "slug": "bug-bug",
+      "actions": 46
+    },
+    {
+      "pluginName": "one-builder-io-admin",
+      "slug": "builder-io-admin",
+      "actions": 46
+    },
+    {
+      "pluginName": "one-conveyor",
+      "slug": "conveyor",
+      "actions": 46
+    },
+    {
+      "pluginName": "one-figma",
+      "slug": "figma",
+      "actions": 46
+    },
+    {
+      "pluginName": "one-flowise-ai",
+      "slug": "flowise-ai",
+      "actions": 46
+    },
+    {
+      "pluginName": "one-babel-street",
+      "slug": "babel-street",
+      "actions": 45
+    },
+    {
+      "pluginName": "one-blaze-meter-service-virtualization",
+      "slug": "blaze-meter-service-virtualization",
+      "actions": 45
+    },
+    {
+      "pluginName": "one-perigon",
+      "slug": "perigon",
+      "actions": 45
+    },
+    {
+      "pluginName": "one-postalytics",
+      "slug": "postalytics",
+      "actions": 45
+    },
+    {
+      "pluginName": "one-databar-ai",
+      "slug": "databar-ai",
+      "actions": 44
+    },
+    {
+      "pluginName": "one-feathery",
+      "slug": "feathery",
+      "actions": 44
+    },
+    {
+      "pluginName": "one-process-street",
+      "slug": "process-street",
+      "actions": 44
+    },
+    {
+      "pluginName": "one-saperly",
+      "slug": "saperly",
+      "actions": 44
+    },
+    {
+      "pluginName": "one-ynab",
+      "slug": "ynab",
+      "actions": 44
+    },
+    {
+      "pluginName": "one-formbricks",
+      "slug": "formbricks",
+      "actions": 42
+    },
+    {
+      "pluginName": "one-simple-kpi",
+      "slug": "simple-kpi",
+      "actions": 42
+    },
+    {
+      "pluginName": "one-browserless",
+      "slug": "browserless",
+      "actions": 41
+    },
+    {
+      "pluginName": "one-deck-co",
+      "slug": "deck-co",
+      "actions": 41
+    },
+    {
+      "pluginName": "one-laposta",
+      "slug": "laposta",
+      "actions": 41
+    },
+    {
+      "pluginName": "one-calendar-hero",
+      "slug": "calendar-hero",
+      "actions": 40
+    },
+    {
+      "pluginName": "one-forem",
+      "slug": "forem",
+      "actions": 40
+    },
+    {
+      "pluginName": "one-graph-hopper",
+      "slug": "graph-hopper",
+      "actions": 40
+    },
+    {
+      "pluginName": "one-security-trails",
+      "slug": "security-trails",
+      "actions": 40
+    },
+    {
+      "pluginName": "one-wikimedia",
+      "slug": "wikimedia",
+      "actions": 40
+    },
+    {
+      "pluginName": "one-deepgram",
+      "slug": "deepgram",
+      "actions": 39
+    },
+    {
+      "pluginName": "one-folk-app",
+      "slug": "folk-app",
+      "actions": 39
+    },
+    {
+      "pluginName": "one-kaggle",
+      "slug": "kaggle",
+      "actions": 39
+    },
+    {
+      "pluginName": "one-cincopa",
+      "slug": "cincopa",
+      "actions": 38
+    },
+    {
+      "pluginName": "one-coresignal",
+      "slug": "coresignal",
+      "actions": 38
+    },
+    {
+      "pluginName": "one-dart",
+      "slug": "dart",
+      "actions": 38
+    },
+    {
+      "pluginName": "one-diffbot",
+      "slug": "diffbot",
+      "actions": 38
+    },
+    {
+      "pluginName": "one-google-calendar",
+      "slug": "google-calendar",
+      "actions": 37
+    },
+    {
+      "pluginName": "one-heyy",
+      "slug": "heyy",
+      "actions": 37
+    },
+    {
+      "pluginName": "one-jigsaw-stack",
+      "slug": "jigsaw-stack",
+      "actions": 37
+    },
+    {
+      "pluginName": "one-retently",
+      "slug": "retently",
+      "actions": 37
+    },
+    {
+      "pluginName": "one-runpod",
+      "slug": "runpod",
+      "actions": 37
+    },
+    {
+      "pluginName": "one-open-router",
+      "slug": "open-router",
+      "actions": 36
+    },
+    {
+      "pluginName": "one-status-cake",
+      "slug": "status-cake",
+      "actions": 36
+    },
+    {
+      "pluginName": "one-thanks-io",
+      "slug": "thanks-io",
+      "actions": 36
+    },
+    {
+      "pluginName": "one-bonsai",
+      "slug": "bonsai",
+      "actions": 35
+    },
+    {
+      "pluginName": "one-chaserhq",
+      "slug": "chaserhq",
+      "actions": 35
+    },
+    {
+      "pluginName": "one-fireflies-ai",
+      "slug": "fireflies-ai",
+      "actions": 35
+    },
+    {
+      "pluginName": "one-notion",
+      "slug": "notion",
+      "actions": 35
+    },
+    {
+      "pluginName": "one-uni-one",
+      "slug": "uni-one",
+      "actions": 35
+    },
+    {
+      "pluginName": "one-userflow",
+      "slug": "userflow",
+      "actions": 35
+    },
+    {
+      "pluginName": "one-waka-time",
+      "slug": "waka-time",
+      "actions": 35
+    },
+    {
+      "pluginName": "one-microsoft-dynamics-365-sales",
+      "slug": "microsoft-dynamics-365-sales",
+      "actions": 34
+    },
+    {
+      "pluginName": "one-rev-ai",
+      "slug": "rev-ai",
+      "actions": 34
+    },
+    {
+      "pluginName": "one-apipie-ai",
+      "slug": "apipie-ai",
+      "actions": 33
+    },
+    {
+      "pluginName": "one-timelines-ai",
+      "slug": "timelines-ai",
+      "actions": 33
+    },
+    {
+      "pluginName": "one-clearout",
+      "slug": "clearout",
+      "actions": 32
+    },
+    {
+      "pluginName": "one-getprospect",
+      "slug": "getprospect",
+      "actions": 32
+    },
+    {
+      "pluginName": "one-parallel",
+      "slug": "parallel",
+      "actions": 32
+    },
+    {
+      "pluginName": "one-ably",
+      "slug": "ably",
+      "actions": 31
+    },
+    {
+      "pluginName": "one-callingly",
+      "slug": "callingly",
+      "actions": 31
+    },
+    {
+      "pluginName": "one-go-dial",
+      "slug": "go-dial",
+      "actions": 31
+    },
+    {
+      "pluginName": "one-landbot",
+      "slug": "landbot",
+      "actions": 31
+    },
+    {
+      "pluginName": "one-autobound",
+      "slug": "autobound",
+      "actions": 30
+    },
+    {
+      "pluginName": "one-bug-herd",
+      "slug": "bug-herd",
+      "actions": 30
+    },
+    {
+      "pluginName": "one-rawg",
+      "slug": "rawg",
+      "actions": 30
+    },
+    {
+      "pluginName": "one-box-hero",
+      "slug": "box-hero",
+      "actions": 29
+    },
+    {
+      "pluginName": "one-hunter",
+      "slug": "hunter",
+      "actions": 29
+    },
+    {
+      "pluginName": "one-parseur",
+      "slug": "parseur",
+      "actions": 29
+    },
+    {
+      "pluginName": "one-tally",
+      "slug": "tally",
+      "actions": 29
+    },
+    {
+      "pluginName": "one-happy-scribe",
+      "slug": "happy-scribe",
+      "actions": 28
+    },
+    {
+      "pluginName": "one-mother-duck",
+      "slug": "mother-duck",
+      "actions": 28
+    },
+    {
+      "pluginName": "one-neutrino-api",
+      "slug": "neutrino-api",
+      "actions": 28
+    },
+    {
+      "pluginName": "one-respond-io",
+      "slug": "respond-io",
+      "actions": 28
+    },
+    {
+      "pluginName": "one-detrack",
+      "slug": "detrack",
+      "actions": 27
+    },
+    {
+      "pluginName": "one-fibery",
+      "slug": "fibery",
+      "actions": 27
+    },
+    {
+      "pluginName": "one-firecrawl",
+      "slug": "firecrawl",
+      "actions": 27
+    },
+    {
+      "pluginName": "one-google-health",
+      "slug": "google-health",
+      "actions": 27
+    },
+    {
+      "pluginName": "one-motion",
+      "slug": "motion",
+      "actions": 27
+    },
+    {
+      "pluginName": "one-open-phone",
+      "slug": "open-phone",
+      "actions": 27
+    },
+    {
+      "pluginName": "one-shipday",
+      "slug": "shipday",
+      "actions": 27
+    },
+    {
+      "pluginName": "one-splitwise",
+      "slug": "splitwise",
+      "actions": 27
+    },
+    {
+      "pluginName": "one-uniswap",
+      "slug": "uniswap",
+      "actions": 27
+    },
+    {
+      "pluginName": "one-x-ai",
+      "slug": "x-ai",
+      "actions": 27
+    },
+    {
+      "pluginName": "one-asin-data-api",
+      "slug": "asin-data-api",
+      "actions": 26
+    },
+    {
+      "pluginName": "one-listen-notes",
+      "slug": "listen-notes",
+      "actions": 26
+    },
+    {
+      "pluginName": "one-sign-well",
+      "slug": "sign-well",
+      "actions": 26
+    },
+    {
+      "pluginName": "one-skyfire",
+      "slug": "skyfire",
+      "actions": 26
+    },
+    {
+      "pluginName": "one-zenrows",
+      "slug": "zenrows",
+      "actions": 26
+    },
+    {
+      "pluginName": "one-anthropic-admin",
+      "slug": "anthropic-admin",
+      "actions": 25
+    },
+    {
+      "pluginName": "one-better-proposals",
+      "slug": "better-proposals",
+      "actions": 25
+    },
+    {
+      "pluginName": "one-bot-star",
+      "slug": "bot-star",
+      "actions": 25
+    },
+    {
+      "pluginName": "one-email-octopus",
+      "slug": "email-octopus",
+      "actions": 25
+    },
+    {
+      "pluginName": "one-news-api",
+      "slug": "news-api",
+      "actions": 25
+    },
+    {
+      "pluginName": "one-nyne-ai",
+      "slug": "nyne-ai",
+      "actions": 25
+    },
+    {
+      "pluginName": "one-placid",
+      "slug": "placid",
+      "actions": 25
+    },
+    {
+      "pluginName": "one-retailed-scraper",
+      "slug": "retailed-scraper",
+      "actions": 25
+    },
+    {
+      "pluginName": "one-retailed-inventory",
+      "slug": "retailed-inventory",
+      "actions": 25
+    },
+    {
+      "pluginName": "one-slite",
+      "slug": "slite",
+      "actions": 25
+    },
+    {
+      "pluginName": "one-typefully",
+      "slug": "typefully",
+      "actions": 25
+    },
+    {
+      "pluginName": "one-uber-eats",
+      "slug": "uber-eats",
+      "actions": 25
+    },
+    {
+      "pluginName": "one-ably-control",
+      "slug": "ably-control",
+      "actions": 24
+    },
+    {
+      "pluginName": "one-anthropic",
+      "slug": "anthropic",
+      "actions": 24
+    },
+    {
+      "pluginName": "one-api-2-pdf",
+      "slug": "api-2-pdf",
+      "actions": 24
+    },
+    {
+      "pluginName": "one-linkly",
+      "slug": "linkly",
+      "actions": 24
+    },
+    {
+      "pluginName": "one-planly",
+      "slug": "planly",
+      "actions": 24
+    },
+    {
+      "pluginName": "one-xodo-sign",
+      "slug": "xodo-sign",
+      "actions": 24
+    },
+    {
+      "pluginName": "one-gorilla-desk",
+      "slug": "gorilla-desk",
+      "actions": 23
+    },
+    {
+      "pluginName": "one-groq",
+      "slug": "groq",
+      "actions": 23
+    },
+    {
+      "pluginName": "one-ninox",
+      "slug": "ninox",
+      "actions": 23
+    },
+    {
+      "pluginName": "one-waterfall",
+      "slug": "waterfall",
+      "actions": 23
+    },
+    {
+      "pluginName": "one-basin",
+      "slug": "basin",
+      "actions": 22
+    },
+    {
+      "pluginName": "one-docuseal",
+      "slug": "docuseal",
+      "actions": 22
+    },
+    {
+      "pluginName": "one-keyword-com",
+      "slug": "keyword-com",
+      "actions": 22
+    },
+    {
+      "pluginName": "one-super-saas",
+      "slug": "super-saas",
+      "actions": 22
+    },
+    {
+      "pluginName": "one-the-cat-api",
+      "slug": "the-cat-api",
+      "actions": 22
+    },
+    {
+      "pluginName": "one-web-scraper",
+      "slug": "web-scraper",
+      "actions": 22
+    },
+    {
+      "pluginName": "one-browserbase",
+      "slug": "browserbase",
+      "actions": 21
+    },
+    {
+      "pluginName": "one-crustdata",
+      "slug": "crustdata",
+      "actions": 21
+    },
+    {
+      "pluginName": "one-foursquare-places",
+      "slug": "foursquare-places",
+      "actions": 21
+    },
+    {
+      "pluginName": "one-mixpanel-ingestion",
+      "slug": "mixpanel-ingestion",
+      "actions": 21
+    },
+    {
+      "pluginName": "one-nasa",
+      "slug": "nasa",
+      "actions": 21
+    },
+    {
+      "pluginName": "one-people-data-labs",
+      "slug": "people-data-labs",
+      "actions": 21
+    },
+    {
+      "pluginName": "one-plisio",
+      "slug": "plisio",
+      "actions": 21
+    },
+    {
+      "pluginName": "one-softr",
+      "slug": "softr",
+      "actions": 21
+    },
+    {
+      "pluginName": "one-supadata",
+      "slug": "supadata",
+      "actions": 21
+    },
+    {
+      "pluginName": "one-tax-jar",
+      "slug": "tax-jar",
+      "actions": 21
+    },
+    {
+      "pluginName": "one-convex-management",
+      "slug": "convex-management",
+      "actions": 20
+    },
+    {
+      "pluginName": "one-data-scope",
+      "slug": "data-scope",
+      "actions": 20
+    },
+    {
+      "pluginName": "one-gt-metrix",
+      "slug": "gt-metrix",
+      "actions": 20
+    },
+    {
+      "pluginName": "one-intelliprint",
+      "slug": "intelliprint",
+      "actions": 20
+    },
+    {
+      "pluginName": "one-mixpanel-query",
+      "slug": "mixpanel-query",
+      "actions": 20
+    },
+    {
+      "pluginName": "one-next-dns",
+      "slug": "next-dns",
+      "actions": 20
+    },
+    {
+      "pluginName": "one-valyu",
+      "slug": "valyu",
+      "actions": 20
+    },
+    {
+      "pluginName": "one-api-bible",
+      "slug": "api-bible",
+      "actions": 19
+    },
+    {
+      "pluginName": "one-apilio",
+      "slug": "apilio",
+      "actions": 19
+    },
+    {
+      "pluginName": "one-browse-ai",
+      "slug": "browse-ai",
+      "actions": 19
+    },
+    {
+      "pluginName": "one-giphy",
+      "slug": "giphy",
+      "actions": 19
+    },
+    {
+      "pluginName": "one-gladia",
+      "slug": "gladia",
+      "actions": 19
+    },
+    {
+      "pluginName": "one-optimo-route",
+      "slug": "optimo-route",
+      "actions": 19
+    },
+    {
+      "pluginName": "one-certifier",
+      "slug": "certifier",
+      "actions": 18
+    },
+    {
+      "pluginName": "one-docsautomator",
+      "slug": "docsautomator",
+      "actions": 18
+    },
+    {
+      "pluginName": "one-dot-simple",
+      "slug": "dot-simple",
+      "actions": 18
+    },
+    {
+      "pluginName": "one-geocodio",
+      "slug": "geocodio",
+      "actions": 18
+    },
+    {
+      "pluginName": "one-goody",
+      "slug": "goody",
+      "actions": 18
+    },
+    {
+      "pluginName": "one-google-meet",
+      "slug": "google-meet",
+      "actions": 18
+    },
+    {
+      "pluginName": "one-imgix",
+      "slug": "imgix",
+      "actions": 18
+    },
+    {
+      "pluginName": "one-zite",
+      "slug": "zite",
+      "actions": 18
+    },
+    {
+      "pluginName": "one-baserow-database",
+      "slug": "baserow-database",
+      "actions": 17
+    },
+    {
+      "pluginName": "one-beeminder",
+      "slug": "beeminder",
+      "actions": 17
+    },
+    {
+      "pluginName": "one-best-buy",
+      "slug": "best-buy",
+      "actions": 17
+    },
+    {
+      "pluginName": "one-google-sheets",
+      "slug": "google-sheets",
+      "actions": 17
+    },
+    {
+      "pluginName": "one-net-hunt",
+      "slug": "net-hunt",
+      "actions": 17
+    },
+    {
+      "pluginName": "one-reducto",
+      "slug": "reducto",
+      "actions": 17
+    },
+    {
+      "pluginName": "one-sensibo",
+      "slug": "sensibo",
+      "actions": 17
+    },
+    {
+      "pluginName": "one-all-images-ai",
+      "slug": "all-images-ai",
+      "actions": 16
+    },
+    {
+      "pluginName": "one-email-list-verify",
+      "slug": "email-list-verify",
+      "actions": 16
+    },
+    {
+      "pluginName": "one-gumloop",
+      "slug": "gumloop",
+      "actions": 16
+    },
+    {
+      "pluginName": "one-humanitix",
+      "slug": "humanitix",
+      "actions": 16
+    },
+    {
+      "pluginName": "one-scraping-bee",
+      "slug": "scraping-bee",
+      "actions": 16
+    },
+    {
+      "pluginName": "one-spotlightr",
+      "slug": "spotlightr",
+      "actions": 16
+    },
+    {
+      "pluginName": "one-1-password",
+      "slug": "1-password",
+      "actions": 15
+    },
+    {
+      "pluginName": "one-gamma",
+      "slug": "gamma",
+      "actions": 15
+    },
+    {
+      "pluginName": "one-html-css-to-image",
+      "slug": "html-css-to-image",
+      "actions": 15
+    },
+    {
+      "pluginName": "one-subvisory",
+      "slug": "subvisory",
+      "actions": 15
+    },
+    {
+      "pluginName": "one-teamcamp",
+      "slug": "teamcamp",
+      "actions": 15
+    },
+    {
+      "pluginName": "one-abyssale",
+      "slug": "abyssale",
+      "actions": 14
+    },
+    {
+      "pluginName": "one-a-leads",
+      "slug": "a-leads",
+      "actions": 14
+    },
+    {
+      "pluginName": "one-geoapify",
+      "slug": "geoapify",
+      "actions": 14
+    },
+    {
+      "pluginName": "one-google-tasks",
+      "slug": "google-tasks",
+      "actions": 14
+    },
+    {
+      "pluginName": "one-memberstack",
+      "slug": "memberstack",
+      "actions": 14
+    },
+    {
+      "pluginName": "one-method-crm",
+      "slug": "method-crm",
+      "actions": 14
+    },
+    {
+      "pluginName": "one-scrapfly",
+      "slug": "scrapfly",
+      "actions": 14
+    },
+    {
+      "pluginName": "one-seg-metrics",
+      "slug": "seg-metrics",
+      "actions": 14
+    },
+    {
+      "pluginName": "one-trent",
+      "slug": "trent",
+      "actions": 14
+    },
+    {
+      "pluginName": "one-absue-ip-db",
+      "slug": "absue-ip-db",
+      "actions": 13
+    },
+    {
+      "pluginName": "one-alchemy-notify",
+      "slug": "alchemy-notify",
+      "actions": 13
+    },
+    {
+      "pluginName": "one-bouncer",
+      "slug": "bouncer",
+      "actions": 13
+    },
+    {
+      "pluginName": "one-databox",
+      "slug": "databox",
+      "actions": 13
+    },
+    {
+      "pluginName": "one-klazify",
+      "slug": "klazify",
+      "actions": 13
+    },
+    {
+      "pluginName": "one-logo-dev",
+      "slug": "logo-dev",
+      "actions": 13
+    },
+    {
+      "pluginName": "one-pdf-monkey",
+      "slug": "pdf-monkey",
+      "actions": 13
+    },
+    {
+      "pluginName": "one-rite-kit",
+      "slug": "rite-kit",
+      "actions": 13
+    },
+    {
+      "pluginName": "one-ticketmaster-discovery",
+      "slug": "ticketmaster-discovery",
+      "actions": 13
+    },
+    {
+      "pluginName": "one-fluxguard",
+      "slug": "fluxguard",
+      "actions": 12
+    },
+    {
+      "pluginName": "one-loops",
+      "slug": "loops",
+      "actions": 12
+    },
+    {
+      "pluginName": "one-meet-geek",
+      "slug": "meet-geek",
+      "actions": 12
+    },
+    {
+      "pluginName": "one-scrape-do",
+      "slug": "scrape-do",
+      "actions": 12
+    },
+    {
+      "pluginName": "one-typless",
+      "slug": "typless",
+      "actions": 12
+    },
+    {
+      "pluginName": "one-agility",
+      "slug": "agility",
+      "actions": 11
+    },
+    {
+      "pluginName": "one-appointo",
+      "slug": "appointo",
+      "actions": 11
+    },
+    {
+      "pluginName": "one-carbone",
+      "slug": "carbone",
+      "actions": 11
+    },
+    {
+      "pluginName": "one-convex-deployment",
+      "slug": "convex-deployment",
+      "actions": 11
+    },
+    {
+      "pluginName": "one-leexi",
+      "slug": "leexi",
+      "actions": 11
+    },
+    {
+      "pluginName": "one-livesession",
+      "slug": "livesession",
+      "actions": 11
+    },
+    {
+      "pluginName": "one-mixpanel-warehouse-connectors",
+      "slug": "mixpanel-warehouse-connectors",
+      "actions": 11
+    },
+    {
+      "pluginName": "one-parsera",
+      "slug": "parsera",
+      "actions": 11
+    },
+    {
+      "pluginName": "one-post-grid-verify",
+      "slug": "post-grid-verify",
+      "actions": 11
+    },
+    {
+      "pluginName": "one-render-form",
+      "slug": "render-form",
+      "actions": 11
+    },
+    {
+      "pluginName": "one-agora",
+      "slug": "agora",
+      "actions": 10
+    },
+    {
+      "pluginName": "one-alt-text-ai",
+      "slug": "alt-text-ai",
+      "actions": 10
+    },
+    {
+      "pluginName": "one-contentstack-content-delivery",
+      "slug": "contentstack-content-delivery",
+      "actions": 10
+    },
+    {
+      "pluginName": "one-conversion-tools",
+      "slug": "conversion-tools",
+      "actions": 10
+    },
+    {
+      "pluginName": "one-custom-js",
+      "slug": "custom-js",
+      "actions": 10
+    },
+    {
+      "pluginName": "one-docparser",
+      "slug": "docparser",
+      "actions": 10
+    },
+    {
+      "pluginName": "one-fraudlabs-pro",
+      "slug": "fraudlabs-pro",
+      "actions": 10
+    },
+    {
+      "pluginName": "one-hacker-news",
+      "slug": "hacker-news",
+      "actions": 10
+    },
+    {
+      "pluginName": "one-linkup",
+      "slug": "linkup",
+      "actions": 10
+    },
+    {
+      "pluginName": "one-the-odds-api",
+      "slug": "the-odds-api",
+      "actions": 10
+    },
+    {
+      "pluginName": "one-algo-docs",
+      "slug": "algo-docs",
+      "actions": 9
+    },
+    {
+      "pluginName": "one-gender-api",
+      "slug": "gender-api",
+      "actions": 9
+    },
+    {
+      "pluginName": "one-personal-ai",
+      "slug": "personal-ai",
+      "actions": 9
+    },
+    {
+      "pluginName": "one-pexels",
+      "slug": "pexels",
+      "actions": 9
+    },
+    {
+      "pluginName": "one-serply",
+      "slug": "serply",
+      "actions": 9
+    },
+    {
+      "pluginName": "one-ssl-mate",
+      "slug": "ssl-mate",
+      "actions": 9
+    },
+    {
+      "pluginName": "one-stormglass",
+      "slug": "stormglass",
+      "actions": 9
+    },
+    {
+      "pluginName": "one-alchemy-gas-manager",
+      "slug": "alchemy-gas-manager",
+      "actions": 8
+    },
+    {
+      "pluginName": "one-brandfetch",
+      "slug": "brandfetch",
+      "actions": 8
+    },
+    {
+      "pluginName": "one-campaign-cleaner",
+      "slug": "campaign-cleaner",
+      "actions": 8
+    },
+    {
+      "pluginName": "one-fillout",
+      "slug": "fillout",
+      "actions": 8
+    },
+    {
+      "pluginName": "one-hotspot-system",
+      "slug": "hotspot-system",
+      "actions": 8
+    },
+    {
+      "pluginName": "one-mixpanel-annotations",
+      "slug": "mixpanel-annotations",
+      "actions": 8
+    },
+    {
+      "pluginName": "one-mixpanel-lexicon-schemas",
+      "slug": "mixpanel-lexicon-schemas",
+      "actions": 8
+    },
+    {
+      "pluginName": "one-mixpanel-service-accounts",
+      "slug": "mixpanel-service-accounts",
+      "actions": 8
+    },
+    {
+      "pluginName": "one-open-graph-io",
+      "slug": "open-graph-io",
+      "actions": 8
+    },
+    {
+      "pluginName": "one-parsehub",
+      "slug": "parsehub",
+      "actions": 8
+    },
+    {
+      "pluginName": "one-partner-stack-partner",
+      "slug": "partner-stack-partner",
+      "actions": 8
+    },
+    {
+      "pluginName": "one-perplexity",
+      "slug": "perplexity",
+      "actions": 8
+    },
+    {
+      "pluginName": "one-riveter",
+      "slug": "riveter",
+      "actions": 8
+    },
+    {
+      "pluginName": "one-tisane-labs",
+      "slug": "tisane-labs",
+      "actions": 8
+    },
+    {
+      "pluginName": "one-docraptor",
+      "slug": "docraptor",
+      "actions": 7
+    },
+    {
+      "pluginName": "one-fathom",
+      "slug": "fathom",
+      "actions": 7
+    },
+    {
+      "pluginName": "one-formsite",
+      "slug": "formsite",
+      "actions": 7
+    },
+    {
+      "pluginName": "one-otter-ai",
+      "slug": "otter-ai",
+      "actions": 7
+    },
+    {
+      "pluginName": "one-payhip",
+      "slug": "payhip",
+      "actions": 7
+    },
+    {
+      "pluginName": "one-sendspark",
+      "slug": "sendspark",
+      "actions": 7
+    },
+    {
+      "pluginName": "one-tavily",
+      "slug": "tavily",
+      "actions": 7
+    },
+    {
+      "pluginName": "one-fixer",
+      "slug": "fixer",
+      "actions": 6
+    },
+    {
+      "pluginName": "one-satis-meter",
+      "slug": "satis-meter",
+      "actions": 6
+    },
+    {
+      "pluginName": "one-scraping-ant",
+      "slug": "scraping-ant",
+      "actions": 6
+    },
+    {
+      "pluginName": "one-signalbase",
+      "slug": "signalbase",
+      "actions": 6
+    },
+    {
+      "pluginName": "one-you",
+      "slug": "you",
+      "actions": 6
+    },
+    {
+      "pluginName": "one-better-contact",
+      "slug": "better-contact",
+      "actions": 5
+    },
+    {
+      "pluginName": "one-builder-io",
+      "slug": "builder-io",
+      "actions": 5
+    },
+    {
+      "pluginName": "one-builder-io-graphql-content",
+      "slug": "builder-io-graphql-content",
+      "actions": 5
+    },
+    {
+      "pluginName": "one-currency-beacon",
+      "slug": "currency-beacon",
+      "actions": 5
+    },
+    {
+      "pluginName": "one-currents-news",
+      "slug": "currents-news",
+      "actions": 5
+    },
+    {
+      "pluginName": "one-dropcontact",
+      "slug": "dropcontact",
+      "actions": 5
+    },
+    {
+      "pluginName": "one-google-places",
+      "slug": "google-places",
+      "actions": 5
+    },
+    {
+      "pluginName": "one-kickbox",
+      "slug": "kickbox",
+      "actions": 5
+    },
+    {
+      "pluginName": "one-opencage",
+      "slug": "opencage",
+      "actions": 5
+    },
+    {
+      "pluginName": "one-private-api-basic-auth",
+      "slug": "private-api-basic-auth",
+      "actions": 5
+    },
+    {
+      "pluginName": "one-private-api-bearer-auth",
+      "slug": "private-api-bearer-auth",
+      "actions": 5
+    },
+    {
+      "pluginName": "one-private-api-key",
+      "slug": "private-api-key",
+      "actions": 5
+    },
+    {
+      "pluginName": "one-screenshotone",
+      "slug": "screenshotone",
+      "actions": 5
+    },
+    {
+      "pluginName": "one-zenserp",
+      "slug": "zenserp",
+      "actions": 5
+    },
+    {
+      "pluginName": "one-abstract-vat-validation",
+      "slug": "abstract-vat-validation",
+      "actions": 4
+    },
+    {
+      "pluginName": "one-deep-seek",
+      "slug": "deep-seek",
+      "actions": 4
+    },
+    {
+      "pluginName": "one-emailable",
+      "slug": "emailable",
+      "actions": 4
+    },
+    {
+      "pluginName": "one-globalping",
+      "slug": "globalping",
+      "actions": 4
+    },
+    {
+      "pluginName": "one-mailbox-validator",
+      "slug": "mailbox-validator",
+      "actions": 4
+    },
+    {
+      "pluginName": "one-mails",
+      "slug": "mails",
+      "actions": 4
+    },
+    {
+      "pluginName": "one-news-data-io",
+      "slug": "news-data-io",
+      "actions": 4
+    },
+    {
+      "pluginName": "one-quick-chart",
+      "slug": "quick-chart",
+      "actions": 4
+    },
+    {
+      "pluginName": "one-telegram-gateway",
+      "slug": "telegram-gateway",
+      "actions": 4
+    },
+    {
+      "pluginName": "one-tps-check",
+      "slug": "tps-check",
+      "actions": 4
+    },
+    {
+      "pluginName": "one-agent-ql",
+      "slug": "agent-ql",
+      "actions": 3
+    },
+    {
+      "pluginName": "one-byte-forms",
+      "slug": "byte-forms",
+      "actions": 3
+    },
+    {
+      "pluginName": "one-google-docs",
+      "slug": "google-docs",
+      "actions": 3
+    },
+    {
+      "pluginName": "one-remove-bg",
+      "slug": "remove-bg",
+      "actions": 3
+    },
+    {
+      "pluginName": "one-textcortex",
+      "slug": "textcortex",
+      "actions": 3
+    },
+    {
+      "pluginName": "one-abstract-avatars",
+      "slug": "abstract-avatars",
+      "actions": 2
+    },
+    {
+      "pluginName": "one-abstract-company-enrichment",
+      "slug": "abstract-company-enrichment",
+      "actions": 2
+    },
+    {
+      "pluginName": "one-abstract-iban-validation",
+      "slug": "abstract-iban-validation",
+      "actions": 2
+    },
+    {
+      "pluginName": "one-abstract-email-reputation",
+      "slug": "abstract-email-reputation",
+      "actions": 2
+    },
+    {
+      "pluginName": "one-abstract-phone-intelligence",
+      "slug": "abstract-phone-intelligence",
+      "actions": 2
+    },
+    {
+      "pluginName": "one-abstract-public-holidays",
+      "slug": "abstract-public-holidays",
+      "actions": 2
+    },
+    {
+      "pluginName": "one-google-routes",
+      "slug": "google-routes",
+      "actions": 2
+    },
+    {
+      "pluginName": "one-granola",
+      "slug": "granola",
+      "actions": 2
+    },
+    {
+      "pluginName": "one-mailboxlayer",
+      "slug": "mailboxlayer",
+      "actions": 2
+    },
+    {
+      "pluginName": "one-mixpanel-event-export",
+      "slug": "mixpanel-event-export",
+      "actions": 2
+    },
+    {
+      "pluginName": "one-mock-connection",
+      "slug": "mock-connection",
+      "actions": 2
+    },
+    {
+      "pluginName": "one-placekey",
+      "slug": "placekey",
+      "actions": 2
+    },
+    {
+      "pluginName": "one-talor-data",
+      "slug": "talor-data",
+      "actions": 2
+    },
+    {
+      "pluginName": "one-abstract-ip-intelligence",
+      "slug": "abstract-ip-intelligence",
+      "actions": 1
+    },
+    {
+      "pluginName": "one-docsend-2-pdf",
+      "slug": "docsend-2-pdf",
+      "actions": 1
+    },
+    {
+      "pluginName": "one-img-bb",
+      "slug": "img-bb",
+      "actions": 1
+    },
+    {
+      "pluginName": "one-ip2location-io",
+      "slug": "ip2location-io",
+      "actions": 1
+    },
+    {
+      "pluginName": "one-postgresql",
+      "slug": "postgresql",
+      "actions": 1
+    },
+    {
+      "pluginName": "one-wttr-in",
+      "slug": "wttr-in",
+      "actions": 1
+    }
+  ]
+}
