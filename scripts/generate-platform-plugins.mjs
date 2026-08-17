@@ -28,17 +28,17 @@ import { validatePlugin } from "./lib/validate-plugin.mjs";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SPEC = "1.0.0";
 const MCP_URL = "https://mcp.withone.ai/mcp";
-const PICA_API = "https://api.picaos.com/v1/available-connectors";
 const ONE_API = "https://api.withone.ai";
+const CONNECTORS_API = `${ONE_API}/v1/available-connectors`;
 
 // How much of a platform's catalog goes in the skill. Big platforms have
 // hundreds of actions; a skill has a context budget and a 500-line ceiling.
 const MAX_ACTIONS = 90;
 const MAX_PER_MODEL = 12;
 
-const SECRET = process.env.ONE_SECRET || process.env.NEXT_PUBLIC_PICA_SECRET_KEY;
+const SECRET = process.env.ONE_SECRET;
 if (!SECRET) {
-  console.error("Set ONE_SECRET (or NEXT_PUBLIC_PICA_SECRET_KEY) before running.");
+  console.error("Set ONE_SECRET before running.");
   process.exit(1);
 }
 
@@ -65,7 +65,7 @@ async function fetchPlatforms() {
   let page = 1;
   let pages = 1;
   do {
-    const data = await getJson(`${PICA_API}?limit=50&page=${page}`, "x-pica-secret");
+    const data = await getJson(`${CONNECTORS_API}?limit=50&page=${page}`, "x-one-secret");
     pages = data.pages;
     all.push(...data.rows);
     page++;

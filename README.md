@@ -6,6 +6,8 @@
 one/
 ├── plugin.json      # manifest
 ├── mcp.json         # One's remote MCP server, OAuth, nothing to install
+├── assets/logo.png  # marketplace logo
+├── LICENSE          # MIT
 └── skills/
     ├── one-integrations/    # how to act in real apps without guessing parameters
     └── integration-code/    # how to write integration code against real schemas
@@ -23,6 +25,19 @@ The MCP server exposes four tools, no matter how many apps you connect:
 | `execute_one_action` | Runs the action against the live account |
 
 The two skills are the half that a bare MCP entry does not give you. They teach the agent the search, read, then execute discipline that keeps it from inventing a field name and writing the wrong thing to a real account, and they tell it what to do when a platform is not connected or a call comes back 401.
+
+## Install
+
+**Cursor.** Once listed, install **One** from the [Cursor Marketplace](https://cursor.com/marketplace) or from **Customize** in the sidebar. To try it before that, load it locally:
+
+```bash
+git clone https://github.com/withoneai/one-agent-plugin.git
+ln -s "$PWD/one-agent-plugin" ~/.cursor/plugins/local/one
+```
+
+Then restart Cursor (or run **Developer: Reload Window**), open **Customize**, and confirm the two skills and the `one` MCP server appear. The first tool call opens One's OAuth consent screen in your browser.
+
+**Other clients.** Any [Agent Plugins](https://agent-plugins.org/compatible-clients) client (ChatGPT and Codex, GitHub Copilot, Kiro, VS Code) loads this directory the same way; point it at the repo or a local clone.
 
 ## Auth
 
