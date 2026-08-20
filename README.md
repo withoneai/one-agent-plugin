@@ -1,6 +1,6 @@
 # One, as an Agent Plugin
 
-500+ apps in your agent, packaged to the [Agent Plugins 1.0.0](https://agent-plugins.org) standard. One directory that ChatGPT, Codex, Cursor, GitHub Copilot, Kiro and VS Code all read the same way.
+700+ apps in your agent, packaged to the [Agent Plugins 1.0.0](https://agent-plugins.org) standard. One directory that ChatGPT, Codex, Cursor, GitHub Copilot, Kiro and VS Code all read the same way.
 
 ```text
 one/

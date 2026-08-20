@@ -1,6 +1,6 @@
 ---
 name: one-integrations
-description: Read and write real data in third-party apps (Gmail, Slack, Stripe, Shopify, HubSpot, QuickBooks, Linear, Notion, Salesforce and 500+ more) through the One MCP server. Use when the user asks to send an email, post a message, look up a customer, pull invoices, create a ticket, sync records, or take any action in an external SaaS app, even if they never say "One".
+description: Read and write real data in third-party apps (Gmail, Slack, Stripe, Shopify, HubSpot, QuickBooks, Linear, Notion, Salesforce and 700+ more) through the One MCP server. Use when the user asks to send an email, post a message, look up a customer, pull invoices, create a ticket, sync records, or take any action in an external SaaS app, even if they never say "One".
 license: MIT
 metadata:
   author: one-systems
