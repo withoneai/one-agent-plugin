@@ -6,6 +6,7 @@
 one/
 ├── plugin.json      # manifest
 ├── mcp.json         # One's remote MCP server, OAuth, nothing to install
+├── .mcp.json        # same server, in the filename GitHub Copilot CLI reads
 ├── assets/logo.png  # marketplace logo
 ├── LICENSE          # MIT
 └── skills/
@@ -39,7 +40,21 @@ Then restart Cursor (or run **Developer: Reload Window**), open **Customize**, a
 
 **Kiro.** Open the **Powers** panel, choose **Add Custom Power**, then **Import power from GitHub** and paste `https://github.com/withoneai/one-agent-plugin` (or **Import power from a folder** for a local clone). Kiro activates the power when you mention an app or task it covers (email, Slack, Stripe, CRM, invoices, and so on) and loads the skills and the `one` MCP server automatically. First-time sign-in: Kiro does not open the browser on its own for a new remote server. Open the Kiro panel, **MCP Servers** tab, right-click `power-one-agent-plugin-one`, choose **Reauthenticate**, and approve in One's consent screen. (MCP must be enabled in Kiro settings: Configure MCP = Enabled.) Once listed, it will also be one click at [kiro.dev/powers](https://kiro.dev/powers).
 
-**Other clients.** Any [Agent Plugins](https://agent-plugins.org/compatible-clients) client (ChatGPT and Codex, GitHub Copilot, Kiro, VS Code) loads this directory the same way; point it at the repo or a local clone.
+**GitHub Copilot CLI.** Once listed in [awesome-copilot](https://github.com/github/awesome-copilot), install with:
+
+```bash
+copilot plugin install one@awesome-copilot
+```
+
+Until then, install straight from the repo (or a local clone path):
+
+```bash
+copilot plugin install withoneai/one-agent-plugin
+```
+
+Copilot reads the server from `.mcp.json`; `copilot mcp list` shows it as `one`. The first tool call opens One's OAuth consent screen. If the server shows `needs-auth`, run `/mcp auth one` inside Copilot to trigger the browser flow.
+
+**Other clients.** Any [Agent Plugins](https://agent-plugins.org/compatible-clients) client (ChatGPT and Codex, Kiro, VS Code) loads this directory the same way; point it at the repo or a local clone.
 
 ## Auth
 
