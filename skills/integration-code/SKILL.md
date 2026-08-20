@@ -1,6 +1,6 @@
 ---
 name: integration-code
-description: Write integration code against a third-party API (Gmail, Stripe, Shopify, HubSpot, QuickBooks, Slack, Salesforce and 500+ more) using that API's real schema instead of a guessed one. Use when building a feature that calls an external SaaS API, adding an OAuth connection to an app, generating a client or webhook handler, or debugging an integration that returns 400 or 401.
+description: Write integration code against a third-party API (Gmail, Stripe, Shopify, HubSpot, QuickBooks, Slack, Salesforce and 700+ more) using that API's real schema instead of a guessed one. Use when building a feature that calls an external SaaS API, adding an OAuth connection to an app, generating a client or webhook handler, or debugging an integration that returns 400 or 401.
 license: MIT
 metadata:
   author: one-systems
