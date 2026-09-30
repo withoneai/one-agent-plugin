@@ -13,15 +13,15 @@ metadata:
 
 Procore is a construction management platform that provides tools and APIs for project planning, financial management, document control, and field collaboration, allowing contractors, owners, and developers to connect workflows, track progress, and manage construction operations across the project lifecycle.
 
-One exposes Procore through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Procore through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `procore` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "procore", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Procore account and cannot be
 | List Created Via Filter Options for a Project's Submittals | GET | `/rest/v1.0/projects/{{projectId}}/submittals/filter_options/created_via` | `conn_mod_def::GLdZXhDu1TA::8IxkdKcUQ2eYwcvzwowZDA` |
 | List Current Revision Filter Options for a Project's Submittals | GET | `/rest/v1.0/projects/{{projectId}}/submittals/filter_options/current_revision` | `conn_mod_def::GLdZXgDjxvA::0Ljxbl7AQ8-EM0Hhi8FRAA` |
 
-27 more Submittals actions are available through search.
+27 more Submittals actions are available through `find_one_actions`.
 
 ### CompanyUsers
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Procore account and cannot be
 | Show the Current Company User | GET | `/rest/v1.0/companies/{{companyId}}/me` | `conn_mod_def::GLdX_UIMikg::J5DFE6gpQsiDtNpoLz59xg` |
 | Bulk Add Company Users to Projects | POST | `/rest/v1.3/companies/{{companyId}}/users/bulk_add` | `conn_mod_def::GLdX91pegRA::Joj_BiOGTfKR7JaIBQMulA` |
 
-18 more CompanyUsers actions are available through search.
+18 more CompanyUsers actions are available through `find_one_actions`.
 
 ### CoordinationIssues
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Procore account and cannot be
 | List Status Filter Options for Coordination Issues | GET | `/rest/v1.0/coordination_issues/filter_options/status` | `conn_mod_def::GLdYfj62QkA::79EP0E2IT0q_SPtDYRx1vQ` |
 | List Watcher Filter Options for Coordination Issues | GET | `/rest/v1.0/coordination_issues/filter_options/watcher_id` | `conn_mod_def::GLdYfmvp8dA::JkBrxjlcRDeFVETo9qfAdQ` |
 
-16 more CoordinationIssues actions are available through search.
+16 more CoordinationIssues actions are available through `find_one_actions`.
 
 ### EquipmentRegister
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Procore account and cannot be
 | Bulk Update Equipment Status for a Company | PATCH | `/rest/v2.1/companies/{{companyId}}/equipment_register/status/bulk_update` | `conn_mod_def::GLdZaiAZCrA::Tlq-pX5iRBuPH3yZFe8MWw` |
 | Bulk Update Equipment Status for a Project | PATCH | `/rest/v2.1/companies/{{companyId}}/projects/{{projectId}}/equipment_register/status/bulk_update` | `conn_mod_def::GLdZagrbGWg::JiPbMli5SdmF6aeZHFY6kg` |
 
-15 more EquipmentRegister actions are available through search.
+15 more EquipmentRegister actions are available through `find_one_actions`.
 
 ### PunchItems
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real Procore account and cannot be
 | Delete a Punch Item | DELETE | `/rest/v1.0/punch_items/{{id}}` | `conn_mod_def::GLdZNM4R2IA::fwPkXwoiTvCKZLCZ3cI5QA` |
 | Delete Punch Item | DELETE | `/rest/v1.1/punch_items/{{id}}` | `conn_mod_def::GLdZNKaeV9g::MOpGZz5qSg-PKeF21x1L8A` |
 
-8 more PunchItems actions are available through search.
+8 more PunchItems actions are available through `find_one_actions`.
 
 ### Users
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real Procore account and cannot be
 | Create a Company's User | POST | `/rest/v1.2/companies/{{companyId}}/users` | `conn_mod_def::GLdX-Sgwzqg::Ndof_5KeQpup2y5P-tAvsA` |
 | Create a Company's User | POST | `/rest/v1.0/companies/{{companyId}}/users` | `conn_mod_def::GLdX-Uet25A::RsLNH2qcQiqmRsq1ycMhGg` |
 
-6 more Users actions are available through search.
+6 more Users actions are available through `find_one_actions`.
 
 ### Bids
 
@@ -166,7 +166,7 @@ Creates, updates, deletes and sends land on a real Procore account and cannot be
 | Show a Bid Within a Project | GET | `/rest/v1.1/projects/{{projectId}}/bids/{{id}}` | `conn_mod_def::GLdYQ6PTG5g::A6hqrjt-Qnaa8kfix3VMwg` |
 | Show a Project Bid | GET | `/rest/v1.0/projects/{{projectId}}/bids/{{id}}` | `conn_mod_def::GLdYQ6hC4Wg::vq4OojIIQaag5gtG1SQ56A` |
 
-6 more Bids actions are available through search.
+6 more Bids actions are available through `find_one_actions`.
 
 ### ManagedEquipment
 
@@ -179,13 +179,13 @@ Creates, updates, deletes and sends land on a real Procore account and cannot be
 | Bulk Destroy Managed Equipment for a Company | DELETE | `/rest/v1.0/companies/{{companyId}}/managed_equipment/bulk_destroy` | `conn_mod_def::GLdYw6i7nBg::wamStprOS2uVC9HDHS1TfA` |
 | Bulk Restore Managed Equipment for a Company | PATCH | `/rest/v1.0/companies/{{companyId}}/managed_equipment/bulk_restore` | `conn_mod_def::GLdYw5t7Psg::_OCWrsbGT3-VMhNK1CtgmA` |
 
-11 more ManagedEquipment actions are available through search.
+11 more ManagedEquipment actions are available through `find_one_actions`.
 
-This lists 90 of 2841 actions. For anything not here, call `search_one_platform_actions` with platform `procore`. The full catalog is at https://www.withone.ai/knowledge/procore.
+This lists 90 of 2841 actions. For anything not here, call `find_one_actions` with platform `procore` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/procore.
 
 ## When a call fails
 
-The error comes from Procore, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Procore, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/procore
 

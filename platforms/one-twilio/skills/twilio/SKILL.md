@@ -13,15 +13,15 @@ metadata:
 
 Twilio is a cloud communications platform that enables developers to build SMS, voice, video, and messaging applications with APIs and scalable infrastructure.
 
-One exposes Twilio through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Twilio through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `twilio` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "twilio", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Twilio account and cannot be 
 | List Notify Services | GET | `/Services` | `conn_mod_def::GJ7UIKhSRwg::PzQ94pnZRm-lUhX9FTfyww` |
 | List Proxy Services | GET | `/Services` | `conn_mod_def::GJ7UMInBNhQ::1fZ7IfwTRC6W_T_IPfPK7A` |
 
-29 more Services actions are available through search.
+29 more Services actions are available through `find_one_actions`.
 
 ### Credentials
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Twilio account and cannot be 
 | List Credentials | GET | `/Credentials` | `conn_mod_def::GJ7UDrVYZFI::VWwrGAbkQ9i5zTKYidGUnQ` |
 | List Push Notification Credentials | GET | `/Credentials` | `conn_mod_def::GJ7T5UnY50Y::W9aZBTsISymMDak1SP6Sog` |
 
-18 more Credentials actions are available through search.
+18 more Credentials actions are available through `find_one_actions`.
 
 ### Channels
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Twilio account and cannot be 
 | List a User’s Channels | GET | `/v1/Services/{{serviceSid}}/Users/{{userSid}}/Channels` | `conn_mod_def::GJ7T2nAn8I8::tNaYBY8rR7ePh1jlfHkPeQ` |
 | List a User's Channels (IP Messaging) | GET | `/v1/Services/{{serviceSid}}/Users/{{userSid}}/Channels` | `conn_mod_def::GJ7UDagH_6c::5_gSTOihSs6ug4XFcMImJQ` |
 
-16 more Channels actions are available through search.
+16 more Channels actions are available through `find_one_actions`.
 
 ### Roles
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Twilio account and cannot be 
 | List Roles (Default Conversations Service) | GET | `/Roles` | `conn_mod_def::GJ7T6eUtjuA::nZnCaq1uTx-X-emjYfPAWw` |
 | Create a Conversation Service Role | POST | `/v1/Services/{{chatServiceSid}}/Roles` | `conn_mod_def::GJ7T6SLvh2M::JksitZqiTlKDsLWjuN30Hw` |
 
-12 more Roles actions are available through search.
+12 more Roles actions are available through `find_one_actions`.
 
 ### Messages
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real Twilio account and cannot be 
 | List an Account's Messages | GET | `/2010-04-01/Accounts/{{TWILIO_ACCOUNT_SID}}/Messages.json` | `conn_mod_def::GJ7TysMvmlc::ocoRKpVrTMyeYksar6fRRg` |
 | Create a Channel Message | POST | `/v2/Services/{{serviceSid}}/Channels/{{channelSid}}/Messages` | `conn_mod_def::GJ7T3dhQUh8::ue_sZoPpQcq78Rms_QnZOA` |
 
-11 more Messages actions are available through search.
+11 more Messages actions are available through `find_one_actions`.
 
 ### Users
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real Twilio account and cannot be 
 | Create a Service User (Twilio IP Messaging) | POST | `/v1/Services/{{serviceSid}}/Users` | `conn_mod_def::GJ7UDS5KiIU::ncIeVusoR9Ocik9xOMnyrQ` |
 | Delete a Conversation User (Default Service) | DELETE | `/v1/Users/{{sid}}` | `conn_mod_def::GJ7T64nGHiE::aNQw2UhbT5-UXw8HlUHuGA` |
 
-8 more Users actions are available through search.
+8 more Users actions are available through `find_one_actions`.
 
 ### Bindings
 
@@ -166,7 +166,7 @@ Creates, updates, deletes and sends land on a real Twilio account and cannot be 
 | List a User’s Bindings | GET | `/v2/Services/{{serviceSid}}/Users/{{userSid}}/Bindings` | `conn_mod_def::GJ7T4CK0OCQ::nfzB4iJoS3-wnL8WntfT_g` |
 | Delete a Notify Service Binding | DELETE | `/Services/{{serviceSid}}/Bindings/{{sid}}` | `conn_mod_def::GJ7UH34gAm4::EivEykgvS2Kkyp7bT5Rozw` |
 
-4 more Bindings actions are available through search.
+4 more Bindings actions are available through `find_one_actions`.
 
 ### Participants
 
@@ -179,13 +179,13 @@ Creates, updates, deletes and sends land on a real Twilio account and cannot be 
 | List a Conversation’s Participants | GET | `/v1/Conversations/{{conversationSid}}/Participants` | `conn_mod_def::GJ7T57o1Ylk::sxB7UuVDTJW4MdCMrvfmtg` |
 | List a Service Conversation’s Participants | GET | `/v1/Services/{{chatServiceSid}}/Conversations/{{conversationSid}}/Participants` | `conn_mod_def::GJ7T58bz4YU::jdoskgf3SS-A45HAFN8-YQ` |
 
-8 more Participants actions are available through search.
+8 more Participants actions are available through `find_one_actions`.
 
-This lists 90 of 1437 actions. For anything not here, call `search_one_platform_actions` with platform `twilio`. The full catalog is at https://www.withone.ai/knowledge/twilio.
+This lists 90 of 1437 actions. For anything not here, call `find_one_actions` with platform `twilio` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/twilio.
 
 ## When a call fails
 
-The error comes from Twilio, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Twilio, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/twilio
 

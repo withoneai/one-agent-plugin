@@ -13,15 +13,15 @@ metadata:
 
 Mailgun is a powerful email delivery service designed for developers and businesses to send, receive, and track transactional and marketing emails with high reliability and scalability.
 
-One exposes Mailgun through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Mailgun through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `mailgun` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "mailgun", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Mailgun account and cannot be
 | Delete a Domain | DELETE | `/v3/domains/{{name}}` | `conn_mod_def::GJ42r7h79L8::eu3Gx43eRNOATBNr1vePvA` |
 | Delete All SMTP Credentials for a Domain | DELETE | `/v3/domains/{{domainName}}/credentials` | `conn_mod_def::GJ42qRtoWWA::AA8t11_hRJu7DQ7F8VSgGw` |
 
-10 more Domains actions are available through search.
+10 more Domains actions are available through `find_one_actions`.
 
 ### Templates
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Mailgun account and cannot be
 | Delete All Templates for a Domain | DELETE | `/v3/{{domainName}}/templates` | `conn_mod_def::GJ42rKXjNi0::hKIEWXGZR6a9lDi2VmncoA` |
 | Delete an Account-Level Template | DELETE | `/v4/templates/{{templateName}}` | `conn_mod_def::GJ42ofvFh5M::Bg4bUJcbQUqiLl68HLidag` |
 
-4 more Templates actions are available through search.
+4 more Templates actions are available through `find_one_actions`.
 
 ### IpPools
 
@@ -184,13 +184,13 @@ Creates, updates, deletes and sends land on a real Mailgun account and cannot be
 |---|---|---|---|
 | List a Domain’s Allowlist (Whitelist) Records | GET | `/v3/{{domainName}}/whitelists` | `conn_mod_def::GJ42pdYWX1Q::d2M31W5NSOOxBetDTCcqHA` |
 
-5 more Whitelists actions are available through search.
+5 more Whitelists actions are available through `find_one_actions`.
 
-This lists 90 of 254 actions. For anything not here, call `search_one_platform_actions` with platform `mailgun`. The full catalog is at https://www.withone.ai/knowledge/mailgun.
+This lists 90 of 254 actions. For anything not here, call `find_one_actions` with platform `mailgun` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/mailgun.
 
 ## When a call fails
 
-The error comes from Mailgun, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Mailgun, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/mailgun
 

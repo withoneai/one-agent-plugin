@@ -13,15 +13,15 @@ metadata:
 
 Contentstack’s Content Management API is a powerful, API-first REST interface that enables developers to programmatically create, update, delete, and structure content—supporting secure token-based access, customizable content types, and flexible workflows for managing headless CMS operations across cloud-native environments.
 
-One exposes Contentstack Content Management through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Contentstack Content Management through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `contentstack-content-management` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "contentstack-content-management", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Contentstack Content Manageme
 | Set a Version Name for an Asset | POST | `/v3/assets/{{assetUid}}/versions/{{versionNumber}}/name` | `conn_mod_def::GJ1W-kqbTSw::Z3ia95tRQ_ezJqF9CeG0oQ` |
 | Unpublish an Asset | POST | `/v3/assets/{{assetUid}}/unpublish` | `conn_mod_def::GJ1W-tO4wr4::4q7dtXR_SZ2ZLwCv4Mrp5g` |
 
-1 more Assets actions are available through search.
+1 more Assets actions are available through `find_one_actions`.
 
 ### Extensions
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Contentstack Content Manageme
 | Update a Custom Field (Extension) | PUT | `/v3/extensions/{{customFieldUid}}` | `conn_mod_def::GJ1XIzsn56E::Vxm5JHJrTpadDwydZghehg` |
 | Update a Dashboard Widget (Extension) | PUT | `/v3/extensions/{{extensionUid}}` | `conn_mod_def::GJ1XJfvWH4U::FqYnhb1ASGuTNnS_QeEnew` |
 
-1 more Extensions actions are available through search.
+1 more Extensions actions are available through `find_one_actions`.
 
 ### Entries
 
@@ -174,11 +174,11 @@ Creates, updates, deletes and sends land on a real Contentstack Content Manageme
 | Import an Existing Webhook (Update via Import) | POST | `/v3/webhooks/{{webhookUid}}/import` | `conn_mod_def::GJ1Xe4QFQp8::sNnCrRyzSReboPVE-JG0ig` |
 | Update a Webhook in a Stack | PUT | `/v3/webhooks/{{webhookUid}}` | `conn_mod_def::GJ1XfKLZab8::NHumDbiuTlajn9UrCiF-Pg` |
 
-This lists 90 of 240 actions. For anything not here, call `search_one_platform_actions` with platform `contentstack-content-management`. The full catalog is at https://www.withone.ai/knowledge/contentstack-content-management.
+This lists 90 of 240 actions. For anything not here, call `find_one_actions` with platform `contentstack-content-management` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/contentstack-content-management.
 
 ## When a call fails
 
-The error comes from Contentstack Content Management, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Contentstack Content Management, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/contentstack-content-management
 

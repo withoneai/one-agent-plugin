@@ -13,15 +13,15 @@ metadata:
 
 Simplero is an all-in-one business platform for coaches, course creators, and thought leaders that combines courses, community, email, CRM, payments, and automations, allowing users to run sales, customer communication, and digital programs from a single system.
 
-One exposes Simplero through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Simplero through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `simplero` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "simplero", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Simplero account and cannot b
 | Approve Registration for an Event for a Customer | POST | `/api/v2/customers/{{id}}/actions/approve_registration_for_an_event` | `conn_mod_def::GMPzbBLBj4g::MEfyAifySpyvlDE-KoPqwQ` |
 | Archive a Contact | POST | `/api/v2/customers/{{id}}/actions/mark_as_archived` | `conn_mod_def::GMPzbH0PWgA::G-rWdMIHT9WVNavFpp62Yw` |
 
-99 more Customers actions are available through search.
+99 more Customers actions are available through `find_one_actions`.
 
 ### Pages
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Simplero account and cannot b
 | Convert to Builder V2 for a Page | POST | `/api/v2/pages/{{id}}/actions/convert_to_builder_v2` | `conn_mod_def::GMPzjZvAMng::jrCJp8SRSD6lQOKViWbH4Q` |
 | Create a Builder Doc Node for a Page | POST | `/api/v2/pages/{{id}}/builder/content/nodes` | `conn_mod_def::GMPzjjqMDXg::PyVBeQRzTleV1MvR_-KZ5A` |
 
-32 more Pages actions are available through search.
+32 more Pages actions are available through `find_one_actions`.
 
 ### Courses
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Simplero account and cannot b
 | Enable Autoplay for a Course | POST | `/api/v2/courses/{{id}}/actions/enable_autoplay` | `conn_mod_def::GMPzZ4Yjq1A::t7RwYGJXRkqpYaZpS6Dahw` |
 | Exclude From New Content for a Course | POST | `/api/v2/courses/{{id}}/actions/exclude_from_new_content` | `conn_mod_def::GMPzZ4HkPIA::7cmeJ51bQ2GA2sF7oJaD8A` |
 
-20 more Courses actions are available through search.
+20 more Courses actions are available through `find_one_actions`.
 
 ### CourseLessons
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Simplero account and cannot b
 | Enable Preferred Playback Rate for a Course Lesson | POST | `/api/v2/course_lessons/{{id}}/actions/enable_preferred_playback_rate` | `conn_mod_def::GMPzZXPwg4g::ms50Bt0qS8qHTu3gksaMRg` |
 | Move to Module for a Course Lesson | POST | `/api/v2/course_lessons/{{id}}/actions/move_module` | `conn_mod_def::GMPzZF1w1Dg::82V4DJDuRhmL6XifzeVVeA` |
 
-13 more CourseLessons actions are available through search.
+13 more CourseLessons actions are available through `find_one_actions`.
 
 ### LandingPages
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real Simplero account and cannot b
 | Duplicate a Landing Page | POST | `/api/v2/landing_pages/{{id}}/actions/duplicate` | `conn_mod_def::GMPzhk2kGsA::fBWqNCOjQ6Kgp79KcxWHCw` |
 | Move to Funnel for a Landing Page | POST | `/api/v2/landing_pages/{{id}}/actions/move_to_funnel` | `conn_mod_def::GMPzh3vQcWg::kanZ-ajzSia9DeaRGPS7gA` |
 
-12 more LandingPages actions are available through search.
+12 more LandingPages actions are available through `find_one_actions`.
 
 ### Tickets
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real Simplero account and cannot b
 | Move to Pipeline for a Ticket | POST | `/api/v2/tickets/{{id}}/actions/move_to_pipeline` | `conn_mod_def::GMPzqNule1g::tGwN-FKnQc-oO9lyqn8A_A` |
 | Move to Stage for a Ticket | POST | `/api/v2/tickets/{{id}}/actions/move_to_stage` | `conn_mod_def::GMPzqNTaEkg::Zk_SlPCeRL-Z1ji4PdUzmg` |
 
-6 more Tickets actions are available through search.
+6 more Tickets actions are available through `find_one_actions`.
 
 ### Purchases
 
@@ -166,7 +166,7 @@ Creates, updates, deletes and sends land on a real Simplero account and cannot b
 | Postpone Upcoming Charges By for a Purchase | POST | `/api/v2/purchases/{{id}}/actions/postpone_upcoming_charges_by` | `conn_mod_def::GMPzmeUzu1g::ZhIolZxJSAixyyOODnPN8A` |
 | Refund a Purchase | POST | `/api/v2/purchases/{{id}}/actions/refund` | `conn_mod_def::GMPzmdtjxNg::llCZ1dp_QsWrvtl96PUVRw` |
 
-4 more Purchases actions are available through search.
+4 more Purchases actions are available through `find_one_actions`.
 
 ### Affiliates
 
@@ -179,13 +179,13 @@ Creates, updates, deletes and sends land on a real Simplero account and cannot b
 | Approve Documentation for an Affiliate | POST | `/api/v2/affiliates/{{id}}/actions/approve_documentation` | `conn_mod_def::GMPzWJnY9sg::ygvSxMBRTNarBCYfQeGHPg` |
 | Create an Affiliate | POST | `/api/v2/affiliates` | `conn_mod_def::GMPzWRBclDA::OEkBUUDSR5-qH6oDzh9mwA` |
 
-9 more Affiliates actions are available through search.
+9 more Affiliates actions are available through `find_one_actions`.
 
-This lists 90 of 719 actions. For anything not here, call `search_one_platform_actions` with platform `simplero`. The full catalog is at https://www.withone.ai/knowledge/simplero.
+This lists 90 of 719 actions. For anything not here, call `find_one_actions` with platform `simplero` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/simplero.
 
 ## When a call fails
 
-The error comes from Simplero, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Simplero, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/simplero
 

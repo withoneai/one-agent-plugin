@@ -13,15 +13,15 @@ metadata:
 
 Moneybird is an online accounting platform for small businesses and accountants that provides invoicing, expense tracking, bank reconciliation, and VAT handling, enabling teams to automate bookkeeping workflows and integrate financial data with external business systems through its API.
 
-One exposes Moneybird through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Moneybird through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `moneybird` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "moneybird", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Moneybird account and cannot 
 | Add Attachment to a Sales Invoice | POST | `/api/v2/{{administrationId}}/sales_invoices/{{id}}/attachments{{format}}` | `conn_mod_def::GLcOLvv0ZZg::G_DubMj6Td64377MLyTHtw` |
 | Create a Sales Invoice for an Administration | POST | `/api/v2/{{administrationId}}/sales_invoices{{format}}` | `conn_mod_def::GLcOMCZH7uA::Nn1U-Xk0RLCoAoE67_Myxw` |
 
-13 more SalesInvoices actions are available through search.
+13 more SalesInvoices actions are available through `find_one_actions`.
 
 ### Assets
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Moneybird account and cannot 
 | Delete an Asset Source | DELETE | `/api/v2/{{administrationId}}/assets/{{id}}/sources/{{sourceId}}{{format}}` | `conn_mod_def::GLcOCdEDM5g::d9me4DBySAezTRqpruhq2w` |
 | Full Depreciation Value Change for an Asset | POST | `/api/v2/{{administrationId}}/assets/{{id}}/value_changes/full_depreciation{{format}}` | `conn_mod_def::GLcOB1Y6DzA::7aLD5ZT8SQyBEO6NQA7yFg` |
 
-4 more Assets actions are available through search.
+4 more Assets actions are available through `find_one_actions`.
 
 ### Estimates
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Moneybird account and cannot 
 | Send Estimate for an Administration | PATCH | `/api/v2/{{administrationId}}/estimates/{{id}}/send_estimate{{format}}` | `conn_mod_def::GLcOINZvKMA::_mPPsu9FST2c6xiGxoKcNQ` |
 | Synchronization Estimates for an Administration | POST | `/api/v2/{{administrationId}}/estimates/synchronization{{format}}` | `conn_mod_def::GLcOHx_BWwg::LAKWXmtZS8KG78I-LNHMxQ` |
 
-1 more Estimates actions are available through search.
+1 more Estimates actions are available through `find_one_actions`.
 
 ### ExternalSalesInvoices
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Moneybird account and cannot 
 | Mark as Uncollectible for an External Sales Invoice | PATCH | `/api/v2/{{administrationId}}/external_sales_invoices/{{id}}/mark_as_uncollectible{{format}}` | `conn_mod_def::GLcOI2gaq1g::YQtJdeEmRWq6t0f1Xsnw-A` |
 | Synchronization Using External Sales Invoices | POST | `/api/v2/{{administrationId}}/external_sales_invoices/synchronization{{format}}` | `conn_mod_def::GLcOInnTVzg::G6j3UQnuSIaHy2-wZLkuqQ` |
 
-1 more ExternalSalesInvoices actions are available through search.
+1 more ExternalSalesInvoices actions are available through `find_one_actions`.
 
 ### Contacts
 
@@ -173,13 +173,13 @@ Creates, updates, deletes and sends land on a real Moneybird account and cannot 
 | Revenue by Project Report for an Administration | GET | `/api/v2/{{administrationId}}/reports/revenue_by_project{{format}}` | `conn_mod_def::GLcOLv54p0g::st1tnokjTPCtRzG26itH6w` |
 | Tax Report for an Administration | GET | `/api/v2/{{administrationId}}/reports/tax{{format}}` | `conn_mod_def::GLcOL2wLohA::JsnUAjH9SkebFlMFlZDM8w` |
 
-2 more Reports actions are available through search.
+2 more Reports actions are available through `find_one_actions`.
 
-This lists 90 of 296 actions. For anything not here, call `search_one_platform_actions` with platform `moneybird`. The full catalog is at https://www.withone.ai/knowledge/moneybird.
+This lists 90 of 296 actions. For anything not here, call `find_one_actions` with platform `moneybird` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/moneybird.
 
 ## When a call fails
 
-The error comes from Moneybird, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Moneybird, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/moneybird
 

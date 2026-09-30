@@ -13,15 +13,15 @@ metadata:
 
 ProWorkflow is a project, task, and time management platform that provides project planning, resource allocation, time tracking, cost tracking, invoicing, and reporting tools, allowing teams to manage workflows, collaborate in real time, and deliver client work efficiently.
 
-One exposes ProWorkflow through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes ProWorkflow through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `pro-workflow` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "pro-workflow", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real ProWorkflow account and canno
 | Clone a Project | POST | `/api/v4/projects/{{projectid}}/clone` | `conn_mod_def::GMiJwWcog_g::0XoNwE8QQsimpJ5FIpXEJw` |
 | Complete a Project | PUT | `/api/v4/projects/{{projectid}}/complete` | `conn_mod_def::GMiJwdBCd0M::8aCdc9vURN-hlAP9t68j9A` |
 
-14 more Projects actions are available through search.
+14 more Projects actions are available through `find_one_actions`.
 
 ### Contacts
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real ProWorkflow account and canno
 | Add Tags to Contacts | POST | `/api/v4/contacts/tags` | `conn_mod_def::GMiJsxIe4r4::7rXLjlT6RmWZyxPNM1cCUA` |
 | Assign Contact to Items | POST | `/api/v4/contacts/{{contactid}}/items` | `conn_mod_def::GMiJswrzPOI::sRezyfovRCqpUrmGSkPLtQ` |
 
-14 more Contacts actions are available through search.
+14 more Contacts actions are available through `find_one_actions`.
 
 ### ProjectItems
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real ProWorkflow account and canno
 | Complete Project Items | PUT | `/api/v4/projects/items/complete` | `conn_mod_def::GMiJwT_IGuo::HBpXdBYNSkuM8vCODWfpEQ` |
 | Create a Project Item | POST | `/api/v4/projects/{{projectId}}/items` | `conn_mod_def::GMiJwk6tdHI::Ednrd4XORGiC3nltA_zu3w` |
 
-10 more ProjectItems actions are available through search.
+10 more ProjectItems actions are available through `find_one_actions`.
 
 ### Quotes
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real ProWorkflow account and canno
 | Delete a Quote Item | DELETE | `/api/v4/quotes/{{quoteid}}/items/{{itemid}}` | `conn_mod_def::GMiJzICVIt8::4pMfiGFRQTG_QTJIAr02Yw` |
 | Delete a Quote Item | DELETE | `/api/v4/quotes/items/{{itemid}}` | `conn_mod_def::GMiJzIUuPao::8VRQbPbLQtutz3CA-P-WBw` |
 
-7 more Quotes actions are available through search.
+7 more Quotes actions are available through `find_one_actions`.
 
 ### Invoices
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real ProWorkflow account and canno
 | Update an Invoice | PUT | `/api/v4/invoices/{{invoiceid}}` | `conn_mod_def::GMiJvUFgyOA::yAmaJfe_SW6jHXsu-0VNEQ` |
 | Update Invoice Work Stage | PUT | `/api/v4/invoices/{{invoiceid}}/workstage` | `conn_mod_def::GMiJvd_mGyM::L5aUnTl2RNuxbTo06lJmHA` |
 
-1 more Invoices actions are available through search.
+1 more Invoices actions are available through `find_one_actions`.
 
 ### InvoiceItems
 
@@ -175,13 +175,13 @@ Creates, updates, deletes and sends land on a real ProWorkflow account and canno
 | Create Invoice Phases | POST | `/api/v4/invoices/{{invoiceid}}/phases` | `conn_mod_def::GMiJugjjBvw::zSjjMaXTRdmJy1hvCbVVjQ` |
 | Create Invoice Phases | POST | `/api/v4/invoices/phases` | `conn_mod_def::GMiJuhL05e0::GbPUwWHJSGmY-Fj6t9BQsw` |
 
-4 more InvoicePhases actions are available through search.
+4 more InvoicePhases actions are available through `find_one_actions`.
 
-This lists 90 of 403 actions. For anything not here, call `search_one_platform_actions` with platform `pro-workflow`. The full catalog is at https://www.withone.ai/knowledge/pro-workflow.
+This lists 90 of 403 actions. For anything not here, call `find_one_actions` with platform `pro-workflow` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/pro-workflow.
 
 ## When a call fails
 
-The error comes from ProWorkflow, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from ProWorkflow, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/pro-workflow
 

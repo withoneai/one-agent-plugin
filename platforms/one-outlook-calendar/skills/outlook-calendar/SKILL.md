@@ -13,15 +13,15 @@ metadata:
 
 A digital calendar platform that lets users schedule events, manage appointments, and collaborate on meetings across devices with reminders and shared availability views.
 
-One exposes Outlook Calendar through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Outlook Calendar through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `outlook-calendar` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "outlook-calendar", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Outlook Calendar account and 
 | Get a User Calendar’s Event Count | GET | `/users/{{userId}}/calendars/{{calendarId}}/events/$count` | `conn_mod_def::GJ58L6IVBuw::h6aUfgHQRAS3xMrIRDLvYA` |
 | Get a User’s Calendar Event | GET | `/users/{{userId}}/calendars/{{calendarId}}/events/{{eventId}}` | `conn_mod_def::GJ58LbMUv3M::qo6YSRsHQ_6pNjTeL-R1Qg` |
 
-74 more Events actions are available through search.
+74 more Events actions are available through `find_one_actions`.
 
 ### Places
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Outlook Calendar account and 
 | Get a Place as a Room List | GET | `/places/{{placeId}}/microsoft.graph.roomList` | `conn_mod_def::GJ58H3g8Sjs::Wd6v-LU-QTC3f3Xxf8z7ow` |
 | Get a Place's Check-in Count | GET | `/places/{{placeId}}/checkIns/$count` | `conn_mod_def::GJ58G6CW40o::8I7iOe_wRfGVY8uQNZw0jg` |
 
-45 more Places actions are available through search.
+45 more Places actions are available through `find_one_actions`.
 
 ### CalendarPermissions
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Outlook Calendar account and 
 | Get Calendar Permission Count for the Signed-in User | GET | `/v1.0/me/calendar/calendarPermissions/$count` | `conn_mod_def::GMIY14AgKFE::Kn009mlFSyK9g0zpKkQiWw` |
 | Get Calendar Permission Count for the Signed-in User's Calendar | GET | `/v1.0/me/calendars/{{calendarId}}/calendarPermissions/$count` | `conn_mod_def::GMIY2TTTnOY::7gkwloqnQS-LZ30G30dZlg` |
 
-26 more CalendarPermissions actions are available through search.
+26 more CalendarPermissions actions are available through `find_one_actions`.
 
 ### EventExtensions
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Outlook Calendar account and 
 | Get the Count of an Event's Extensions (for a User's Calendar Event) | GET | `/users/{{userId}}/calendars/{{calendarId}}/events/{{eventId}}/extensions/$count` | `conn_mod_def::GJ58L3Ojaq4::IWJYUxS8QFebTzLiHLbjfg` |
 | List a User Calendar Event’s Extensions | GET | `/users/{{userId}}/calendars/{{calendarId}}/events/{{eventId}}/extensions` | `conn_mod_def::GJ58LiqHXdE::jBtyXNpQTrWDN4fEPzO4QQ` |
 
-21 more EventExtensions actions are available through search.
+21 more EventExtensions actions are available through `find_one_actions`.
 
 ### EventAttachments
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real Outlook Calendar account and 
 | List a User's Calendar Event Attachments | GET | `/users/{{userId}}/calendars/{{calendarId}}/events/{{eventId}}/attachments` | `conn_mod_def::GJ58K2EfJ2A::a0ZyS8PzSoOxx64ZDT978A` |
 | List a User’s Event Attachments | GET | `/users/{{userId}}/calendar/events/{{eventId}}/attachments` | `conn_mod_def::GJ58Ks8Bm0s::Tz8rz1TETpGu8dJcGzsbxw` |
 
-19 more EventAttachments actions are available through search.
+19 more EventAttachments actions are available through `find_one_actions`.
 
 ### Calendars
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real Outlook Calendar account and 
 | Get Allowed Calendar Sharing Roles for a User’s Calendar | GET | `/users/{{userId}}/calendars/{{calendarId}}/microsoft.graph.allowedCalendarSharingRoles(User='{{user}}')` | `conn_mod_def::GJ58NcjFvbU::WJQNv625Tu68pBkT6PuNzA` |
 | Get an Event's Calendar for a User | GET | `/users/{{userId}}/calendar/events/{{eventId}}/calendar` | `conn_mod_def::GJ58K4kPzF0::oLngN4xmRrGR7O_cmM6xdg` |
 
-16 more Calendars actions are available through search.
+16 more Calendars actions are available through `find_one_actions`.
 
 ### CalendarEvents
 
@@ -166,7 +166,7 @@ Creates, updates, deletes and sends land on a real Outlook Calendar account and 
 | Accept an Event in a Calendar Using Me CalendarGroups Calendars Events | POST | `/v1.0/me/calendarGroups/{{calendarGroupId}}/calendars/{{calendarId}}/events/{{eventId}}/microsoft.graph.accept` | `conn_mod_def::GMIY2lL2WWA::_PiBwfHHRmWIgGkapE0Odw` |
 | Accept an Event in the Signed-In User Calendar | POST | `/v1.0/me/calendar/events/{{eventId}}/microsoft.graph.accept` | `conn_mod_def::GMIY2bDweyc::GUSMJ8LySPStsvVfVu8s6A` |
 
-14 more CalendarEvents actions are available through search.
+14 more CalendarEvents actions are available through `find_one_actions`.
 
 ### CheckIns
 
@@ -179,13 +179,13 @@ Creates, updates, deletes and sends land on a real Outlook Calendar account and 
 | List a Room's Check-Ins (from a Place Room List) | GET | `/places/{{placeId}}/microsoft.graph.roomList/rooms/{{roomId}}/checkIns` | `conn_mod_def::GJ58JIa_qlM::yhOb_SQxTHmSQErorUPOBA` |
 | List a Workspace's Check-Ins for a Room List Place | GET | `/places/{{placeId}}/microsoft.graph.roomList/workspaces/{{workspaceId}}/checkIns` | `conn_mod_def::GJ58Jfhyd_w::Risw4MBgTlqKeMUdglflSQ` |
 
-12 more CheckIns actions are available through search.
+12 more CheckIns actions are available through `find_one_actions`.
 
-This lists 90 of 561 actions. For anything not here, call `search_one_platform_actions` with platform `outlook-calendar`. The full catalog is at https://www.withone.ai/knowledge/outlook-calendar.
+This lists 90 of 561 actions. For anything not here, call `find_one_actions` with platform `outlook-calendar` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/outlook-calendar.
 
 ## When a call fails
 
-The error comes from Outlook Calendar, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Outlook Calendar, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/outlook-calendar
 

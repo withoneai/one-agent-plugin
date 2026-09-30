@@ -4,34 +4,34 @@ description: Write integration code against a third-party API (Gmail, Stripe, Sh
 license: MIT
 metadata:
   author: one-systems
-  version: "1.0"
+  version: "1.1"
 ---
 
 # Writing integration code with real API schemas
 
-Integration code fails on details a model cannot recall: the exact field name, whether a value goes in the body or the query string, which enum the API accepts this year. One's action knowledge carries all of it, so look the API up rather than writing from memory.
+Integration code fails on details a model cannot recall: the exact field name, whether a value goes in the body or the query string, which enum the API accepts this year. One's action documentation carries all of it, so look the API up rather than writing from memory.
 
 This is what knowledge-only mode is for. In an editor, `execute_one_action` is removed, so you can read every API's real schema while writing code and cannot fire a live request against production data by accident.
 
 ## Before you write the call
 
-1. `search_one_platform_actions` on the platform, described by outcome ("create a customer", "list orders since a date").
-2. `get_one_action_knowledge` on the action you picked. Read the whole thing: required and optional parameters, types, enums, auth, the request shape, and the response shape.
-3. Write the code from that schema. Field names, casing, nesting, and types come from the knowledge, not from what the API probably looks like.
+1. `find_one_actions` with one `requests` entry per operation the feature needs, on any platforms: the `platform` and an `intent` naming the operation alone ("create a customer", "list orders since a date"). One call covers every API the feature touches.
+2. Read each chosen action's documentation whole: required and optional parameters, types, enums, auth, the request shape, and the response shape. In knowledge-only mode it comes back whole, with how to call it from code; otherwise call `find_one_actions` again with `load: [{ "action_id": "...", "full": true }]` for any document that came back as a digest.
+3. Write the code from that schema. Field names, casing, nesting, and types come from the documentation, not from what the API probably looks like.
 
-If you write a request body with a field the knowledge does not list, you invented it. Go back and check.
+If you write a request body with a field the documentation does not list, you invented it. Go back and check.
 
 ## Two ways to ship the call
 
 **Through One.** Keep One in the runtime and call the action through it. The user's connection handles auth, so your code holds no per-platform tokens and no refresh logic. Good when the app already has One in it or when you are integrating several platforms.
 
-**Direct to the platform.** Use the knowledge as documentation and write a normal HTTP client against the vendor's API. Good when the integration is one platform deep or the runtime cannot take another dependency. You then own OAuth, token refresh, and rotation.
+**Direct to the platform.** Use One's documentation as a reference and write a normal HTTP client against the vendor's API. Good when the integration is one platform deep or the runtime cannot take another dependency. You then own OAuth, token refresh, and rotation.
 
 Say which one you are doing and why, in a sentence, before you write the file. Do not mix them in the same module.
 
 ## Types come from the response shape
 
-The knowledge includes the response shape. Generate your types from it instead of hand-writing an interface that drifts. Model optional fields as optional. When the API returns a union or a nullable field, represent that rather than asserting the happy path.
+The documentation includes the response shape. Generate your types from it instead of hand-writing an interface that drifts. Model optional fields as optional. When the API returns a union or a nullable field, represent that rather than asserting the happy path.
 
 ## Auth belongs in the environment
 
@@ -39,7 +39,7 @@ Never write a key, token, or secret into source, a config file, a test fixture, 
 
 ## Pagination and rate limits are not optional
 
-The knowledge names the pagination parameters and the platform's limits. A list call that ignores them works on a test account with twelve records and fails on a real one. Write the loop with a cursor and a bound, and handle 429 with a backoff on the first version, not the second.
+The documentation names the pagination parameters and the platform's limits. A list call that ignores them works on a test account with twelve records and fails on a real one. Write the loop with a cursor and a bound, and handle 429 with a backoff on the first version, not the second.
 
 ## Errors
 
@@ -51,6 +51,6 @@ If the feature reacts to platform events rather than polling, look up the platfo
 
 ## Debugging an integration that is already broken
 
-Re-read the knowledge for the action before changing anything. Most 400s are a renamed field or a value in the wrong place. Compare the failing request against the schema field by field. If auth is failing, check the scope granted on the connection before touching the code.
+Re-read the action's documentation (`find_one_actions` with `load` and its `action_id`) before changing anything. Most 400s are a renamed field or a value in the wrong place. Compare the failing request against the schema field by field. If auth is failing, check the scope granted on the connection before touching the code.
 
 Full docs: https://www.withone.ai/docs/mcp

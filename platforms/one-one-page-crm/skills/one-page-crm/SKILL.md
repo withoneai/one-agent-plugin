@@ -13,15 +13,15 @@ metadata:
 
 OnePageCRM is an action-focused CRM designed to help small and medium-sized businesses manage contacts, track follow-ups and drive deals by turning each lead into a prioritized next action.
 
-One exposes OnePageCRM through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes OnePageCRM through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `one-page-crm` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "one-page-crm", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real OnePageCRM account and cannot
 | Change a Contact’s Status | PUT | `/api/v3/contacts/{{contactId}}/change_status/{{statusId}}` | `conn_mod_def::GJ56GI8eWX4::drXKa3BRS9Ka2nQ5clBqMw` |
 | Close a Contact’s Sales Cycle | PUT | `/api/v3/contacts/{{contactId}}/close_sales_cycle` | `conn_mod_def::GJ56GIKFJek::Ki7-G0EjRoinB7MwPAX2_g` |
 
-13 more Contacts actions are available through search.
+13 more Contacts actions are available through `find_one_actions`.
 
 ### Companies
 
@@ -192,13 +192,13 @@ Creates, updates, deletes and sends land on a real OnePageCRM account and cannot
 | List Predefined Actions (for the Logged-in User’s Account) | GET | `/api/v3/predefined_actions` | `conn_mod_def::GJ56Ivwl6hU::iVcCw-5vTKSIKV8tsJio1g` |
 | Create a Predefined Action | POST | `/api/v3/predefined_actions` | `conn_mod_def::GJ56IrbW1Nw::oyLUl4i9SECoQkHWkJQklg` |
 
-2 more PredefinedActions actions are available through search.
+2 more PredefinedActions actions are available through `find_one_actions`.
 
-This lists 90 of 161 actions. For anything not here, call `search_one_platform_actions` with platform `one-page-crm`. The full catalog is at https://www.withone.ai/knowledge/one-page-crm.
+This lists 90 of 161 actions. For anything not here, call `find_one_actions` with platform `one-page-crm` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/one-page-crm.
 
 ## When a call fails
 
-The error comes from OnePageCRM, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from OnePageCRM, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/one-page-crm
 

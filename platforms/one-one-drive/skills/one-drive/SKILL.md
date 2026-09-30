@@ -13,15 +13,15 @@ metadata:
 
 A cloud storage service that allows users to store, sync, and share files securely with access across devices. It integrates seamlessly with productivity and collaboration tools.
 
-One exposes OneDrive through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes OneDrive through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `one-drive` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "one-drive", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real OneDrive account and cannot b
 | Get a Drive Item Count | GET | `/drives/{{driveId}}/items/$count` | `conn_mod_def::GJ52XSyV_V4::zHK5SPOzSKWKWUflH02QmA` |
 | Get a Drive Item for a List Item in a Drive | GET | `/drives/{{driveId}}/list/items/{{listItemId}}/driveItem` | `conn_mod_def::GJ52ealkPSI::crStSPCNQ4WNMW7S6-6_4w` |
 
-199 more DriveItems actions are available through search.
+199 more DriveItems actions are available through `find_one_actions`.
 
 ### MailboxSettings
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real OneDrive account and cannot b
 | Get a Drive Root List Item Creator’s Mailbox Settings for a User | GET | `/users/{{userId}}/drives/{{driveId}}/root/listItem/createdByUser/mailboxSettings` | `conn_mod_def::GJ53A_oBNhA::bSf2R0U1Sdq6yEO0aQUPOw` |
 | Get a Drive Root List Item Last Modified By User’s Mailbox Settings | GET | `/drives/{{driveId}}/root/listItem/lastModifiedByUser/mailboxSettings` | `conn_mod_def::GJ52WIQkh_0::Fs0xNjEiRjmii-RLjsulzg` |
 
-84 more MailboxSettings actions are available through search.
+84 more MailboxSettings actions are available through `find_one_actions`.
 
 ### ServiceProvisioningErrors
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real OneDrive account and cannot b
 | Get a Group Drive Root List Item CreatedByUser ServiceProvisioningErrors Count | GET | `/groups/{{groupId}}/drives/{{driveId}}/root/listItem/createdByUser/serviceProvisioningErrors/$count` | `conn_mod_def::GJ52rXCLsdY::f7xiaAmbS8y-T4vm3rIsjQ` |
 | Get a Group Drive Root List Item Last Modified By User Service Provisioning Errors Count | GET | `/groups/{{groupId}}/drives/{{driveId}}/root/listItem/lastModifiedByUser/serviceProvisioningErrors/$count` | `conn_mod_def::GJ52rflfHCM::ka-XuEfvQCikJSFh3fqpWA` |
 
-68 more ServiceProvisioningErrors actions are available through search.
+68 more ServiceProvisioningErrors actions are available through `find_one_actions`.
 
 ### DocumentSetVersions
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real OneDrive account and cannot b
 | Get a Group Drive Root List Item Document Set Version | GET | `/groups/{{groupId}}/drives/{{driveId}}/root/listItem/documentSetVersions/{{documentSetVersionId}}` | `conn_mod_def::GJ52m0yE3HU::3f9x9MTJR2m5o9IV_SyWtw` |
 | Get a Group Drive Root List Item Document Set Version Count | GET | `/groups/{{groupId}}/drives/{{driveId}}/root/listItem/documentSetVersions/$count` | `conn_mod_def::GJ52rWbYPXc::jK9EW8kFTiqJzep8_8Qiiw` |
 
-63 more DocumentSetVersions actions are available through search.
+63 more DocumentSetVersions actions are available through `find_one_actions`.
 
 ### Shares
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real OneDrive account and cannot b
 | Get a Shared Drive Item’s lastModifiedByUser (via shares) | GET | `/shares/{{sharedDriveItemId}}/lastModifiedByUser` | `conn_mod_def::GJ525QYzCAU::Mw3ChBVGT8-LGdMyEQSuGg` |
 | Get a Shared Drive Item’s listItem | GET | `/shares/{{sharedDriveItemId}}/listItem` | `conn_mod_def::GJ523zM6KVY::llEZKc-1QR6Jqm51b0B3uA` |
 
-41 more Shares actions are available through search.
+41 more Shares actions are available through `find_one_actions`.
 
 ### Drives
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real OneDrive account and cannot b
 | Get a Drive’s Following Count | GET | `/drives/{{driveId}}/following/$count` | `conn_mod_def::GJ52XSiO3zM::zpcIIxP7Qtuj9OzA3w5yNw` |
 | Get a Drive's lastModifiedByUser | GET | `/drives/{{driveId}}/lastModifiedByUser` | `conn_mod_def::GJ52huQwFeI::LwCQXlnxSGSZ2taQW6DrxQ` |
 
-40 more Drives actions are available through search.
+40 more Drives actions are available through `find_one_actions`.
 
 ### ContentTypes
 
@@ -166,7 +166,7 @@ Creates, updates, deletes and sends land on a real OneDrive account and cannot b
 | Get a User Drive List Content Type Base Type | GET | `/users/{{userId}}/drives/{{driveId}}/list/contentTypes/{{contentTypeId}}/baseTypes/{{contentTypeId1}}` | `conn_mod_def::GJ529hTORN4::Nhy5FSCLSS-tv3JQWNUfRQ` |
 | Get a User Drive List Content Types Count | GET | `/users/{{userId}}/drives/{{driveId}}/list/contentTypes/$count` | `conn_mod_def::GJ53DMGF6mE::WG3qLAguRFO6KD_fQeNaqQ` |
 
-35 more ContentTypes actions are available through search.
+35 more ContentTypes actions are available through `find_one_actions`.
 
 ### Subscriptions
 
@@ -179,13 +179,13 @@ Creates, updates, deletes and sends land on a real OneDrive account and cannot b
 | Get a Group Drive Root Subscription Count | GET | `/groups/{{groupId}}/drives/{{driveId}}/root/subscriptions/$count` | `conn_mod_def::GJ52ret7wZs::_oH4S8g9RQqSVTVWrI3ELg` |
 | Get a Share's List Subscription | GET | `/shares/{{sharedDriveItemId}}/list/subscriptions/{{subscriptionId}}` | `conn_mod_def::GJ521ICiCoU::fwuIZmKnTNS_S-dP1fyDKQ` |
 
-35 more Subscriptions actions are available through search.
+35 more Subscriptions actions are available through `find_one_actions`.
 
-This lists 90 of 1514 actions. For anything not here, call `search_one_platform_actions` with platform `one-drive`. The full catalog is at https://www.withone.ai/knowledge/one-drive.
+This lists 90 of 1514 actions. For anything not here, call `find_one_actions` with platform `one-drive` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/one-drive.
 
 ## When a call fails
 
-The error comes from OneDrive, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from OneDrive, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/one-drive
 

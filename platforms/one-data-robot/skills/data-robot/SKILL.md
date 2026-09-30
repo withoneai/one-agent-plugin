@@ -13,15 +13,15 @@ metadata:
 
 DataRobot is an AI and machine learning platform that provides tools for building, deploying, and managing predictive models and generative AI applications, allowing data science and engineering teams to automate model development, governance, monitoring, and integration into business workflows.
 
-One exposes DataRobot through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes DataRobot through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `data-robot` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "data-robot", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real DataRobot account and cannot 
 | Retrieve Accuracy Metrics for a Deployment | GET | `/api/v2/deployments/{{deploymentId}}/accuracy/` | `conn_mod_def::GMkgw8f4nRg::eoIzW_hNThu0d3yJ94E_Bg` |
 | Retrieve Accuracy Over Space for a Deployment | GET | `/api/v2/deployments/{{deploymentId}}/accuracyOverSpace/` | `conn_mod_def::GMkgxKMk3Ag::3OaHPYmjSDuPCd9lDj8_dQ` |
 
-31 more Deployments actions are available through search.
+31 more Deployments actions are available through `find_one_actions`.
 
 ### Datasets
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real DataRobot account and cannot 
 | Retrieve a Documents Data Quality Log File for a Dataset | GET | `/api/v2/datasets/{{datasetId}}/documentsDataQualityLog/file/` | `conn_mod_def::GMkggZ6G-OA::322C-aLZSEyNADn2aGoPmA` |
 | Retrieve an Images Data Quality Log File for a Dataset | GET | `/api/v2/datasets/{{datasetId}}/imagesDataQualityLog/file/` | `conn_mod_def::GMkggmPv9aA::8mhVpwFJTiyk0EqfDF1WEA` |
 
-26 more Datasets actions are available through search.
+26 more Datasets actions are available through `find_one_actions`.
 
 ### NotebookSessions
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real DataRobot account and cannot 
 | Create a Download for a Notebook Session | POST | `/api/v2/notebookSessions/{{notebookId}}/filesystem/objects/download/` | `conn_mod_def::GMkgrBHQDsA::ABPQy-G6R5WjqHx-TBi3Pw` |
 | Create an Upload for a Notebook Session | POST | `/api/v2/notebookSessions/{{notebookId}}/filesystem/objects/upload/` | `conn_mod_def::GMkgr8mQQEA::c45UWuX-RNi_MNALirVelA` |
 
-14 more NotebookSessions actions are available through search.
+14 more NotebookSessions actions are available through `find_one_actions`.
 
 ### Files
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real DataRobot account and cannot 
 | Create a File from a URL | POST | `/api/v2/files/fromURL/` | `conn_mod_def::GMkgXi35Iog::G3Cucw52S6q1JlCwdTZGvg` |
 | Create a File from a URL for a Catalog Item | POST | `/api/v2/files/{{catalogId}}/fromURL/` | `conn_mod_def::GMkgXs3xSIg::FzjpJaExQAWPftxHsznrIg` |
 
-10 more Files actions are available through search.
+10 more Files actions are available through `find_one_actions`.
 
 ### Projects
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real DataRobot account and cannot 
 | Create a Project | POST | `/api/v2/projects/` | `conn_mod_def::GMkg12rOIsA::y73SmUE_SeW0g2AVDC4yDw` |
 | Create Multiple New Features by Changing Feature Types for a Project | POST | `/api/v2/projects/{{projectId}}/batchTypeTransformFeatures/` | `conn_mod_def::GMkgfFa7mag::slfrOVSwSk-PSVNE37HEZg` |
 
-9 more Projects actions are available through search.
+9 more Projects actions are available through `find_one_actions`.
 
 ### Notebooks
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real DataRobot account and cannot 
 | Create Cells for a Notebook | POST | `/api/v2/notebooks/{{notebookId}}/cells/` | `conn_mod_def::GMkgqq8o9zg::UJlifzwmSvWI-aYwdM9maw` |
 | Create From File Using Notebooks | POST | `/api/v2/notebooks/fromFile/` | `conn_mod_def::GMkgrAbPg5g::CXK0XEWGTCOnsaQKdzHpCw` |
 
-9 more Notebooks actions are available through search.
+9 more Notebooks actions are available through `find_one_actions`.
 
 ### Pipelines
 
@@ -166,7 +166,7 @@ Creates, updates, deletes and sends land on a real DataRobot account and cannot 
 | List All Pipelines | GET | `/api/v2/pipelines` | `conn_mod_def::GMkg1iB4icg::4UYbOr9eTE-ogYk8MRcrRw` |
 | List Draft Dispatches for a Pipeline | GET | `/api/v2/pipelines/{{pipelineId}}/dispatches` | `conn_mod_def::GMkgzqkG7uA::xMU8K2Y3QpWvTqgMyGc9XQ` |
 
-8 more Pipelines actions are available through search.
+8 more Pipelines actions are available through `find_one_actions`.
 
 ### CustomModels
 
@@ -179,13 +179,13 @@ Creates, updates, deletes and sends land on a real DataRobot account and cannot 
 | List Custom Models | GET | `/api/v2/customModels/` | `conn_mod_def::GMkgSCtCDyA::9Jwho2eKR2aamflZnAWWcQ` |
 | Add or Replace Training and Holdout Data for a Custom Model | PATCH | `/api/v2/customModels/{{customModelId}}/versions/withTrainingData/` | `conn_mod_def::GMkgQ4AWIYA::SJdgndCIRAiM1zTEO3Koxg` |
 
-13 more CustomModels actions are available through search.
+13 more CustomModels actions are available through `find_one_actions`.
 
-This lists 90 of 1687 actions. For anything not here, call `search_one_platform_actions` with platform `data-robot`. The full catalog is at https://www.withone.ai/knowledge/data-robot.
+This lists 90 of 1687 actions. For anything not here, call `find_one_actions` with platform `data-robot` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/data-robot.
 
 ## When a call fails
 
-The error comes from DataRobot, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from DataRobot, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/data-robot
 

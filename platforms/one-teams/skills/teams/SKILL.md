@@ -13,15 +13,15 @@ metadata:
 
 A collaboration and communication platform that offers chat, meetings, file sharing, and integrations, making it ideal for teams to work together in hybrid or remote environments.
 
-One exposes Teams through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Teams through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `teams` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "teams", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Teams account and cannot be r
 | Get a Group Team Primary Channel Message Hosted Content | GET | `/groups/{{groupId}}/team/primaryChannel/messages/{{chatMessageId}}/hostedContents/{{chatMessageHostedContentId}}` | `conn_mod_def::GJ7M65KGiXI::UpWba8N3SUyTq1Wh4PICKg` |
 | Get a Group Team Primary Channel Message Hosted Content Media | GET | `/groups/{{groupId}}/team/primaryChannel/messages/{{chatMessageId}}/hostedContents/{{chatMessageHostedContentId}}/$value` | `conn_mod_def::GJ7M7NrEUlE::UyJ2gmZyTlm7A4duN02r9Q` |
 
-84 more ChatMessageHostedContents actions are available through search.
+84 more ChatMessageHostedContents actions are available through `find_one_actions`.
 
 ### ChatMessages
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Teams account and cannot be r
 | Get a Reply to a Channel Message in a User’s Joined Team | GET | `/users/{{userId}}/joinedTeams/{{teamId}}/channels/{{channelId}}/messages/{{chatMessageId}}/replies/{{replyMessageId}}` | `conn_mod_def::GJ7NVrwpgeg::RPf_ttaXR-C12ni15qvWDw` |
 | Get a Reply to a Group Team Primary Channel Message | GET | `/groups/{{groupId}}/team/primaryChannel/messages/{{chatMessageId}}/replies/{{chatMessageId1}}` | `conn_mod_def::GJ7M8KoQQKg::__0Y2OVTSWG0Ej1PCaKlnw` |
 
-49 more ChatMessages actions are available through search.
+49 more ChatMessages actions are available through `find_one_actions`.
 
 ### ChatMessageReplies
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Teams account and cannot be r
 | Get a Reply to a Channel Message in a Team | GET | `/teams/{{teamId}}/channels/{{channelId}}/messages/{{chatMessageId}}/replies/{{chatMessageId1}}` | `conn_mod_def::GJ7NCqSB65s::pgcu2tgqSyOjCjyv59hVUQ` |
 | Get a Reply to a Chat Message | GET | `/chats/{{chatId}}/messages/{{chatMessageId}}/replies/{{chatMessageId1}}` | `conn_mod_def::GJ7M1Jf14bc::ebLpFKHaQz2nzIAl94x_Vg` |
 
-38 more ChatMessageReplies actions are available through search.
+38 more ChatMessageReplies actions are available through `find_one_actions`.
 
 ### Teams
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Teams account and cannot be r
 | Get a Team’s Profile Photo Metadata | GET | `/teams/{{teamId}}/photo` | `conn_mod_def::GJ7NHNfztDE::tG-dCGHaTXu9rou1EEAr9A` |
 | Get a Team’s Template | GET | `/teams/{{teamId}}/template` | `conn_mod_def::GJ7NKiwaGD8::dotTJ0uAQfGK5rpIb6XumQ` |
 
-28 more Teams actions are available through search.
+28 more Teams actions are available through `find_one_actions`.
 
 ### Channels
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real Teams account and cannot be r
 | Get a User’s Joined Team Primary Channel | GET | `/users/{{userId}}/joinedTeams/{{teamId}}/primaryChannel` | `conn_mod_def::GJ7NVr3GHo8::9RR2IEylTZa4W4mUeKHFKg` |
 | List a Group’s Team Channels | GET | `/groups/{{groupId}}/team/channels` | `conn_mod_def::GJ7M6ZnEmkQ::wnE-hWiuTYCwjASn7DgenA` |
 
-25 more Channels actions are available through search.
+25 more Channels actions are available through `find_one_actions`.
 
 ### HostedContents
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real Teams account and cannot be r
 | Get the Count of a Deleted Team Channel Message Hosted Contents | GET | `/teamwork/deletedTeams/{{deletedTeamId}}/channels/{{channelId}}/messages/{{chatMessageId}}/hostedContents/$count` | `conn_mod_def::GJ7NM2oHxlQ::X3riRjt9QnC2-Y4Oa130aA` |
 | Get the Count of a User’s Hosted Contents in a Team Primary Channel Message | GET | `/users/{{userId}}/joinedTeams/{{teamId}}/primaryChannel/messages/{{chatMessageId}}/hostedContents/$count` | `conn_mod_def::GJ7NW4QnQ9s::uE7BYBGRQQCn-Pn9R2uQig` |
 
-24 more HostedContents actions are available through search.
+24 more HostedContents actions are available through `find_one_actions`.
 
 ### TimeCards
 
@@ -166,7 +166,7 @@ Creates, updates, deletes and sends land on a real Teams account and cannot be r
 | Clock In to Start a Group Team Schedule Time Card | POST | `/groups/{{groupId}}/team/schedule/timeCards/microsoft.graph.clockIn` | `conn_mod_def::GJ7M-X1xMC4::7YESR-u5RLGZvNmKM_eKfA` |
 | Clock In to Start a Team Time Card | POST | `/teams/{{teamId}}/schedule/timeCards/microsoft.graph.clockIn` | `conn_mod_def::GJ7NIg9YlmE::d9LY1mzIQoaqXBxlgHbY7g` |
 
-21 more TimeCards actions are available through search.
+21 more TimeCards actions are available through `find_one_actions`.
 
 ### Chats
 
@@ -179,13 +179,13 @@ Creates, updates, deletes and sends land on a real Teams account and cannot be r
 | Get a User's Chat | GET | `/users/{{userId}}/chats/{{chatId}}` | `conn_mod_def::GJ7NPIjzQ3I::8CEEko49TF-ITZO-bdrZFA` |
 | Get a User's Chat Count | GET | `/users/{{userId}}/chats/$count` | `conn_mod_def::GJ7NP6j4MZg::DGWuBfZVQ7C_-o-2icYFRw` |
 
-24 more Chats actions are available through search.
+24 more Chats actions are available through `find_one_actions`.
 
-This lists 90 of 1296 actions. For anything not here, call `search_one_platform_actions` with platform `teams`. The full catalog is at https://www.withone.ai/knowledge/teams.
+This lists 90 of 1296 actions. For anything not here, call `find_one_actions` with platform `teams` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/teams.
 
 ## When a call fails
 
-The error comes from Teams, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Teams, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/teams
 

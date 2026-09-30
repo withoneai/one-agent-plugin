@@ -13,15 +13,15 @@ metadata:
 
 Linear is a modern issue tracking and project management tool designed for fast-moving software teams. It enables efficient bug tracking, sprint planning, and team collaboration.
 
-One exposes Linear through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Linear through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `linear` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "linear", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Linear account and cannot be 
 | Connect Google Calendar (Personal) Integration | POST | `/graphql` | `conn_mod_def::GJ4vHtUMYwc::KVNK1Pq-QuKnLmnx3xRajw` |
 | Connect Jira (Personal) Integration | POST | `/graphql` | `conn_mod_def::GJ4vH6D1N0c::qSaVsnUgTOuOfTdkb3B3Ag` |
 
-44 more Integrations actions are available through search.
+44 more Integrations actions are available through `find_one_actions`.
 
 ### Issues
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Linear account and cannot be 
 | Remove a Label from an Issue | POST | `/graphql` | `conn_mod_def::GJ4vJUN9b_w::x8bdmqoNQq-eZUM4MtMkVw` |
 | Search Issues | POST | `/graphql` | `conn_mod_def::GJ4vKfZsYCs::q0BVB5glS7iR6FBzzhV2pw` |
 
-7 more Issues actions are available through search.
+7 more Issues actions are available through `find_one_actions`.
 
 ### Attachments
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Linear account and cannot be 
 | Link GitHub Pull Request to Issue (Create Rich Attachment) | POST | `/graphql` | `conn_mod_def::GJ4vCA7IShE::VUxXRc3YTueREmo9aGDM-A` |
 | Link GitLab Merge Request Attachment to Issue | POST | `/graphql` | `conn_mod_def::GJ4vCAxlOm0::_MVxAXHSRQSn8EjTsP3brw` |
 
-5 more Attachments actions are available through search.
+5 more Attachments actions are available through `find_one_actions`.
 
 ### Releases
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Linear account and cannot be 
 | Sync Release Data by Access Key | POST | `/graphql` | `conn_mod_def::GJ4vNggZowo::Cwul2q-gQk2XyZGOpfxnLg` |
 | Unarchive a Release | POST | `/graphql` | `conn_mod_def::GJ4vNqSmdi4::GE95x8BvTvSpmlxiUIeopQ` |
 
-3 more Releases actions are available through search.
+3 more Releases actions are available through `find_one_actions`.
 
 ### Projects
 
@@ -173,13 +173,13 @@ Creates, updates, deletes and sends land on a real Linear account and cannot be 
 | Create Shortcut (Clubhouse) Issue Import Job | POST | `/graphql` | `conn_mod_def::GJ4vJkwNyQM::LjgFsQu4QXqGUF1cEB7cnQ` |
 | Process an Issue Import (Kick Off Import Processing) | POST | `/graphql` | `conn_mod_def::GJ4vJ00Mg_Q::saxTelf6TcGUyVDJUvzEaw` |
 
-1 more IssueImports actions are available through search.
+1 more IssueImports actions are available through `find_one_actions`.
 
-This lists 90 of 488 actions. For anything not here, call `search_one_platform_actions` with platform `linear`. The full catalog is at https://www.withone.ai/knowledge/linear.
+This lists 90 of 488 actions. For anything not here, call `find_one_actions` with platform `linear` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/linear.
 
 ## When a call fails
 
-The error comes from Linear, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Linear, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/linear
 

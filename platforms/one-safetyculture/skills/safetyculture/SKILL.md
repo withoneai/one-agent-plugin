@@ -13,15 +13,15 @@ metadata:
 
 SafetyCulture is a workplace operations platform that provides digital inspections, issue reporting, asset monitoring, and training tools, enabling frontline teams to capture field data, standardize safety and quality processes, and automate corrective actions across distributed worksites.
 
-One exposes Safetyculture through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Safetyculture through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `safetyculture` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "safetyculture", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Safetyculture account and can
 | Remove a User's Access to an Inspection | DELETE | `/inspections/v1/inspections/{{inspectionId}}/user/{{removedUserId}}/access` | `conn_mod_def::GLCQPeCmm_A::a--VOOeiRQqKeOMCsmJGIQ` |
 | Restore an Inspection's Archived Status | DELETE | `/inspections/v1/inspections/{{inspectionId}}/archive` | `conn_mod_def::GLCQPdtgreg::vY82uq_EQpiWvuzhELRb9Q` |
 
-6 more Inspections actions are available through search.
+6 more Inspections actions are available through `find_one_actions`.
 
 ### Incidents
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Safetyculture account and can
 | Update an Incident's Due Date | PUT | `/tasks/v1/incidents/{{taskId}}/due_at` | `conn_mod_def::GLCQS1V9fCA::XGp6IilhSPCJs8cmvC345A` |
 | Update an Incident's Occurred At | PUT | `/tasks/v1/incidents/{{taskId}}/occurred_at` | `conn_mod_def::GLCQS0tj5fg::ew5h-1TSSWKC2-QYBt3gQQ` |
 
-3 more Incidents actions are available through search.
+3 more Incidents actions are available through `find_one_actions`.
 
 ### Actions
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Safetyculture account and can
 | Update an Action's Due Date | PUT | `/tasks/v1/actions/{{taskId}}/due_at` | `conn_mod_def::GLCQHsq5tkg::x8RwTZO1QbKRNZ20lQJ4-Q` |
 | Update an Action's Labels | PUT | `/tasks/v1/actions/{{actionId}}/label` | `conn_mod_def::GLCQH1aNnEg::DDMCdUwrTJyhEGYAQPr8Fw` |
 
-3 more Actions actions are available through search.
+3 more Actions actions are available through `find_one_actions`.
 
 ### Assets
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Safetyculture account and can
 | Set Field Values of an Asset | PATCH | `/assets/v1/assets/{{assetId}}/fields` | `conn_mod_def::GLCQJR3X9aA::dFCyElpISvOrrVECcI1wIQ` |
 | Update an Asset | PATCH | `/assets/v1/assets/{{id}}` | `conn_mod_def::GLCQJqL8D7g::DU-FwHItSFiehdA8Rt-_Iw` |
 
-2 more Assets actions are available through search.
+2 more Assets actions are available through `find_one_actions`.
 
 ### Users
 
@@ -178,13 +178,13 @@ Creates, updates, deletes and sends land on a real Safetyculture account and can
 | Bulk Update Document File Owners | POST | `/documents/v1/bulk/update_owners` | `conn_mod_def::GLCQNds8jVg::277TKNF1Skqcpr72uohxsQ` |
 | Create a Document File | POST | `/documents/v1` | `conn_mod_def::GLCQNdlXuCg::oUqho_1FSROUec6mo9Oweg` |
 
-3 more Documents actions are available through search.
+3 more Documents actions are available through `find_one_actions`.
 
-This lists 90 of 379 actions. For anything not here, call `search_one_platform_actions` with platform `safetyculture`. The full catalog is at https://www.withone.ai/knowledge/safetyculture.
+This lists 90 of 379 actions. For anything not here, call `find_one_actions` with platform `safetyculture` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/safetyculture.
 
 ## When a call fails
 
-The error comes from Safetyculture, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Safetyculture, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/safetyculture
 

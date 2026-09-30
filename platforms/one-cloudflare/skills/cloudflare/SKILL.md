@@ -13,15 +13,15 @@ metadata:
 
 Cloudflare is a cloud infrastructure and edge platform that provides content delivery, DNS, security, serverless compute, and network services through APIs, allowing developers and businesses to improve website performance, protect applications, and build globally distributed services.
 
-One exposes Cloudflare through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Cloudflare through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `cloudflare` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "cloudflare", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Cloudflare account and cannot
 | Open Websocket Connection Using @cf/test/hello-world-cog | GET | `/client/v4/accounts/{{accountId}}/ai/run/@cf/test/hello-world-cog` | `conn_mod_def::GLv3M3jtPy4::fxb7bK0oQb26yAbopFI08w` |
 | Run @cf/ai4bharat/nonomni-indictrans2-en-indic-1b Using AI | POST | `/client/v4/accounts/{{accountId}}/ai/run/@cf/ai4bharat/nonomni-indictrans2-en-indic-1b` | `conn_mod_def::GLv3QppMhHI::4TPQY1R7Qo6qMLg2_qNn7g` |
 
-6 more WorkersAi actions are available through search.
+6 more WorkersAi actions are available through `find_one_actions`.
 
 ### CloudforceOneEvents
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Cloudflare account and cannot
 | Move Events to a Dataset Using Cloudforce One | POST | `/client/v4/accounts/{{accountId}}/cloudforce-one/events/dataset/{{datasetId}}/move` | `conn_mod_def::GLv2KBMknx8::sHu0_HIRQtKJbmyAo08IXQ` |
 | Remove an Event Tag Using Cloudforce One Events | DELETE | `/client/v4/accounts/{{accountId}}/cloudforce-one/events/event_tag/{{eventId}}` | `conn_mod_def::GLv2KWDUjwg::LQnoDxOjTnSpPs8RxC48Iw` |
 
-2 more CloudforceOneEvents actions are available through search.
+2 more CloudforceOneEvents actions are available through `find_one_actions`.
 
 ### AccountsAi
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Cloudflare account and cannot
 | Run @cf/nvidia/nemotron-speech-streaming-en-0.6b Using Accounts AI | POST | `/client/v4/accounts/{{accountId}}/ai/run/@cf/nvidia/nemotron-speech-streaming-en-0.6b` | `conn_mod_def::GLv3MmoPa8k::eXK4b0y8Q9mCGbRqLd5-Aw` |
 | Run @cf/openai/gpt-oss-20b Using Accounts AI | POST | `/client/v4/accounts/{{accountId}}/ai/run/@cf/openai/gpt-oss-20b` | `conn_mod_def::GLv3O88nyCk::R11my1tkRumIBHZN0oIOFw` |
 
-2 more AccountsAi actions are available through search.
+2 more AccountsAi actions are available through `find_one_actions`.
 
 ### IpAccessRules
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Cloudflare account and cannot
 | Update an IP Access Rule for a User | PATCH | `/client/v4/user/firewall/access_rules/rules/{{ruleId}}` | `conn_mod_def::GLv2OKUGsAw::Cdvvdqr-SuqkliZNMQdvcA` |
 | Update an IP Access Rule for a Zone | PATCH | `/client/v4/zones/{{zoneId}}/firewall/access_rules/rules/{{ruleId}}` | `conn_mod_def::GLv2OKgeqFQ::m5K1WHuvSoy429RoF2909A` |
 
-1 more IpAccessRules actions are available through search.
+1 more IpAccessRules actions are available through `find_one_actions`.
 
 ### DnsRecords
 
@@ -178,13 +178,13 @@ Creates, updates, deletes and sends land on a real Cloudflare account and cannot
 |---|---|---|---|
 | All Webhooks Using Accounts Realtime Kit | GET | `/client/v4/accounts/{{accountId}}/realtime/kit/{{appId}}/webhooks/all` | `conn_mod_def::GLv3KP4RriA::cut7KqRSQsuQZ9rY6UXRCg` |
 
-9 more Webhooks actions are available through search.
+9 more Webhooks actions are available through `find_one_actions`.
 
-This lists 90 of 3204 actions. For anything not here, call `search_one_platform_actions` with platform `cloudflare`. The full catalog is at https://www.withone.ai/knowledge/cloudflare.
+This lists 90 of 3204 actions. For anything not here, call `find_one_actions` with platform `cloudflare` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/cloudflare.
 
 ## When a call fails
 
-The error comes from Cloudflare, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Cloudflare, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/cloudflare
 

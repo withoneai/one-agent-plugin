@@ -13,15 +13,15 @@ metadata:
 
 ShareFile is a secure file sharing and content collaboration solution that supports workflows for document storage, e-signatures, and encrypted file transfer in professional environments.
 
-One exposes ShareFile through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes ShareFile through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `share-file` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "share-file", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real ShareFile account and cannot 
 | Get an Item’s Parent | GET | `/sf/v3/Items({{id}})/Parent` | `conn_mod_def::GJ6alVh3WaE::05c5rvEgS0WWinaBaBB8eg` |
 | Get an Item’s Protocol Links | GET | `/sf/v3/Items({{id}})/ProtocolLinks({{platform}})` | `conn_mod_def::GJ6alZLoqFo::hSN3yN_xSw-v0XH9X9DGMw` |
 
-35 more Items actions are available through search.
+35 more Items actions are available through `find_one_actions`.
 
 ### Users
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real ShareFile account and cannot 
 | Get a User’s Top Folders | GET | `/sf/v3/Users({{id}})/TopFolders` | `conn_mod_def::GJ6asMBMIAE::acSHsjdnR6iQFioTVG_gRw` |
 | Get Current User Info | GET | `/sf/v3/Users/Info` | `conn_mod_def::GJ6arJFXJec::ZxvK7EzuQwS5C2jNJC4eTg` |
 
-31 more Users actions are available through search.
+31 more Users actions are available through `find_one_actions`.
 
 ### Shares
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real ShareFile account and cannot 
 | Get a Share’s Encrypted Email | GET | `/sf/v3/Shares({{id}})/EncryptedEmail` | `conn_mod_def::GJ6ahs5c8wI::Me5QDskpREO7vRDuE3e8wQ` |
 | Get a Share’s Recipients | GET | `/sf/v3/Shares({{id}})/Recipients` | `conn_mod_def::GJ6apmX1F4E::o1lRSU2-SsSnZz1d4lAXDQ` |
 
-15 more Shares actions are available through search.
+15 more Shares actions are available through `find_one_actions`.
 
 ### Accounts
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real ShareFile account and cannot 
 | Get Tenant Zone Usage for an Account | GET | `/sf/v3/Accounts/Tenants/ZoneUsage` | `conn_mod_def::GJ6afsvjRiY::0juwve9xRZeoqPkWCMnsvg` |
 | Create a One-Time Web App Admin Login URI for an Account | POST | `/sf/v3/Accounts/WebAppAdmin` | `conn_mod_def::GJ6aeqsEfLE::zDN_pn-eRSiun723rahybQ` |
 
-3 more Accounts actions are available through search.
+3 more Accounts actions are available through `find_one_actions`.
 
 ### EncryptedEmails
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real ShareFile account and cannot 
 | Reply to an Encrypted Email (Create Reply Draft) | POST | `/sf/v3/EncryptedEmails({{id}})/Reply` | `conn_mod_def::GJ6ah3qqAAY::iGqTTu-sSAyT4b7hYiORMA` |
 | Send an Encrypted Email | POST | `/sf/v3/EncryptedEmails({{id}})/Send` | `conn_mod_def::GJ6ah3t59JE::jxuFVKmxQeCs05CxTivHVA` |
 
-1 more EncryptedEmails actions are available through search.
+1 more EncryptedEmails actions are available through `find_one_actions`.
 
 ### Reports
 
@@ -175,13 +175,13 @@ Creates, updates, deletes and sends land on a real ShareFile account and cannot 
 | Add Contacts to a Group | POST | `/sf/v3/Groups({{id}})/Contacts` | `conn_mod_def::GJ6ajpJpvpE::OhrU_Sb7T4ag-ngfrrm1Wg` |
 | Create a Group | POST | `/sf/v3/Groups` | `conn_mod_def::GJ6ajo3SSo8::t4tEfkidSe-4oHR5yFdfXQ` |
 
-3 more Groups actions are available through search.
+3 more Groups actions are available through `find_one_actions`.
 
-This lists 90 of 336 actions. For anything not here, call `search_one_platform_actions` with platform `share-file`. The full catalog is at https://www.withone.ai/knowledge/share-file.
+This lists 90 of 336 actions. For anything not here, call `find_one_actions` with platform `share-file` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/share-file.
 
 ## When a call fails
 
-The error comes from ShareFile, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from ShareFile, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/share-file
 

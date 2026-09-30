@@ -13,15 +13,15 @@ metadata:
 
 Workiom is an all-in-one no-code work management platform that enables teams to build custom apps, manage data, automate workflows, and collaborate on projects within a unified workspace to streamline operations and improve productivity.
 
-One exposes Workiom through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Workiom through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `workiom` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "workiom", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Workiom account and cannot be
 | Execute an Automation Job Manually for a Tenant | POST | `/api/services/app/Tenant/ExecuteAutomationJobManually` | `conn_mod_def::GKT5A5qjiYg::MTkkgLebT625aRkjUnQ4IQ` |
 | Execute Automation History Maintenance Job for a Tenant | POST | `/api/services/app/Tenant/ExecuteAutomationHistoryMaintenanceJob` | `conn_mod_def::GKT5A5Vc67g::7--u_YXeSvKsfNBHCsKDlA` |
 
-11 more Tenant actions are available through search.
+11 more Tenant actions are available through `find_one_actions`.
 
 ### AppData
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Workiom account and cannot be
 | Create Compressed File Field Archive for App Data | POST | `/api/services/app/Data/CreateCompressedFileFieldArchive` | `conn_mod_def::GKT40offYFA::Z0Kv7v5zRB6-PE5mbvpOOg` |
 | Delete App Data | DELETE | `/api/services/app/Data/Delete` | `conn_mod_def::GKT40nTu7TA::trmvcCm0SXuX3SEnNHCghw` |
 
-10 more AppData actions are available through search.
+10 more AppData actions are available through `find_one_actions`.
 
 ### TenantSettings
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Workiom account and cannot be
 | Clear Tenant Logo | POST | `/api/services/app/TenantSettings/ClearLogo` | `conn_mod_def::GKT5DaWq2zg::2QOnavrKRjWrhFmSgobK5g` |
 | Clear Tenant Watermark Settings | POST | `/api/services/app/TenantSettings/ClearWatermark` | `conn_mod_def::GKT5DbSo0sA::usYf9NR9Tj2Jk7CnD6wuJQ` |
 
-10 more TenantSettings actions are available through search.
+10 more TenantSettings actions are available through `find_one_actions`.
 
 ### Apps
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Workiom account and cannot be
 | Delete an App | DELETE | `/api/services/app/Apps/Delete` | `conn_mod_def::GKT4wi7e-pg::_-DlyZhSSMCI1I3dWbBqPg` |
 | Delete Dummy Data for an App | DELETE | `/api/services/app/Apps/DeleteDummyData` | `conn_mod_def::GKT4wkT_2aA::qT6VNuTUTaSaPDR612kg0w` |
 
-5 more Apps actions are available through search.
+5 more Apps actions are available through `find_one_actions`.
 
 ### TenantSubscription
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real Workiom account and cannot be
 | Move Tenant To Free Edition | POST | `/api/services/app/TenantSubscription/MoveTenantToFreeEdition` | `conn_mod_def::GKT5FVnQWRA::3hSmpjORRfWAq9us1_AhBA` |
 | Move Tenant to Trial Edition | POST | `/api/services/app/TenantSubscription/MoveTenantToTrialEdition` | `conn_mod_def::GKT5FokIsRg::YWHWIxu2Smad9X7DWpmpJA` |
 
-4 more TenantSubscription actions are available through search.
+4 more TenantSubscription actions are available through `find_one_actions`.
 
 ### Integrations
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real Workiom account and cannot be
 | Update Gmail App Integration | PUT | `/api/services/app/Integrations/UpdateGmail` | `conn_mod_def::GKT47am2_xA::08UMALqMQeOjyLyx1uGe-A` |
 | Update Outlook App Integration | PUT | `/api/services/app/Integrations/UpdateOutlook` | `conn_mod_def::GKT47azz1qg::WNFN1ivgR1qbgcW90m_F1g` |
 
-3 more Integrations actions are available through search.
+3 more Integrations actions are available through `find_one_actions`.
 
 ### TokenAuth
 
@@ -177,13 +177,13 @@ Creates, updates, deletes and sends land on a real Workiom account and cannot be
 | List All Users and Invited Users | GET | `/api/services/app/User/GetAllUsersWithInvited` | `conn_mod_def::GKT5IPDKCGA::xtuwZmW5R4--BXl55FmuEw` |
 | Find Users | POST | `/api/services/app/CommonLookup/FindUsers` | `conn_mod_def::GKT4zJ2UVXg::Cyvj5up3SF69YdK52uqBQA` |
 
-3 more Users actions are available through search.
+3 more Users actions are available through `find_one_actions`.
 
-This lists 90 of 568 actions. For anything not here, call `search_one_platform_actions` with platform `workiom`. The full catalog is at https://www.withone.ai/knowledge/workiom.
+This lists 90 of 568 actions. For anything not here, call `find_one_actions` with platform `workiom` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/workiom.
 
 ## When a call fails
 
-The error comes from Workiom, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Workiom, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/workiom
 

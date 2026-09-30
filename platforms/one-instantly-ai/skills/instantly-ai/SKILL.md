@@ -13,15 +13,15 @@ metadata:
 
 Instantly is an AI-powered cold email platform that automates outreach with unlimited inboxes, built-in warm-up, personalization, and analytics—designed to help teams scale email campaigns efficiently and maximize deliverability through smart scheduling, inbox rotation, and real-time performance insights.
 
-One exposes Instantly.ai through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Instantly.ai through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `instantly-ai` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "instantly-ai", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Instantly.ai account and cann
 | Duplicate a Campaign | POST | `/api/v2/campaigns/{{id}}/duplicate` | `conn_mod_def::GJ4oluNNNGQ::JMm01baqTHGGGcKlLkw7WQ` |
 | Export a Campaign to JSON | POST | `/api/v2/campaigns/{{id}}/export` | `conn_mod_def::GJ4ol5Dg7oU::_JBgXq9tQOGoKKv5llaXFg` |
 
-3 more Campaigns actions are available through search.
+3 more Campaigns actions are available through `find_one_actions`.
 
 ### Accounts
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Instantly.ai account and cann
 | Pause an Account | POST | `/api/v2/accounts/{{email}}/pause` | `conn_mod_def::GJ4oio7nGkU::Se1nS0dtQ1a-HTA9V1Y0Iw` |
 | Resume an Account (by Email) | POST | `/api/v2/accounts/{{email}}/resume` | `conn_mod_def::GJ4oiwMGonc::BFrawbn9RXaJKf5ZZqi0-A` |
 
-1 more Accounts actions are available through search.
+1 more Accounts actions are available through `find_one_actions`.
 
 ### Leads
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Instantly.ai account and cann
 | Patch a Lead | PATCH | `/api/v2/leads/{{id}}` | `conn_mod_def::GJ4owGGLvTg::_C77lOaCQ1asHcxyMouvUg` |
 | Remove a Lead from a Subsequence | POST | `/leads/subsequence/remove` | `conn_mod_def::GJ4owOFydxc::-B9lsb6RS1uc2qAui8_Tqg` |
 
-1 more Leads actions are available through search.
+1 more Leads actions are available through `find_one_actions`.
 
 ### BlockListEntries
 
@@ -186,13 +186,13 @@ Creates, updates, deletes and sends land on a real Instantly.ai account and cann
 | Get Enrichment for a Resource | GET | `/api/v2/supersearch-enrichment/{{resourceId}}` | `conn_mod_def::GJ4ozCJhirs::bww-fAUsSs2R5U_HJIuoYQ` |
 | Count Leads From SuperSearch (Without Enrichment) | POST | `/supersearch-enrichment/count-leads-from-supersearch` | `conn_mod_def::GJ4oyaYbE3M::yxFArEvESGKHCG7Zx2-1Uw` |
 
-3 more SupersearchEnrichment actions are available through search.
+3 more SupersearchEnrichment actions are available through `find_one_actions`.
 
-This lists 90 of 167 actions. For anything not here, call `search_one_platform_actions` with platform `instantly-ai`. The full catalog is at https://www.withone.ai/knowledge/instantly-ai.
+This lists 90 of 167 actions. For anything not here, call `find_one_actions` with platform `instantly-ai` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/instantly-ai.
 
 ## When a call fails
 
-The error comes from Instantly.ai, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Instantly.ai, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/instantly-ai
 

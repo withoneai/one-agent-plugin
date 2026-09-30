@@ -13,15 +13,15 @@ metadata:
 
 VectorShift is an AI workflow and agent-building platform that provides tools, APIs, and integrations for connecting large language models with enterprise data, documents, and applications, allowing teams to build, deploy, and automate retrieval, chat, and task-oriented AI systems.
 
-One exposes VectorShift through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes VectorShift through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `vector-shift` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "vector-shift", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real VectorShift account and canno
 | Get Pipelines | GET | `/pipelines` | `conn_mod_def::GKtlID_QHPg::wMfeOmroRpaiYHDBStHq0g` |
 | Get Pipelines Accessing Variable Set | GET | `/variable-sets/pipelines` | `conn_mod_def::GKtlIEJiyhA::ZMHrzyJsT_iLhEiSLsZcug` |
 
-26 more Pipelines actions are available through search.
+26 more Pipelines actions are available through `find_one_actions`.
 
 ### Agents
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real VectorShift account and canno
 | Add Shared Agents To My Agents | POST | `/agents/shared/add-to-agents` | `conn_mod_def::GKtk9bbBEYA::rj1R5bDvReKxW3MlnOF8vw` |
 | Delete Agents | DELETE | `/v1/agents/delete` | `conn_mod_def::GKtlAbDMVzg::HzuF5h77QzqLSDptv6NUpw` |
 
-9 more Agents actions are available through search.
+9 more Agents actions are available through `find_one_actions`.
 
 ### Files
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real VectorShift account and canno
 | Add Temporary Files | POST | `/v1/files/temp/upload` | `conn_mod_def::GKtk84aH2Og::a92joP0mQt-g8xME73d-wQ` |
 | Delete a Temp File | DELETE | `/files/temp/delete/{{fileKey}}` | `conn_mod_def::GKtlBYkIaAA::6pfcORBHQt2LQUNa7hM6cA` |
 
-5 more Files actions are available through search.
+5 more Files actions are available through `find_one_actions`.
 
 ### Integrations
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real VectorShift account and canno
 | Microsoft OAuth2 Callback for Integrations | GET | `/integrations/microsoft/oauth2callback` | `conn_mod_def::GKtlMO_EbcA::TYXHvQhZREOxCasBQnCV0A` |
 | Add Integration | POST | `/v1/integrations/create` | `conn_mod_def::GKtk9EHQYbA::mlY1lEjFR4iqvJxj7BN9Xg` |
 
-5 more Integrations actions are available through search.
+5 more Integrations actions are available through `find_one_actions`.
 
 ### Vectorstores
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real VectorShift account and canno
 | Delete Vectorstore | DELETE | `/vectorstores/delete` | `conn_mod_def::GKtlCBhP6rg::yLJYEzfaSAyu3zyHw3QdJQ` |
 | Load a Vectorstore | POST | `/v1/api/vectorstores/load` | `conn_mod_def::GKtlLQT51EA::xVoDb7ccQzO1OK8GiFdq8Q` |
 
-5 more Vectorstores actions are available through search.
+5 more Vectorstores actions are available through `find_one_actions`.
 
 ### Automations
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real VectorShift account and canno
 | Delete Automations | DELETE | `/v1/automations/delete` | `conn_mod_def::GKtlAoC_eog::3-uRzdyqTnKdwMnifsF-Tg` |
 | Deploy an Automation | POST | `/automations/deploy/{{automationId}}` | `conn_mod_def::GKtlCLbn_9A::WgAFWCtJQm-aR8qnW6FwuA` |
 
-4 more Automations actions are available through search.
+4 more Automations actions are available through `find_one_actions`.
 
 ### Chatbots
 
@@ -166,7 +166,7 @@ Creates, updates, deletes and sends land on a real VectorShift account and canno
 | Update a Chatbot's Slack Configuration | POST | `/v1/chatbots/update/slack` | `conn_mod_def::GKtlPnJzwNg::hp44bWm1Rj211S-ZMVwTSw` |
 | Update Chatbot Access | POST | `/v1/chatbots/update/access` | `conn_mod_def::GKtlPm5HdHg::tq3haMd2QKepfAKsxAZvhw` |
 
-3 more Chatbots actions are available through search.
+3 more Chatbots actions are available through `find_one_actions`.
 
 ### Forms
 
@@ -179,13 +179,13 @@ Creates, updates, deletes and sends land on a real VectorShift account and canno
 | Get Forms | GET | `/forms` | `conn_mod_def::GKtlF-dBW5A::9td_y_NyRiu8I8gAyoByxg` |
 | Add File Temp | POST | `/forms/temp/upload` | `conn_mod_def::GKtk87t4mNA::18N-jPifT_ysZmIM3qt8dQ` |
 
-8 more Forms actions are available through search.
+8 more Forms actions are available through `find_one_actions`.
 
-This lists 90 of 586 actions. For anything not here, call `search_one_platform_actions` with platform `vector-shift`. The full catalog is at https://www.withone.ai/knowledge/vector-shift.
+This lists 90 of 586 actions. For anything not here, call `find_one_actions` with platform `vector-shift` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/vector-shift.
 
 ## When a call fails
 
-The error comes from VectorShift, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from VectorShift, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/vector-shift
 

@@ -13,15 +13,15 @@ metadata:
 
 Trello is a visual project management and collaboration tool that helps individuals and teams organize tasks, projects, and workflows using boards, lists, and cards.
 
-One exposes Trello through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Trello through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `trello` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "trello", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Trello account and cannot be 
 | Get Shared Plugin Data on a Card | GET | `/cards/{{id}}/pluginData` | `conn_mod_def::GJ7RgPeYWoM::LpEo0EorQB-F_SwnwX_nfw` |
 | List a Board's Cards | GET | `/1/boards/{{id}}/cards` | `conn_mod_def::GJ7Re3AgvU4::O9oHmVzETi-qIyz6bbA-qw` |
 
-19 more Cards actions are available through search.
+19 more Cards actions are available through `find_one_actions`.
 
 ### Boards
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Trello account and cannot be 
 | Disable a Power-Up on a Board | DELETE | `/1/boards/{{id}}/boardPlugins/{{idPlugin}}` | `conn_mod_def::GJ7RdE-qz_w::ePoh5CviTPKuXFi4MzHL1A` |
 | Generate a Board Calendar Key | POST | `/1/boards/{{id}}/calendarKey/generate` | `conn_mod_def::GJ7RbRNlxr4::tMcy6C4pTJWpPwsVSrhcrw` |
 
-11 more Boards actions are available through search.
+11 more Boards actions are available through `find_one_actions`.
 
 ### Members
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Trello account and cannot be 
 | Delete a Member's Custom Sticker | DELETE | `/1/members/{{id}}/customStickers/{{idSticker}}` | `conn_mod_def::GJ7RcmNwf5U::g_InYx3ZS2qFbapmpuJxjg` |
 | Dismiss a Member's One-Time Message | POST | `/1/members/{{id}}/oneTimeMessagesDismissed` | `conn_mod_def::GJ7RdEAvslQ::BmWzQc73QAqtudnS20c4Qw` |
 
-6 more Members actions are available through search.
+6 more Members actions are available through `find_one_actions`.
 
 ### Organizations
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Trello account and cannot be 
 | Remove a Member from a Workspace and All Workspace Boards | DELETE | `/1/organizations/{{id}}/members/{{idMember}}/all` | `conn_mod_def::GJ7RhZm58Kc::RUXQOYITT-y4tWAydY3n0Q` |
 | Remove a Member from an Organization (Workspace) | DELETE | `/1/organizations/{{id}}/members/{{idMember}}` | `conn_mod_def::GJ7RhYrWdH8::XEtwd0BoRE6D6iEArzNADA` |
 
-3 more Organizations actions are available through search.
+3 more Organizations actions are available through `find_one_actions`.
 
 ### Checklists
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real Trello account and cannot be 
 | Delete a Checklist | DELETE | `/checklists/{{id}}` | `conn_mod_def::GJ7RcfY2slU::LSvM9QyVTVmI8XV6FzdYEw` |
 | Update a Checklist | PUT | `/1/checklists/{{id}}` | `conn_mod_def::GJ7RhuCffqY::81YDiLz5R3-ySCoCFJFFAA` |
 
-1 more Checklists actions are available through search.
+1 more Checklists actions are available through `find_one_actions`.
 
 ### Lists
 
@@ -175,13 +175,13 @@ Creates, updates, deletes and sends land on a real Trello account and cannot be 
 | Get the Member of an Action | GET | `/1/actions/{{id}}/member` | `conn_mod_def::GJ7Rg5Gxq0g::tZ25s2wSRtW88sEde8WDiQ` |
 | List an Action's Reaction Summary | GET | `/1/actions/{{idAction}}/reactionsSummary` | `conn_mod_def::GJ7RhJh89Fw::02oMFKY-T1qjUXLsgFmNpQ` |
 
-3 more Actions actions are available through search.
+3 more Actions actions are available through `find_one_actions`.
 
-This lists 90 of 256 actions. For anything not here, call `search_one_platform_actions` with platform `trello`. The full catalog is at https://www.withone.ai/knowledge/trello.
+This lists 90 of 256 actions. For anything not here, call `find_one_actions` with platform `trello` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/trello.
 
 ## When a call fails
 
-The error comes from Trello, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Trello, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/trello
 

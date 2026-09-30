@@ -13,15 +13,15 @@ metadata:
 
 CATS is a web-based applicant tracking system designed for recruiting agencies and HR teams, offering tools for job posting, resume parsing, candidate tracking, custom workflows, analytics, and integrations to streamline the hiring process.
 
-One exposes CATS through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes CATS through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `cats` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "cats", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real CATS account and cannot be re
 | Create a Candidate | POST | `/candidates` | `conn_mod_def::GJ1EPgsa2C4::KZbQY62RS9GryjAc4drTHA` |
 | Delete a Candidate | DELETE | `/candidates/{{id}}` | `conn_mod_def::GJ1EQhR4UoQ::OJFEMjPIQ0yyPcwGSTcgXg` |
 
-6 more Candidates actions are available through search.
+6 more Candidates actions are available through `find_one_actions`.
 
 ### Contacts
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real CATS account and cannot be re
 | Delete a Contact | DELETE | `/contacts/{{id}}` | `conn_mod_def::GJ1EdldHmx8::6QmCyczKQvm_Bu7rhIknwQ` |
 | Filter Contacts | POST | `/contacts/search` | `conn_mod_def::GJ1EeZhNdGs::bLldenW-R5KPVmCMOLbP_Q` |
 
-3 more Contacts actions are available through search.
+3 more Contacts actions are available through `find_one_actions`.
 
 ### Companies
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real CATS account and cannot be re
 | Filter Companies (Search) | POST | `/companies/search` | `conn_mod_def::GJ1EYHJVyu4::O4_2yik0RoWduiyycc18PQ` |
 | Replace a Company's Tags | POST | `/companies/{{companyId}}/tags` | `conn_mod_def::GJ1Ebjo6hD0::nB_vOBbYS6mOxyE0QrJ3Uw` |
 
-2 more Companies actions are available through search.
+2 more Companies actions are available through `find_one_actions`.
 
 ### Jobs
 
@@ -191,13 +191,13 @@ Creates, updates, deletes and sends land on a real CATS account and cannot be re
 | List Candidate Lists | GET | `/candidates/lists` | `conn_mod_def::GJ1ETRjonVM::dYUfgw1ZRHC_rVHwgHny3w` |
 | Create a Candidate List | POST | `/candidates/lists` | `conn_mod_def::GJ1EQBQxXLs::-p4mebCaTKO77WMAuRZJEw` |
 
-1 more CandidateLists actions are available through search.
+1 more CandidateLists actions are available through `find_one_actions`.
 
-This lists 90 of 224 actions. For anything not here, call `search_one_platform_actions` with platform `cats`. The full catalog is at https://www.withone.ai/knowledge/cats.
+This lists 90 of 224 actions. For anything not here, call `find_one_actions` with platform `cats` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/cats.
 
 ## When a call fails
 
-The error comes from CATS, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from CATS, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/cats
 

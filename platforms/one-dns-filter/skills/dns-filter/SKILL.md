@@ -13,15 +13,15 @@ metadata:
 
 A cloud-based DNS security service that protects networks and devices by blocking malicious domains, filtering unwanted content, enforcing policy controls, and providing threat intelligence to prevent malware, phishing, and cyber threats at the DNS level.
 
-One exposes DNSFilter through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes DNSFilter through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `dns-filter` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "dns-filter", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real DNSFilter account and cannot 
 | Get Top Users Traffic Report | GET | `/traffic_reports/top_users` | `conn_mod_def::GKHfaCd90_k::DO-e7jAlSj-FLT3MFr1Slg` |
 | Get Total Application Request Statistics | GET | `/v1/traffic_reports/total_applications_stats` | `conn_mod_def::GKHfYZka0CI::-_GHOSqYR8qi_49DQXSwEg` |
 
-36 more TrafficReports actions are available through search.
+36 more TrafficReports actions are available through `find_one_actions`.
 
 ### Policies
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real DNSFilter account and cannot 
 | Bulk Add Domains to Policies' Block Lists | POST | `/policies/bulk/add_blocklist_domains` | `conn_mod_def::GKHfXYRBeLo::upfiEtEARpO42rl69DeJfg` |
 | Bulk Delete Allowlisted Domains From Policies | POST | `/policies/bulk/remove_allowlist_domains` | `conn_mod_def::GKHfXYE-Mqc::Feq5SLVVT4-l85Yh1lMgSA` |
 
-11 more Policies actions are available through search.
+11 more Policies actions are available through `find_one_actions`.
 
 ### Networks
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real DNSFilter account and cannot 
 | Create a Network Secret Key | POST | `/v1/networks/{{id}}/secret_key` | `conn_mod_def::GKHfVl7Ax70::1w_FzIcrSxmtMj85UW2juA` |
 | Create Network | POST | `/networks` | `conn_mod_def::GKHfVl4MmPQ::FEvsPTo-QQW1e4yGNPZhAw` |
 
-4 more Networks actions are available through search.
+4 more Networks actions are available through `find_one_actions`.
 
 ### Organizations
 
@@ -186,13 +186,13 @@ Creates, updates, deletes and sends land on a real DNSFilter account and cannot 
 | Get All Scheduled Policies | GET | `/scheduled_policies/all` | `conn_mod_def::GKHfXthGATg::G-nPokr8R-aXi5wcL1S7Jg` |
 | List Scheduled Policies | GET | `/scheduled_policies` | `conn_mod_def::GKHfXtr-1zc::eqWwBK31RhmrexhNvxSX0A` |
 
-4 more ScheduledPolicies actions are available through search.
+4 more ScheduledPolicies actions are available through `find_one_actions`.
 
-This lists 90 of 275 actions. For anything not here, call `search_one_platform_actions` with platform `dns-filter`. The full catalog is at https://www.withone.ai/knowledge/dns-filter.
+This lists 90 of 275 actions. For anything not here, call `find_one_actions` with platform `dns-filter` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/dns-filter.
 
 ## When a call fails
 
-The error comes from DNSFilter, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from DNSFilter, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/dns-filter
 

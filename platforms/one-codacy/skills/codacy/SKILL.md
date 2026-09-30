@@ -13,15 +13,15 @@ metadata:
 
 A cloud-based code quality and static analysis tool that automatically reviews code for bugs, security issues, and style violations, tracks coverage and quality metrics across languages, and integrates with CI/CD pipelines to help teams maintain high standards and reduce technical debt.
 
-One exposes Codacy through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Codacy through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `codacy` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "codacy", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Codacy account and cannot be 
 | Clean an Organization Cache for the Authenticated User | POST | `/organizations/{{provider}}/{{remoteOrganizationName}}/cache/clean` | `conn_mod_def::GKCpvWl6TbY::DayVfF3UR2yewLTUG9VzMg` |
 | Decline Requests to Join an Organization | DELETE | `/organizations/{{provider}}/{{remoteOrganizationName}}/join` | `conn_mod_def::GKCpvjmOvjY::AJc-J0X0QZeJX-uDfeonTA` |
 
-11 more Organizations actions are available through search.
+11 more Organizations actions are available through `find_one_actions`.
 
 ### Repositories
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Codacy account and cannot be 
 | Regenerate a Repository's User SSH Key | POST | `/organizations/{{provider}}/{{remoteOrganizationName}}/repositories/{{repositoryName}}/settings/ssh-user-key` | `conn_mod_def::GKCpxxAIESE::2Zq4iRhzT9mbQ1MYEHdNXA` |
 | Set a Repository Branch as Default | POST | `/organizations/{{provider}}/{{remoteOrganizationName}}/repositories/{{repositoryName}}/branches/{{branchName}}/setDefault` | `conn_mod_def::GKCpx716BAo::UaE2Qhn7RIqpvs71Ye4dAw` |
 
-2 more Repositories actions are available through search.
+2 more Repositories actions are available through `find_one_actions`.
 
 ### CodingStandards
 
@@ -244,11 +244,11 @@ Creates, updates, deletes and sends land on a real Codacy account and cannot be 
 | Get a Repository's Git Provider Integration Settings | GET | `/organizations/{{provider}}/{{remoteOrganizationName}}/repositories/{{repositoryName}}/integrations/providerSettings` | `conn_mod_def::GKCpxGIkkBc::VBLDc6gIS0WZNAbL08135Q` |
 | Update a Repository's Git Provider Integration Settings | PATCH | `/organizations/{{provider}}/{{remoteOrganizationName}}/repositories/{{repositoryName}}/integrations/providerSettings` | `conn_mod_def::GKCpyFz4eRQ::lTWRKehOQKmXtsbi4h7Nqw` |
 
-This lists 90 of 279 actions. For anything not here, call `search_one_platform_actions` with platform `codacy`. The full catalog is at https://www.withone.ai/knowledge/codacy.
+This lists 90 of 279 actions. For anything not here, call `find_one_actions` with platform `codacy` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/codacy.
 
 ## When a call fails
 
-The error comes from Codacy, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Codacy, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/codacy
 

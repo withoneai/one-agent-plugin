@@ -13,15 +13,15 @@ metadata:
 
 Turbot Pipes is a cloud-based workflow and query platform that enables teams to connect APIs, run SQL over cloud and SaaS resources, and automate operational tasks, allowing developers and operators to build integrations, dashboards, and event-driven processes.
 
-One exposes Turbot Pipes through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Turbot Pipes through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `turbot-pipes` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "turbot-pipes", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Turbot Pipes account and cann
 | Create a User Workspace Connection | POST | `/user/{{userHandle}}/workspace/{{workspaceHandle}}/connection` | `conn_mod_def::GK7ArzKWGQA::7ZafsLXJQB-g2vbh-_EjCA` |
 | Create an Organization Connection | POST | `/org/{{orgHandle}}/conn` | `conn_mod_def::GK7Ab7qrKdg::KPNzmdtqQhqrD6Vk2bDmjw` |
 
-3 more Connections actions are available through search.
+3 more Connections actions are available through `find_one_actions`.
 
 ### ConnectionFolder
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Turbot Pipes account and cann
 | Update a Tenant Connection Folder | PATCH | `/connection_folder/{{folderId}}` | `conn_mod_def::GK7Al7MSctA::4KcpUtY7ROqyb2JsG9GNvg` |
 | Update an Org Connection Folder | PATCH | `/org/{{orgHandle}}/connection_folder/{{folderId}}` | `conn_mod_def::GK7Ab8LVZ2g::4-_Th47lQT-C8DqaFwWk4Q` |
 
-1 more ConnectionFolder actions are available through search.
+1 more ConnectionFolder actions are available through `find_one_actions`.
 
 ### Integrations
 
@@ -189,13 +189,13 @@ Creates, updates, deletes and sends land on a real Turbot Pipes account and cann
 | Run a Tenant Integration Command | POST | `/integration/{{integrationHandle}}/command` | `conn_mod_def::GK7AmltchDg::uxSsoj4tR3ucJZvisJtmDA` |
 | Test a Tenant Integration | POST | `/integration/{{integrationHandle}}/test` | `conn_mod_def::GK7Amls_1Hg::JyIBApPaRf2159gXE9TW-w` |
 
-1 more Integration actions are available through search.
+1 more Integration actions are available through `find_one_actions`.
 
-This lists 90 of 544 actions. For anything not here, call `search_one_platform_actions` with platform `turbot-pipes`. The full catalog is at https://www.withone.ai/knowledge/turbot-pipes.
+This lists 90 of 544 actions. For anything not here, call `find_one_actions` with platform `turbot-pipes` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/turbot-pipes.
 
 ## When a call fails
 
-The error comes from Turbot Pipes, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Turbot Pipes, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/turbot-pipes
 

@@ -13,15 +13,15 @@ metadata:
 
 Outlook Contacts is a contact management service within Outlook that provides APIs for accessing, organizing, and syncing people and address book data, allowing developers and teams to manage contact records, integrate communication workflows, and keep customer or personal information up to date.
 
-One exposes Outlook Contacts through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Outlook Contacts through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `outlook-contacts` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "outlook-contacts", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Outlook Contacts account and 
 | Get a Contact in a User Contact Folder Child Folder | GET | `/v1.0/users/{{userId}}/contactFolders/{{contactFolderId}}/childFolders/{{contactFolderId1}}/contacts/{{contactId}}` | `conn_mod_def::GLoXYLyFX9w::IeEZFNx1QJW518j9X2u_gw` |
 | Get a User's Contact (by contact ID) | GET | `/v1.0/users/{{userId}}/contacts/{{contactId}}` | `conn_mod_def::GLoXXUs_dMI::ZdL40ywQQmq3UMG_sqDf7Q` |
 
-37 more Contacts actions are available through search.
+37 more Contacts actions are available through `find_one_actions`.
 
 ### ContactFolders
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Outlook Contacts account and 
 | List a User Contact Folder's Child Folders | GET | `/v1.0/users/{{userId}}/contactFolders/{{contactFolderId}}/childFolders` | `conn_mod_def::GLoXYFDnRlk::qBIC97dlSzOl_Y6EXuqx_w` |
 | List a User's Contact Folders | GET | `/v1.0/users/{{userId}}/contactFolders` | `conn_mod_def::GLoXYK58DPw::kCG6KxOWTsiYNsvAfSMgcg` |
 
-15 more ContactFolders actions are available through search.
+15 more ContactFolders actions are available through `find_one_actions`.
 
 ### ContactExtensions
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Outlook Contacts account and 
 | Create an Extension for My Contact | POST | `/v1.0/me/contacts/{{contactId}}/extensions` | `conn_mod_def::GMIWXezDnow::BTyobmqiTpqJcIpBgN9xDw` |
 | Delete a Contact Extension | DELETE | `/v1.0/me/contactFolders/{{contactFolderId}}/contacts/{{contactId}}/extensions/{{extensionId}}` | `conn_mod_def::GMIWXz3MoTw::_TdRUlaYQKyLqCQ69cpupA` |
 
-7 more ContactExtensions actions are available through search.
+7 more ContactExtensions actions are available through `find_one_actions`.
 
 ### ContactPhotoContent
 
@@ -234,11 +234,11 @@ Creates, updates, deletes and sends land on a real Outlook Contacts account and 
 |---|---|---|---|
 | Get the Signed-in User Profile | GET | `/v1.0/me` | `conn_mod_def::GMIWYn-3naY::1tMUK570Rc2Yu_FVlh6ncg` |
 
-This lists 88 of 147 actions. For anything not here, call `search_one_platform_actions` with platform `outlook-contacts`. The full catalog is at https://www.withone.ai/knowledge/outlook-contacts.
+This lists 88 of 147 actions. For anything not here, call `find_one_actions` with platform `outlook-contacts` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/outlook-contacts.
 
 ## When a call fails
 
-The error comes from Outlook Contacts, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Outlook Contacts, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/outlook-contacts
 

@@ -13,15 +13,15 @@ metadata:
 
 Clover is a point-of-sale and business management system that helps businesses accept payments, track sales, manage inventory, and run operations from one integrated platform.
 
-One exposes Clover through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Clover through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `clover` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "clover", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Clover account and cannot be 
 | Get All Items in a Single Modifier Group | GET | `modifier_groups/{{id}}/items` | `conn_mod_def::F8_9p7EK66g::gl2SNq9MTqywWO3pMersvA` |
 | Get All Modifier Groups | GET | `modifier_groups` | `conn_mod_def::F8_9nln7swA::G72MRQ0qQh2CHeoRke9ekQ` |
 
-68 more Inventory actions are available through search.
+68 more Inventory actions are available through `find_one_actions`.
 
 ### Merchants
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Clover account and cannot be 
 | Get Merchant's Address | GET | `address` | `conn_mod_def::F8_9DEjvx8g::4MEzWmaaQ82wMFLOTviKhg` |
 | Get Merchant's Payment Gateway Configuration | GET | `gateway` | `conn_mod_def::F8_9D3JpQnA::izQktYbVQfaU2m1912qX1w` |
 
-22 more Merchants actions are available through search.
+22 more Merchants actions are available through `find_one_actions`.
 
 ### Platformapi:orders
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Clover account and cannot be 
 | Create a Discount on an Order | POST | `orders/{{id}}/discounts` | `conn_mod_def::F8_9y5rLFEg::7TZ-3wuzTEq1eNtyNEogqg` |
 | Create a New Line Item | POST | `orders/{{id}}/line_items` | `conn_mod_def::F8_91RiAPJg::V7FKhEfTTtCYwXqg-s4jmg` |
 
-16 more Platformapi:orders actions are available through search.
+16 more Platformapi:orders actions are available through `find_one_actions`.
 
 ### Device
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Clover account and cannot be 
 | Verify Device Connectivity | GET | `/connectivity_check` | `conn_mod_def::F8_-OKzzOQg::Pguy56_0Qcin1zJQ9uEt4A` |
 | Cancel In-Flight Operations | POST | `/cancel_operations` | `conn_mod_def::F9AHzqWOoR8::YyjXUzpKQ1qnU9NhSCadPw` |
 
-15 more Device actions are available through search.
+15 more Device actions are available through `find_one_actions`.
 
 ### Platformapi:customers
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real Clover account and cannot be 
 | Delete Customer | DELETE | `customers/{{id}}` | `conn_mod_def::F8_9MaQ62Cg::9qrO882OTPiBIVNn0kK_JA` |
 | Delete Customer Card | DELETE | `customers/{{id}}/cards/{{cardId}}` | `conn_mod_def::F8_9OWNn1mg::mBNTEcHvTS6WV1I6CVpuXA` |
 
-7 more Platformapi:customers actions are available through search.
+7 more Platformapi:customers actions are available through `find_one_actions`.
 
 ### Employees
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real Clover account and cannot be 
 | Delete Employee | DELETE | `employees/{{id}}` | `conn_mod_def::F8_9RCFcRXg::tb5FWHoAStKSTjITosavCw` |
 | Delete Employee Shift | DELETE | `employees/{{id}}/shifts/{{shiftId}}` | `conn_mod_def::F8_9TXEzEtA::sR2p4MJ1RL6EYg0lJTAgBw` |
 
-2 more Employees actions are available through search.
+2 more Employees actions are available through `find_one_actions`.
 
 ### Platformapi:payments
 
@@ -166,7 +166,7 @@ Creates, updates, deletes and sends land on a real Clover account and cannot be 
 | Create Authorization on a Payment | POST | `payments` | `conn_mod_def::F8_98yOqeBg::gO9PU2WrQveYaZ_uCDMDvg` |
 | Delete Authorization | DELETE | `authorizations/{{id}}` | `conn_mod_def::F8_94yesseg::vvd2wCo6QreSiti3upc8Ww` |
 
-2 more Platformapi:payments actions are available through search.
+2 more Platformapi:payments actions are available through `find_one_actions`.
 
 ### Restpaydisplayapi:payments
 
@@ -179,11 +179,11 @@ Creates, updates, deletes and sends land on a real Clover account and cannot be 
 | Send Payment Request to Clover Device | POST | `payments` | `conn_mod_def::F8_-UGvbMHA::LXIibCD7SPm3UjyC9ImAPw` |
 | Tip Adjust a Payment | POST | `payments/{{id}}/tip-adjust` | `conn_mod_def::F8_-SGfpQug::12lLKFKDQQ6E7Nr4mvqX8g` |
 
-This lists 90 of 279 actions. For anything not here, call `search_one_platform_actions` with platform `clover`. The full catalog is at https://www.withone.ai/knowledge/clover.
+This lists 90 of 279 actions. For anything not here, call `find_one_actions` with platform `clover` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/clover.
 
 ## When a call fails
 
-The error comes from Clover, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Clover, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/clover
 

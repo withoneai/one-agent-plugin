@@ -13,15 +13,15 @@ metadata:
 
 Kommo is a sales-CRM platform that unifies messaging apps, live chat and pipeline management into one inbox, enabling teams to nurture leads, automate outreach and close deals more efficiently.
 
-One exposes Kommo through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Kommo through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `kommo` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "kommo", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -205,13 +205,13 @@ Creates, updates, deletes and sends land on a real Kommo account and cannot be r
 | Confirm a SalesBot Widget Block Execution (Continue a Bot) | POST | `/api/v4/{{bot}}/{{botId}}/continue/{{continueId}}` | `conn_mod_def::GJ4unipz04s::fCTy0dq7T7aWwXjQI_qx6A` |
 | Run a Salesbot | POST | `/api/v4/bots/run` | `conn_mod_def::GJ4unat4JJE::i2wy0rvQRB2BP0RXVGgF1A` |
 
-2 more Bots actions are available through search.
+2 more Bots actions are available through `find_one_actions`.
 
-This lists 90 of 159 actions. For anything not here, call `search_one_platform_actions` with platform `kommo`. The full catalog is at https://www.withone.ai/knowledge/kommo.
+This lists 90 of 159 actions. For anything not here, call `find_one_actions` with platform `kommo` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/kommo.
 
 ## When a call fails
 
-The error comes from Kommo, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Kommo, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/kommo
 

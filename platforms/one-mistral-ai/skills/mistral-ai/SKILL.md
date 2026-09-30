@@ -13,15 +13,15 @@ metadata:
 
 Mistral AI is an AI platform that provides large language models, embeddings, and multimodal capabilities through APIs, enabling developers and enterprises to build assistants, automate workflows, and integrate generative AI features into applications and internal systems.
 
-One exposes Mistral AI through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Mistral AI through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `mistral-ai` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "mistral-ai", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Mistral AI account and cannot
 | Create a Connector | POST | `/v1/connectors` | `conn_mod_def::GMZh0iFg1Wg::74owLMTETlK5RJD2ysfmgw` |
 | Create or Update User Credentials for a Connector | POST | `/v1/connectors/{{connectorIdOrName}}/user/credentials` | `conn_mod_def::GMZh0pwP9_g::ltPiefV4R22w0gXZ9uGNsQ` |
 
-10 more Connectors actions are available through search.
+10 more Connectors actions are available through `find_one_actions`.
 
 ### Libraries
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Mistral AI account and cannot
 | Share a Library | PUT | `/v1/libraries/{{libraryId}}/share` | `conn_mod_def::GMZh1hPJ24A::vE6duXHFQc6_fhyjU1Kl2g` |
 | Update a Library | PATCH | `/v1/libraries/{{libraryId}}` | `conn_mod_def::GMZh1hr0weA::5ifgc2JxRwG6ZeZZu64yEA` |
 
-1 more Libraries actions are available through search.
+1 more Libraries actions are available through `find_one_actions`.
 
 ### Conversations
 
@@ -179,13 +179,13 @@ Creates, updates, deletes and sends land on a real Mistral AI account and cannot
 |---|---|---|---|
 | Get a Prompt | GET | `/v2/prompts/{{promptId}}` | `conn_mod_def::GMZh3h-F6SA::9_TR4KfDSV2wmUh4GwH-wQ` |
 
-7 more Prompts actions are available through search.
+7 more Prompts actions are available through `find_one_actions`.
 
-This lists 90 of 289 actions. For anything not here, call `search_one_platform_actions` with platform `mistral-ai`. The full catalog is at https://www.withone.ai/knowledge/mistral-ai.
+This lists 90 of 289 actions. For anything not here, call `find_one_actions` with platform `mistral-ai` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/mistral-ai.
 
 ## When a call fails
 
-The error comes from Mistral AI, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Mistral AI, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/mistral-ai
 

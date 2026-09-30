@@ -13,15 +13,15 @@ metadata:
 
 Klipfolio is a dashboard and analytics platform that connects to hundreds of services and APIs, automates data retrieval, and enables teams and clients to build, customize, share, and distribute dashboards and reports with spreadsheet-like flexibility.
 
-One exposes Klipfolio through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Klipfolio through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `klipfolio` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "klipfolio", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Klipfolio account and cannot 
 | Revoke a Group's Access to a Client | DELETE | `/api/1.0/clients/{{id}}/share-rights/{{groupId}}` | `conn_mod_def::GMcEyNsOszg::xHSVIi2SRLGODPnIBEquqw` |
 | Update a Client | PUT | `/api/1.0/clients/{{id}}` | `conn_mod_def::GMcEyw1clxg::I5H6aiMbSsSuphyZknyP_Q` |
 
-1 more Clients actions are available through search.
+1 more Clients actions are available through `find_one_actions`.
 
 ### Users
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Klipfolio account and cannot 
 | Resend Invite for a User | POST | `/api/1.0/users/{{id}}/@/resend-invite` | `conn_mod_def::GMcE13pt7Dg::_R_l2Oh1RKqEfP6zuLcIcg` |
 | Reset Password for a User | POST | `/api/1.0/users/{{id}}/@/reset-password` | `conn_mod_def::GMcE15aSd4A::kWlgTLExSQCrI3fPIwIE5A` |
 
-1 more Users actions are available through search.
+1 more Users actions are available through `find_one_actions`.
 
 ### DataSources
 
@@ -179,13 +179,13 @@ Creates, updates, deletes and sends land on a real Klipfolio account and cannot 
 | Create a Published Link for a Dashboard | POST | `/api/1.0/dashboard-published-links/{{dashboardId}}` | `conn_mod_def::GMcE0t2iPyA::wYfMeU6iRXqN3Fo115hxJw` |
 | Delete a Dashboard Published Link | DELETE | `/api/1.0/dashboard-published-links/{{publishedLinkId}}` | `conn_mod_def::GMcE0ttcE_g::kJ1k8c9OTZGbvD2kRPpPGA` |
 
-1 more DashboardPublishedLinks actions are available through search.
+1 more DashboardPublishedLinks actions are available through `find_one_actions`.
 
-This lists 90 of 122 actions. For anything not here, call `search_one_platform_actions` with platform `klipfolio`. The full catalog is at https://www.withone.ai/knowledge/klipfolio.
+This lists 90 of 122 actions. For anything not here, call `find_one_actions` with platform `klipfolio` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/klipfolio.
 
 ## When a call fails
 
-The error comes from Klipfolio, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Klipfolio, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/klipfolio
 

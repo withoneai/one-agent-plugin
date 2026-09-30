@@ -13,15 +13,15 @@ metadata:
 
 Jira is a robust work and issue tracking platform that helps teams plan, track, and manage tasks—from bug fixes and feature sprints to cross-departmental projects—using custom workflows, agile boards, real-time reporting, and seamless integrations within a single, scalable hub.
 
-One exposes Jira through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Jira through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `jira` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "jira", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Jira account and cannot be re
 | Delete a Draft Workflow Scheme’s Issue Type Mapping | DELETE | `/ex/jira/{{jiraCloudId}}/rest/api/3/workflowscheme/{{id}}/draft/issuetype/{{issueType}}` | `conn_mod_def::GJ4qs1nrqIQ::dy0dkAG8QM26i8v3GHeUWw` |
 | Delete a Workflow Scheme | DELETE | `/ex/jira/{{jiraCloudId}}/rest/api/3/workflowscheme/{{id}}` | `conn_mod_def::GJ4qtmVscsg::wdC1fQYCTi-l5klB0NVSew` |
 
-13 more WorkflowSchemes actions are available through search.
+13 more WorkflowSchemes actions are available through `find_one_actions`.
 
 ### Issues
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Jira account and cannot be re
 | Bulk Fetch Issues (by ID or Key) | POST | `/ex/jira/{{jiraCloudId}}/rest/api/3/issue/bulkfetch` | `conn_mod_def::GJ4qeVOxkB4::0uhygFUNTSSaIsKyjPfi6g` |
 | Count Issues Using JQL (Approximate) | POST | `/ex/jira/{{jiraCloudId}}/rest/api/3/search/approximate-count` | `conn_mod_def::GJ4qbM0aNCs::33PRRQmAQlaMtkvWDFMLNA` |
 
-9 more Issues actions are available through search.
+9 more Issues actions are available through `find_one_actions`.
 
 ### Users
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Jira account and cannot be re
 | Get Account IDs for Users (Bulk Migration) | GET | `/ex/jira/{{jiraCloudId}}/rest/api/3/user/bulk/migration` | `conn_mod_def::GJ4qsPpY8Gw::0b5CUU3qQuCpnUB-OZlRYA` |
 | Get Current User (Myself) | GET | `/ex/jira/{{jiraCloudId}}/rest/api/3/myself` | `conn_mod_def::GJ4qf9A7ovg::8tDiDTDhRIi_6SHphsPAJA` |
 
-4 more Users actions are available through search.
+4 more Users actions are available through `find_one_actions`.
 
 ### Workflows
 
@@ -171,11 +171,11 @@ Creates, updates, deletes and sends land on a real Jira account and cannot be re
 | Update a Plan (by Plan ID) | PUT | `/ex/jira/{{jiraCloudId}}/rest/api/3/plans/plan/{{planId}}` | `conn_mod_def::GJ4qhWkTSvc::qrNtV_rVTgKXiwwWqxjFVw` |
 | Update an Atlassian Team in a Plan | PUT | `/ex/jira/{{jiraCloudId}}/rest/api/3/plans/plan/{{planId}}/team/atlassian/{{atlassianTeamId}}` | `conn_mod_def::GJ4qpltmmo4::ew34r-EFSRG0h_hxHO6PhQ` |
 
-This lists 90 of 784 actions. For anything not here, call `search_one_platform_actions` with platform `jira`. The full catalog is at https://www.withone.ai/knowledge/jira.
+This lists 90 of 784 actions. For anything not here, call `find_one_actions` with platform `jira` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/jira.
 
 ## When a call fails
 
-The error comes from Jira, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Jira, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/jira
 

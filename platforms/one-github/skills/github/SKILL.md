@@ -13,15 +13,15 @@ metadata:
 
 GitHub is a code hosting and collaboration platform that enables developers to work together on projects, manage version control using Git, and deploy code with integrated CI/CD tools.
 
-One exposes GitHub through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes GitHub through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `github` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "github", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real GitHub account and cannot be 
 | Create a Repository Using a Template | POST | `/repos/{{templateOwner}}/{{templateRepo}}/generate` | `conn_mod_def::GJ3Z4-moP9Q::5l2pvnlPSZqndVlJwFVUTQ` |
 | Create an Organization Repository | POST | `/orgs/{{org}}/repos` | `conn_mod_def::GJ3Z5epxmv8::TxvdRb8uQdqkblorOGCl0Q` |
 
-8 more Repositories actions are available through search.
+8 more Repositories actions are available through `find_one_actions`.
 
 ### Issues
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real GitHub account and cannot be 
 | Lock a Repository Issue or Pull Request Conversation | PUT | `/repos/{{owner}}/{{repo}}/issues/{{issueNumber}}/lock` | `conn_mod_def::GJ3ZSr1g-Rc::It-wmVulR2S2xotoru3CHg` |
 | Remove a Dependency an Issue Is Blocked By (in a Repository) | DELETE | `/repos/{{owner}}/{{repo}}/issues/{{issueNumber}}/dependencies/blocked_by/{{issueId}}` | `conn_mod_def::GJ3ZTaACHbI::pFIUOJVKRteFNg06ZpIyVQ` |
 
-6 more Issues actions are available through search.
+6 more Issues actions are available through `find_one_actions`.
 
 ### Teams
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real GitHub account and cannot be 
 | Create an Organization Team | POST | `/orgs/{{org}}/teams` | `conn_mod_def::GJ3aU_fPyJQ::AMtfc0jvRvi7wd64dxa8jA` |
 | Delete a Team (Legacy) | DELETE | `/teams/{{teamId}}` | `conn_mod_def::GJ3aVN3gV1c::yLDLuOsuSZiIro9ZDum4fQ` |
 
-5 more Teams actions are available through search.
+5 more Teams actions are available through `find_one_actions`.
 
 ### Codespaces
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real GitHub account and cannot be 
 | Delete an Organization Member's Codespace | DELETE | `/orgs/{{org}}/members/{{username}}/codespaces/{{codespaceName}}` | `conn_mod_def::GJ3Y6rFKAJ8::PVIKIwoOQ0yUY9I5sv0OPg` |
 | Delete the Authenticated User’s Codespace | DELETE | `/user/codespaces/{{codespaceName}}` | `conn_mod_def::GJ3Y6jgYbI4::Dg6Kc1IYQZKNcwqUK5ftFg` |
 
-5 more Codespaces actions are available through search.
+5 more Codespaces actions are available through `find_one_actions`.
 
 ### Gists
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real GitHub account and cannot be 
 | Star a Gist | PUT | `/gists/{{gistId}}/star` | `conn_mod_def::GJ3ZJGB8PT0::kWkVc7ngQeeTQkWO_NKuJw` |
 | Unstar a Gist | DELETE | `/gists/{{gistId}}/star` | `conn_mod_def::GJ3ZJMw4gbI::rQfsk7oZRq-3IhYwJ80aRQ` |
 
-1 more Gists actions are available through search.
+1 more Gists actions are available through `find_one_actions`.
 
 ### Attestations
 
@@ -175,13 +175,13 @@ Creates, updates, deletes and sends land on a real GitHub account and cannot be 
 | Attach a Code Security Configuration to an Organization’s Repositories | POST | `/orgs/{{org}}/code-security/configurations/{{configurationId}}/attach` | `conn_mod_def::GJ3Y2RfqJaY::yUKAouQqRkytx2WCpqDgjQ` |
 | Create an Enterprise Code Security Configuration | POST | `/enterprises/{{enterprise}}/code-security/configurations` | `conn_mod_def::GJ3Y2qcyudg::gNRrreEyTxOwgikl4PbdTQ` |
 
-5 more CodeSecurityConfigurations actions are available through search.
+5 more CodeSecurityConfigurations actions are available through `find_one_actions`.
 
-This lists 90 of 1093 actions. For anything not here, call `search_one_platform_actions` with platform `github`. The full catalog is at https://www.withone.ai/knowledge/github.
+This lists 90 of 1093 actions. For anything not here, call `find_one_actions` with platform `github` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/github.
 
 ## When a call fails
 
-The error comes from GitHub, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from GitHub, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/github
 

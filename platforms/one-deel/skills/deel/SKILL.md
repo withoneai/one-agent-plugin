@@ -13,15 +13,15 @@ metadata:
 
 Deel is a global payroll and workforce management platform that provides tools and APIs for hiring, onboarding, paying, and managing employees and contractors across countries, allowing businesses to handle international compliance, contracts, and payroll operations from a unified system.
 
-One exposes Deel through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Deel through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `deel` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "deel", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Deel account and cannot be re
 | Assign Cost Centers to an Employment Contract | POST | `/rest/v2/contracts/{{contractId}}/cost-centers` | `conn_mod_def::GLYwC5WX4s4::In5oghMXQwaOmTmo6_gEMA` |
 | Attach a Document to a Contract | POST | `/rest/v2/contracts/{{contractId}}/documents` | `conn_mod_def::GLYwCEOlTdE::RoiuItRJS2-HkH-WUXy-QA` |
 
-15 more Contracts actions are available through search.
+15 more Contracts actions are available through `find_one_actions`.
 
 ### EorContracts
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Deel account and cannot be re
 | Request Contract Resignation for an EOR Contract | POST | `/rest/v2/eor/contracts/{{contractId}}/offboarding/resignation` | `conn_mod_def::GLYwFO1WImc::nXKxvqk-SX6J2dOPo51H8w` |
 | Sign EOR Contract Document | POST | `/rest/v2/eor/contracts/{{contractId}}/documents/{{type}}/sign` | `conn_mod_def::GLYwGT-E-ZA::LXF9bmMtTUWGORMFH780VA` |
 
-2 more EorContracts actions are available through search.
+2 more EorContracts actions are available through `find_one_actions`.
 
 ### OrganizationStructures
 
@@ -184,13 +184,13 @@ Creates, updates, deletes and sends land on a real Deel account and cannot be re
 | Retrieve Benefits Using Eor | GET | `/rest/v2/eor/benefits` | `conn_mod_def::GLYwFjlCgjQ::cZu5kuaQTxuR4cTPW3ZcEQ` |
 | Clean Up 401k Plans for a Legal Entity | POST | `/rest/v2/benefits/legal-entities/{{id}}/401k/plans/clean-up` | `conn_mod_def::GLYwMWIvowk::hF5anLeqS1-mGRYgSiSMew` |
 
-2 more Benefits actions are available through search.
+2 more Benefits actions are available through `find_one_actions`.
 
-This lists 90 of 398 actions. For anything not here, call `search_one_platform_actions` with platform `deel`. The full catalog is at https://www.withone.ai/knowledge/deel.
+This lists 90 of 398 actions. For anything not here, call `find_one_actions` with platform `deel` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/deel.
 
 ## When a call fails
 
-The error comes from Deel, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Deel, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/deel
 

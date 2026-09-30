@@ -13,15 +13,15 @@ metadata:
 
 A web-based computer vision platform that enables teams to annotate and manage datasets (images, video, 3D, medical), build and train neural networks, automate labeling with AI, and collaborate on model development and deployment at scale.
 
-One exposes Supervisely through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Supervisely through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `supervisely` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "supervisely", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Supervisely account and canno
 | Send a Direct Request to a Task | POST | `/public/api/v3/tasks.request.direct` | `conn_mod_def::GJ6CArU7cJM::1sBUM43QSZ-0Z0tyMD6MuQ` |
 | Send a Request to a Task | POST | `/public/api/v3/tasks.request` | `conn_mod_def::GJ6CAk7rNPU::OrXOWhBlRjKifKB6dT8NuQ` |
 
-8 more Tasks actions are available through search.
+8 more Tasks actions are available through `find_one_actions`.
 
 ### Figures
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Supervisely account and canno
 | Download a Figure's Geometry | POST | `/public/api/v3/figures.download.geometry` | `conn_mod_def::GJ6BdrA4Ltw::usVpeeR3TN-GNXITvF7HUg` |
 | Remove a Figure | DELETE | `/public/api/v3/figures.remove` | `conn_mod_def::GJ6BeJyv0WE::Y_65RfR0Q-OljcNNQ2K9MA` |
 
-6 more Figures actions are available through search.
+6 more Figures actions are available through `find_one_actions`.
 
 ### FileStorage
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Supervisely account and canno
 | Get Resumable Upload Status (File Storage) | POST | `/file-storage.resumable_upload.status` | `conn_mod_def::GJ6Bha4FjZc::Blx1c0hDSAaQUnc0Pm-jQw` |
 | Remove a File or Folder from File Storage | DELETE | `/file-storage.remove` | `conn_mod_def::GJ6Bhr7Flc0::18BucO1GThuVFrBooDEpOA` |
 
-5 more FileStorage actions are available through search.
+5 more FileStorage actions are available through `find_one_actions`.
 
 ### Images
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Supervisely account and canno
 | Remove Images (Bulk) | DELETE | `/public/api/v3/images.bulk.remove` | `conn_mod_def::GJ6Bl4pzSqE::vOeBkS9tQPeK3cOyWEjoDg` |
 | Update an Image’s Info | PUT | `/public/api/v3/images.editInfo` | `conn_mod_def::GJ6BmDj5JZw::uicLUsQ4QYOWeLl1z7bm4g` |
 
-4 more Images actions are available through search.
+4 more Images actions are available through `find_one_actions`.
 
 ### Jobs
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real Supervisely account and canno
 | Remove Jobs in Bulk | DELETE | `/jobs.bulk.remove` | `conn_mod_def::GJ6BqYcFKtg::aVrZlDgDTi6DAU6_Zcrn0A` |
 | Restart a Job | POST | `/public/api/v3/jobs.restart` | `conn_mod_def::GJ6BryM-c9s::lkLUJ4u4QgWgK4aZCR4lLg` |
 
-4 more Jobs actions are available through search.
+4 more Jobs actions are available through `find_one_actions`.
 
 ### Projects
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real Supervisely account and canno
 | Remove a Project | DELETE | `/projects.remove` | `conn_mod_def::GJ6B6Oq5ot4::fCt7stSeRB-RO6PlYKxaNg` |
 | Remove Projects Permanently | DELETE | `/public/api/v3/projects.remove.permanently` | `conn_mod_def::GJ6B6Wq3jFw::u17Mn4FgQxKC_H4AMe_qSg` |
 
-4 more Projects actions are available through search.
+4 more Projects actions are available through `find_one_actions`.
 
 ### Videos
 
@@ -166,7 +166,7 @@ Creates, updates, deletes and sends land on a real Supervisely account and canno
 | Stop Figure Tracking for a Video Track | PUT | `/videos.stop_figure_tracking` | `conn_mod_def::GJ6CHQhGlW4::Fu0_FSMuQzyT41IcTQscew` |
 | Track Figures in a Video | PUT | `/public/api/v3/videos.track-figures` | `conn_mod_def::GJ6CHcKYXRw::3DVeR7oaS_mUbMmUriafjQ` |
 
-2 more Videos actions are available through search.
+2 more Videos actions are available through `find_one_actions`.
 
 ### LabelingQueues
 
@@ -179,13 +179,13 @@ Creates, updates, deletes and sends land on a real Supervisely account and canno
 | Skip a Labeling Queue Entity | GET | `/public/api/v3/labeling-queues.entities.skip` | `conn_mod_def::GJ6BwV6sz3k::YjycKks4SAW0Vk9sSLXfQQ` |
 | Add Users to a Labeling Queue | POST | `/public/api/v3/labeling-queues.users.add` | `conn_mod_def::GJ6Bw7xjBYI::TzLFYIWKQGGj-peiI-hwYQ` |
 
-4 more LabelingQueues actions are available through search.
+4 more LabelingQueues actions are available through `find_one_actions`.
 
-This lists 90 of 427 actions. For anything not here, call `search_one_platform_actions` with platform `supervisely`. The full catalog is at https://www.withone.ai/knowledge/supervisely.
+This lists 90 of 427 actions. For anything not here, call `find_one_actions` with platform `supervisely` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/supervisely.
 
 ## When a call fails
 
-The error comes from Supervisely, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Supervisely, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/supervisely
 

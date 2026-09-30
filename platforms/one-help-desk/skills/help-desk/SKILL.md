@@ -13,15 +13,15 @@ metadata:
 
 HelpDesk is a customer support and ticketing platform that enables teams to manage email-based support conversations, organize requests into workflows, and automate responses, allowing support agents to resolve issues efficiently and maintain visibility across customer communications.
 
-One exposes HelpDesk through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes HelpDesk through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `help-desk` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "help-desk", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real HelpDesk account and cannot b
 | Response Time Per Agent Report | GET | `/v1/reports/responseTimePerAgent` | `conn_mod_def::GL_Nm2l9seE::0yxfu8iZQNuLG3_Rse5P2g` |
 | Response Time Per Team | GET | `/v1/reports/responseTimePerTeam` | `conn_mod_def::GL_Nm2n6Vl4::VD3M3CS2SsijoEwAuA77XQ` |
 
-9 more Reports actions are available through search.
+9 more Reports actions are available through `find_one_actions`.
 
 ### Tickets
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real HelpDesk account and cannot b
 | Send Rating Request for a Ticket | POST | `/v1/tickets/{{ticketId}}/ratingRequests` | `conn_mod_def::GL_Npdh0YF0::bX5G85HEQ2q3pcYy09Mhsg` |
 | Unmerge a Ticket's Child Ticket | DELETE | `/v1/tickets/{{ticketId}}/childTickets/{{childTicketId}}` | `conn_mod_def::GL_Npeauuwk::GwKO22NTTcat3GQtJLuX4A` |
 
-1 more Tickets actions are available through search.
+1 more Tickets actions are available through `find_one_actions`.
 
 ### Templates
 
@@ -204,13 +204,13 @@ Creates, updates, deletes and sends land on a real HelpDesk account and cannot b
 |---|---|---|---|
 | Get a View | GET | `/v1/views/{{viewId}}` | `conn_mod_def::GL_Np-DCVOE::rsidqxEORl-EjP6OKto9kw` |
 
-4 more Views actions are available through search.
+4 more Views actions are available through `find_one_actions`.
 
-This lists 90 of 137 actions. For anything not here, call `search_one_platform_actions` with platform `help-desk`. The full catalog is at https://www.withone.ai/knowledge/help-desk.
+This lists 90 of 137 actions. For anything not here, call `find_one_actions` with platform `help-desk` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/help-desk.
 
 ## When a call fails
 
-The error comes from HelpDesk, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from HelpDesk, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/help-desk
 

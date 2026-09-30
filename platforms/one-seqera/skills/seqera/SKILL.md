@@ -13,15 +13,15 @@ metadata:
 
 Seqera is a workflow orchestration and data operations platform for scientific computing that provides tools for running, monitoring, and scaling bioinformatics and other data-intensive pipelines, allowing research and engineering teams to manage reproducible workflows across cloud, on-premises, and hybrid infrastructure.
 
-One exposes Seqera through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Seqera through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `seqera` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "seqera", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Seqera account and cannot be 
 | Delete Dataset | DELETE | `/datasets/{{datasetId}}` | `conn_mod_def::GK0x7lyzKgg::GFDvbgmMTfehaMi-LYz3yA` |
 | Delete Datasets | DELETE | `/datasets` | `conn_mod_def::GK0x7nsqKQA::FnK2BFDGS12BzNi87dQ36w` |
 
-11 more Datasets actions are available through search.
+11 more Datasets actions are available through `find_one_actions`.
 
 ### DataLinks
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Seqera account and cannot be 
 | Delete a Data-Link | DELETE | `/data-links/{{dataLinkId}}` | `conn_mod_def::GK0x68N6Omg::lzyu7kY1T1SiPJmVJrw4ZA` |
 | Finish a Data-Link File Upload | POST | `/data-links/{{dataLinkId}}/upload/finish` | `conn_mod_def::GK0x7Sy9qDg::8_F3whudScaAdimQ6q0u9g` |
 
-4 more DataLinks actions are available through search.
+4 more DataLinks actions are available through `find_one_actions`.
 
 ### Pipelines
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Seqera account and cannot be 
 | Replace Pipeline Labels | POST | `/pipelines/labels/apply` | `conn_mod_def::GK0x9ZnHvpg::rV9g7eBRRSeTVXVHVGK97A` |
 | Update a Pipeline | PUT | `/pipelines/{{pipelineId}}` | `conn_mod_def::GK0x-l9P05A::LIqT4X8pRZqpVYXLmh8n_g` |
 
-1 more Pipelines actions are available through search.
+1 more Pipelines actions are available through `find_one_actions`.
 
 ### Actions
 
@@ -186,13 +186,13 @@ Creates, updates, deletes and sends land on a real Seqera account and cannot be 
 |---|---|---|---|
 | Describe a Role by Name | GET | `/roles/{{roleName}}` | `conn_mod_def::GK0x-wt-2gg::r3WZnH24R-6MrXbU48Eazw` |
 
-5 more Roles actions are available through search.
+5 more Roles actions are available through `find_one_actions`.
 
-This lists 90 of 229 actions. For anything not here, call `search_one_platform_actions` with platform `seqera`. The full catalog is at https://www.withone.ai/knowledge/seqera.
+This lists 90 of 229 actions. For anything not here, call `find_one_actions` with platform `seqera` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/seqera.
 
 ## When a call fails
 
-The error comes from Seqera, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Seqera, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/seqera
 

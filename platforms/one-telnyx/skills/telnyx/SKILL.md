@@ -13,15 +13,15 @@ metadata:
 
 Telnyx is a communications platform that provides APIs for voice, messaging, phone numbers, wireless connectivity, and networking services, allowing developers and businesses to build telephony, SMS, IoT, and real-time communication workflows on programmable infrastructure.
 
-One exposes Telnyx through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Telnyx through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `telnyx` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "telnyx", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Telnyx account and cannot be 
 | Gather Using AI for a Call | POST | `/v2/calls/{{callControlId}}/actions/gather_using_ai` | `conn_mod_def::GMTgSF4aGbg::iDRNqDu6SNCu6NhBT3M6yg` |
 | Gather Using Audio for a Call | POST | `/v2/calls/{{callControlId}}/actions/gather_using_audio` | `conn_mod_def::GMTgSFUpZ3g::ZjZ9HGrLR8ileD9P23jE8A` |
 
-31 more Calls actions are available through search.
+31 more Calls actions are available through `find_one_actions`.
 
 ### Conferences
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Telnyx account and cannot be 
 | Pause Conference Recording | POST | `/v2/conferences/{{id}}/actions/record_pause` | `conn_mod_def::GMTgU89z17A::Q-GMaxQnRWql9wxZ4qHFHw` |
 | Play Audio to a Conference | POST | `/v2/conferences/{{id}}/actions/play` | `conn_mod_def::GMTgVX33POA::VJ9Nr_C-SoSuraLos3w59Q` |
 
-9 more Conferences actions are available through search.
+9 more Conferences actions are available through `find_one_actions`.
 
 ### PhoneNumbers
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Telnyx account and cannot be 
 | Delete a Phone Number | DELETE | `/v2/phone_numbers/{{id}}` | `conn_mod_def::GMTgktnvSgA::g4Qzj1v8QqOsPCNQ9gCNtQ` |
 | Enable Emergency for a Phone Number | POST | `/v2/phone_numbers/{{id}}/actions/enable_emergency` | `conn_mod_def::GMTgktdJU2g::hLeasHiTSFeITKja2wkk5g` |
 
-5 more PhoneNumbers actions are available through search.
+5 more PhoneNumbers actions are available through `find_one_actions`.
 
 ### ExternalConnections
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Telnyx account and cannot be 
 | Refresh Uploads for an External Connection | POST | `/v2/external_connections/{{id}}/uploads/refresh` | `conn_mod_def::GMTgbY_TA3g::lx89ndLEQTmfJ6iLarmcAQ` |
 | Retry an Upload for an External Connection | POST | `/v2/external_connections/{{id}}/uploads/{{ticketId}}/retry` | `conn_mod_def::GMTgbh3EWtg::UXSB0yiCRNOIGQHLNCPnEA` |
 
-3 more ExternalConnections actions are available through search.
+3 more ExternalConnections actions are available through `find_one_actions`.
 
 ### PortingOrders
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real Telnyx account and cannot be 
 | Delete an Additional Document for a Porting Order | DELETE | `/v2/porting_orders/{{id}}/additional_documents/{{additionalDocumentId}}` | `conn_mod_def::GMTgmjRjtLA::6o-ofqLZRmyf8ASquBpuyA` |
 | Edit a Porting Order | PATCH | `/v2/porting_orders/{{id}}` | `conn_mod_def::GMTgmsDgXdA::wOs1orj9QBCb6FNRtumYCw` |
 
-3 more PortingOrders actions are available through search.
+3 more PortingOrders actions are available through `find_one_actions`.
 
 ### SimCards
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real Telnyx account and cannot be 
 | Remove Public IP from a SIM Card | POST | `/v2/sim_cards/{{id}}/actions/remove_public_ip` | `conn_mod_def::GMTgswXeQrg::vr3ls3ZKRr2qO4SkiNW1Lg` |
 | Set Public IP for a SIM Card | POST | `/v2/sim_cards/{{id}}/actions/set_public_ip` | `conn_mod_def::GMTgsw-0AbA::ss8yViYUQWWi2l96QLpA2A` |
 
-3 more SimCards actions are available through search.
+3 more SimCards actions are available through `find_one_actions`.
 
 ### Messages
 
@@ -166,7 +166,7 @@ Creates, updates, deletes and sends land on a real Telnyx account and cannot be 
 | Send a Short Code Message | POST | `/v2/messages/short_code` | `conn_mod_def::GMTgfpreFdA::sYAfxXCCQkqlmwVfIOErYA` |
 | Send a WhatsApp Message | POST | `/v2/messages/whatsapp` | `conn_mod_def::GMTgyVp9Zlg::WEnpQvhNRQ-f5BTjbHhMQQ` |
 
-2 more Messages actions are available through search.
+2 more Messages actions are available through `find_one_actions`.
 
 ### Queues
 
@@ -179,13 +179,13 @@ Creates, updates, deletes and sends land on a real Telnyx account and cannot be 
 | Retrieve a Call Queue | GET | `/v2/queues/{{queueName}}` | `conn_mod_def::GMTgpHLujjA::3ieC-QJkTryaGu6Yo2eWLw` |
 | Create a Queue | POST | `/v2/queues` | `conn_mod_def::GMTgo_D6CAA::Y9wf9dydS-6xh6u60MA5vg` |
 
-5 more Queues actions are available through search.
+5 more Queues actions are available through `find_one_actions`.
 
-This lists 90 of 1163 actions. For anything not here, call `search_one_platform_actions` with platform `telnyx`. The full catalog is at https://www.withone.ai/knowledge/telnyx.
+This lists 90 of 1163 actions. For anything not here, call `find_one_actions` with platform `telnyx` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/telnyx.
 
 ## When a call fails
 
-The error comes from Telnyx, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Telnyx, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/telnyx
 

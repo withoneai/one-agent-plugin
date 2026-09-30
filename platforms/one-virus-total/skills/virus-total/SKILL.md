@@ -13,15 +13,15 @@ metadata:
 
 VirusTotal is a security analysis platform that aggregates antivirus engines, sandboxing, and threat intelligence to inspect files, URLs, domains, and IP addresses, allowing security teams and developers to detect malicious activity and automate reputation checks through its APIs.
 
-One exposes VirusTotal through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes VirusTotal through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `virus-total` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "virus-total", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real VirusTotal account and cannot
 | Add a Comment to a Collection | POST | `/api/v3/collections/{{id}}/comments` | `conn_mod_def::GLV6vC7Ox7g::Y89ChxGATieN--7cRRSToQ` |
 | Add New Items to a Collection | POST | `/api/v3/collections/{{id}}/{{relationship}}` | `conn_mod_def::GLV6vUWlUWg::3p_VQLflRNa93U2Evf-PLQ` |
 
-5 more Collections actions are available through search.
+5 more Collections actions are available through `find_one_actions`.
 
 ### Graphs
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real VirusTotal account and cannot
 | Add Editors to a Graph | POST | `/api/v3/graphs/{{id}}/relationships/editors` | `conn_mod_def::GLV61ReQdOg::QDWL81_4Ra-pc6nEej-LBA` |
 | Add Viewers to a Graph | POST | `/api/v3/graphs/{{id}}/relationships/viewers` | `conn_mod_def::GLV61KxhJBA::Lo7s4ptxT5ahe3-htwsYLw` |
 
-5 more Graphs actions are available through search.
+5 more Graphs actions are available through `find_one_actions`.
 
 ### Files
 
@@ -184,13 +184,13 @@ Creates, updates, deletes and sends land on a real VirusTotal account and cannot
 | Get Object Descriptors Related to an IP Address | GET | `/api/v3/ip_addresses/{{ip}}/relationships/{{relationship}}` | `conn_mod_def::GLV62d5us6A::NRyL7gGOSh647et60N4yng` |
 | Add a Comment to an IP Address | POST | `/api/v3/ip_addresses/{{ip}}/comments` | `conn_mod_def::GLV62VvcYug::ZEESZ2H_SXaVbn3idSf6HQ` |
 
-1 more IpAddresses actions are available through search.
+1 more IpAddresses actions are available through `find_one_actions`.
 
-This lists 90 of 160 actions. For anything not here, call `search_one_platform_actions` with platform `virus-total`. The full catalog is at https://www.withone.ai/knowledge/virus-total.
+This lists 90 of 160 actions. For anything not here, call `find_one_actions` with platform `virus-total` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/virus-total.
 
 ## When a call fails
 
-The error comes from VirusTotal, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from VirusTotal, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/virus-total
 

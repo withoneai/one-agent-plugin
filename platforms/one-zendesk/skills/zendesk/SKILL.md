@@ -13,15 +13,15 @@ metadata:
 
 Zendesk is a customer service and sales platform that helps businesses manage customer support across channels like email, chat, phone, and social media. It’s widely used for ticketing, knowledge bases, and workflow automation.
 
-One exposes Zendesk through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Zendesk through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `zendesk` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "zendesk", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Zendesk account and cannot be
 | List Recent Tickets | GET | `/api/v2/tickets/recent` | `conn_mod_def::GJ8YsAbgwZU::v8t-TFnTR2e_ZcUlSsv1AA` |
 | List Tickets | GET | `/api/v2/tickets` | `conn_mod_def::GJ8YsEOuyzs::i5cu44u4T7qWhAQJ_mTu1A` |
 
-19 more Tickets actions are available through search.
+19 more Tickets actions are available through `find_one_actions`.
 
 ### Users
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Zendesk account and cannot be
 | Autocomplete Users (Request Body) | POST | `/api/v2/users/autocomplete` | `conn_mod_def::GJ8Yz4hHTBw::TwYe8vF4Se6lyIr_fvGfaQ` |
 | Bulk Delete Users (Queue Background Job) | DELETE | `/api/v2/users/destroy_many` | `conn_mod_def::GJ8Yz8GqZdc::KmgyTDAVQWGrKRFTqry6Gg` |
 
-11 more Users actions are available through search.
+11 more Users actions are available through `find_one_actions`.
 
 ### HelpCenterArticles
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Zendesk account and cannot be
 | Archive a Help Center Article | DELETE | `/api/v2/help_center/articles/{{articleId}}` | `conn_mod_def::GJ8YVArpXoQ::alHO6K2RTzWhQrRZTjYUFg` |
 | Archive a Help Center Article by Locale | DELETE | `/api/v2/help_center/{{locale}}/articles/{{articleId}}` | `conn_mod_def::GJ8YVAMLQbk::od8tYeTqSXK_GhreavbdAA` |
 
-8 more HelpCenterArticles actions are available through search.
+8 more HelpCenterArticles actions are available through `find_one_actions`.
 
 ### Organizations
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Zendesk account and cannot be
 | Create an Organization | POST | `/api/v2/organizations` | `conn_mod_def::GJ8YlLge9Qs::2Y-_2qamSjmrZM22V7rHwg` |
 | Create Many Organizations | POST | `/api/v2/organizations/create_many` | `conn_mod_def::GJ8YlAreP9o::uUd3o6xBTF22B0NGtlmJ1w` |
 
-6 more Organizations actions are available through search.
+6 more Organizations actions are available through `find_one_actions`.
 
 ### Views
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real Zendesk account and cannot be
 | Show a View | GET | `/api/v2/views/{{viewId}}` | `conn_mod_def::GJ8Y1ZiSACI::hNoXkQO0QpWDWv3tsHh5iw` |
 | Bulk Delete Views | DELETE | `/api/v2/views/destroy_many` | `conn_mod_def::GJ8Y03s4IM0::5mPLvUmQStmNfgEj7pzhDg` |
 
-6 more Views actions are available through search.
+6 more Views actions are available through `find_one_actions`.
 
 ### HelpCenterSections
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real Zendesk account and cannot be
 | Update a Help Center Section | PUT | `/api/v2/help_center/sections/{{sectionId}}` | `conn_mod_def::GJ8Ynk6-SpI::SU_34p06QNOEkrdAP79EUQ` |
 | Update a Help Center Section by Locale | PUT | `/api/v2/help_center/{{locale}}/sections/{{sectionId}}` | `conn_mod_def::GJ8Ynk6LK2g::oi7DzKooTV2epR8PBw7StA` |
 
-2 more HelpCenterSections actions are available through search.
+2 more HelpCenterSections actions are available through `find_one_actions`.
 
 ### GroupMemberships
 
@@ -166,7 +166,7 @@ Creates, updates, deletes and sends land on a real Zendesk account and cannot be
 | Create a User’s Group Membership | POST | `/api/v2/users/{{userId}}/group_memberships` | `conn_mod_def::GJ8Yf_RZb9c::F1iq3JXuRPm0wXhWgWgDCw` |
 | Delete a Group Membership | DELETE | `/api/v2/group_memberships/{{groupMembershipId}}` | `conn_mod_def::GJ8Yf_P4PqU::AsYWUFxIQI2jj-9E7tDpMg` |
 
-2 more GroupMemberships actions are available through search.
+2 more GroupMemberships actions are available through `find_one_actions`.
 
 ### OrganizationMemberships
 
@@ -179,13 +179,13 @@ Creates, updates, deletes and sends land on a real Zendesk account and cannot be
 | Show an Organization Membership by ID | GET | `/api/v2/organization_memberships/{{organizationMembershipId}}` | `conn_mod_def::GJ8YkxdScYM::h5-7nb0oTJ6wjkR5cxoMtw` |
 | Bulk Delete Organization Memberships | DELETE | `/api/v2/organization_memberships/destroy_many` | `conn_mod_def::GJ8YkVMBrV0::exGACMJORaCef0Xyf-S0FQ` |
 
-7 more OrganizationMemberships actions are available through search.
+7 more OrganizationMemberships actions are available through `find_one_actions`.
 
-This lists 90 of 885 actions. For anything not here, call `search_one_platform_actions` with platform `zendesk`. The full catalog is at https://www.withone.ai/knowledge/zendesk.
+This lists 90 of 885 actions. For anything not here, call `find_one_actions` with platform `zendesk` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/zendesk.
 
 ## When a call fails
 
-The error comes from Zendesk, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Zendesk, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/zendesk
 

@@ -13,15 +13,15 @@ metadata:
 
 Xero is an online accounting software platform designed for small businesses. It provides tools for invoicing, payroll, bank reconciliation, and financial reporting, helping businesses manage their finances efficiently and in real time.
 
-One exposes Xero through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Xero through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `xero` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "xero", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Xero account and cannot be re
 | Approve a Timesheet | POST | `/payroll.xro/2.0/Timesheets/{{timesheetId}}/Approve` | `conn_mod_def::GJ8cgOP50W0::TvbfzdvLQJCH9MUv1R4SLA` |
 | Create a Timesheet | POST | `/payroll.xro/2.0/Timesheets` | `conn_mod_def::GJ8cf-li76c::-Qylf4ORQdCFHnSqQSnp_w` |
 
-10 more Timesheets actions are available through search.
+10 more Timesheets actions are available through `find_one_actions`.
 
 ### Employees
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Xero account and cannot be re
 | Create Employees | POST | `/Employees` | `conn_mod_def::GJ8cYLT7WFM::bsBOO5vtQi6sVch0LKo42g` |
 | Create Employees | PUT | `/Employees` | `conn_mod_def::GJ8cYod6rEw::W-xuouWvQ1qP3kKj1aQKoQ` |
 
-6 more Employees actions are available through search.
+6 more Employees actions are available through `find_one_actions`.
 
 ### Reports
 
@@ -179,13 +179,13 @@ Creates, updates, deletes and sends land on a real Xero account and cannot be re
 | List Leave Applications | GET | `/payroll.xro/1.0/LeaveApplications/v2` | `conn_mod_def::GJ8cfmp6vbU::Xx3oIEmvQtmWg00qA4KhqQ` |
 | Retrieve a Leave Application by ID | GET | `/payroll.xro/1.0/LeaveApplications/{{leaveApplicationId}}` | `conn_mod_def::GJ8cfWCgUoo::Yt7oxtaVRRyKNP_VhMatRw` |
 
-4 more LeaveApplications actions are available through search.
+4 more LeaveApplications actions are available through `find_one_actions`.
 
-This lists 90 of 475 actions. For anything not here, call `search_one_platform_actions` with platform `xero`. The full catalog is at https://www.withone.ai/knowledge/xero.
+This lists 90 of 475 actions. For anything not here, call `find_one_actions` with platform `xero` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/xero.
 
 ## When a call fails
 
-The error comes from Xero, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Xero, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/xero
 

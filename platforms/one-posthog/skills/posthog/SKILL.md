@@ -13,15 +13,15 @@ metadata:
 
 PostHog is a product analytics suite that provides session recording, feature flags, A/B testing, and event tracking to help teams build better products through user insights.
 
-One exposes PostHog through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes PostHog through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `posthog` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "posthog", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real PostHog account and cannot be
 | Cancel a Data Warehouse Saved Query Workflow (Environment) | POST | `/api/environments/{{environmentId}}/warehouse_saved_queries/{{id}}/cancel/` | `conn_mod_def::GJ6H9WC6U-I::OGJfJxzJRh-ufT5rnR4LrQ` |
 | Cancel a Project’s Data Warehouse Saved Query Workflow | POST | `/api/projects/{{projectId}}/warehouse_saved_queries/{{id}}/cancel/` | `conn_mod_def::GJ6H-bV7njU::0CkDt8MATNOPmgVYBakVXA` |
 
-20 more WarehouseSavedQueries actions are available through search.
+20 more WarehouseSavedQueries actions are available through `find_one_actions`.
 
 ### BatchExports
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real PostHog account and cannot be
 | Create an Organization Batch Export | POST | `/api/organizations/{{organizationId}}/batch_exports/` | `conn_mod_def::GJ6HtUWvgP8::pCKhNBNvTqeEpmGxk0mFgg` |
 | Delete a Project's Batch Export | DELETE | `/api/projects/{{projectId}}/batch_exports/{{id}}/` | `conn_mod_def::GJ6Humz2Vpo::YWCSKqy0Tr6eb5gI76JIcw` |
 
-20 more BatchExports actions are available through search.
+20 more BatchExports actions are available through `find_one_actions`.
 
 ### Persons
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real PostHog account and cannot be
 | Retrieve Funnel Correlation for Persons in an Environment | GET | `/api/environments/{{environmentId}}/persons/funnel/correlation/` | `conn_mod_def::GJ6IcmrJQuo::JEfglMCeRMaGYC1LTuyXJg` |
 | Retrieve Person Activity for an Environment | GET | `/api/environments/{{environmentId}}/persons/activity/` | `conn_mod_def::GJ6IcAfHL5U::8XUwtrEhThKDSlPSIICGpA` |
 
-18 more Persons actions are available through search.
+18 more Persons actions are available through `find_one_actions`.
 
 ### Dashboards
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real PostHog account and cannot be
 | Create an Unlisted Dashboard for a Project | POST | `/api/projects/{{projectId}}/dashboards/create_unlisted_dashboard/` | `conn_mod_def::GJ6HxNtjhcE::nzwwBE5bSqqxg1tcSO5z4A` |
 | Create an Unlisted Dashboard for an Environment (from Template Tag) | POST | `/api/environments/{{environmentId}}/dashboards/create_unlisted_dashboard/` | `conn_mod_def::GJ6HyVLkpwc::SUvujPATQFyB1HI4mdNKkw` |
 
-14 more Dashboards actions are available through search.
+14 more Dashboards actions are available through `find_one_actions`.
 
 ### Projects
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real PostHog account and cannot be
 | Change a Project’s Organization (within an Organization) | POST | `/api/organizations/{{organizationId}}/projects/{{id}}/change_organization/` | `conn_mod_def::GJ6HwVzCgbY::mCuFS1k5QTyYx8C3UL_hNg` |
 | Check Auth for Async Query in a Project | POST | `/api/projects/{{projectId}}/query/check_auth_for_async/` | `conn_mod_def::GJ6IfjlV5cw::CHcj8ZkLSsKwWt5AYOQUHQ` |
 
-12 more Projects actions are available through search.
+12 more Projects actions are available through `find_one_actions`.
 
 ### Insights
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real PostHog account and cannot be
 | Create a Project Insight | POST | `/api/projects/{{projectId}}/insights/` | `conn_mod_def::GJ6IQOzEioE::WOF_H_cETLyWoDQxKBBibQ` |
 | Create an Environment Insight | POST | `/api/environments/{{environmentId}}/insights/` | `conn_mod_def::GJ6IO8ofGEw::47NvEAMRRAKATf2PN87ZZg` |
 
-11 more Insights actions are available through search.
+11 more Insights actions are available through `find_one_actions`.
 
 ### Environments
 
@@ -166,7 +166,7 @@ Creates, updates, deletes and sends land on a real PostHog account and cannot be
 | Add Product Intent to an Environment (Deprecated) | PATCH | `/api/projects/{{projectId}}/environments/{{id}}/add_product_intent/` | `conn_mod_def::GJ6IFlRXzgg::AZ2D3jXtQPe6XFfDJB39Lg` |
 | Check Auth for Async Query in an Environment | POST | `/api/environments/{{environmentId}}/query/check_auth_for_async/` | `conn_mod_def::GJ6IfKx6inE::_IMckLUoQuGHD2LBKYRgCA` |
 
-10 more Environments actions are available through search.
+10 more Environments actions are available through `find_one_actions`.
 
 ### ExternalDataSources
 
@@ -179,13 +179,13 @@ Creates, updates, deletes and sends land on a real PostHog account and cannot be
 | Create an Environment External Data Source | POST | `/api/environments/{{environmentId}}/external_data_sources/` | `conn_mod_def::GJ6H8o6zUvM::o2TCfF4VT3CSwLBa5ck42Q` |
 | Create an External Data Source (Source Prefix) for a Project | POST | `/api/projects/{{projectId}}/external_data_sources/source_prefix/` | `conn_mod_def::GJ6H-THVQYs::86SvZkqmRd24FBktqb754g` |
 
-14 more ExternalDataSources actions are available through search.
+14 more ExternalDataSources actions are available through `find_one_actions`.
 
-This lists 90 of 1182 actions. For anything not here, call `search_one_platform_actions` with platform `posthog`. The full catalog is at https://www.withone.ai/knowledge/posthog.
+This lists 90 of 1182 actions. For anything not here, call `find_one_actions` with platform `posthog` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/posthog.
 
 ## When a call fails
 
-The error comes from PostHog, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from PostHog, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/posthog
 

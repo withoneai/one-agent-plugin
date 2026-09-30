@@ -13,15 +13,15 @@ metadata:
 
 SwaggerHub is an API design and documentation platform that enables teams to create, standardize, collaborate on, and publish OpenAPI and AsyncAPI specifications, allowing developers to manage API lifecycles and generate consistent documentation and integrations from shared definitions.
 
-One exposes SwaggerHub through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes SwaggerHub through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `swagger-hub` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "swagger-hub", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real SwaggerHub account and cannot
 | Delete an API | DELETE | `/apis/{{owner}}/{{api}}` | `conn_mod_def::GMYpf4O6HbQ::w0v6MRN7QhyuUEuN3crUOQ` |
 | Delete an API Version | DELETE | `/apis/{{owner}}/{{api}}/{{version}}` | `conn_mod_def::GMYpff5nKWI::L5D7TNxKRTqHCveNzrVUVg` |
 
-5 more Apis actions are available through search.
+5 more Apis actions are available through `find_one_actions`.
 
 ### Domains
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real SwaggerHub account and cannot
 | Fork a Domain Definition | POST | `/domains/{{owner}}/{{domain}}/{{version}}/fork` | `conn_mod_def::GMYpiaTOaZ8::ds72OeALRxCwOy_wEBssDw` |
 | Rename a Domain | POST | `/domains/{{owner}}/{{domain}}/rename` | `conn_mod_def::GMYpiec8YUA::d6gsdFWsQOuV20Sf5uuGfQ` |
 
-2 more Domains actions are available through search.
+2 more Domains actions are available through `find_one_actions`.
 
 ### Templates
 
@@ -229,11 +229,11 @@ Creates, updates, deletes and sends land on a real SwaggerHub account and cannot
 |---|---|---|---|
 | Get API Capabilities | GET | `/apis/{{owner}}/{{api}}/{{version}}/capabilities` | `conn_mod_def::GMYpfnSq9wc::pYSVyWP4QFaKhe8xLyhrow` |
 
-This lists 90 of 114 actions. For anything not here, call `search_one_platform_actions` with platform `swagger-hub`. The full catalog is at https://www.withone.ai/knowledge/swagger-hub.
+This lists 90 of 114 actions. For anything not here, call `find_one_actions` with platform `swagger-hub` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/swagger-hub.
 
 ## When a call fails
 
-The error comes from SwaggerHub, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from SwaggerHub, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/swagger-hub
 

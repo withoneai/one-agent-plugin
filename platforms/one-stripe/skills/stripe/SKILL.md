@@ -13,15 +13,15 @@ metadata:
 
 Stripe is a payment processing platform that helps businesses accept payments, send payouts, and manage financial operations with APIs for web and mobile apps.
 
-One exposes Stripe through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Stripe through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `stripe` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "stripe", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Stripe account and cannot be 
 | Finalize an Invoice | POST | `/invoices/{{invoice}}/finalize` | `conn_mod_def::GJ7Kq1IRAXw::thn5-Gs3R128_DFO3_-oVA` |
 | Mark an Invoice as Uncollectible | POST | `/invoices/{{invoice}}/mark_uncollectible` | `conn_mod_def::GJ7KvGyUCjE::bckhGDPXTPe5dZYgjiQ5vw` |
 
-4 more Invoices actions are available through search.
+4 more Invoices actions are available through `find_one_actions`.
 
 ### TerminalReaders
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Stripe account and cannot be 
 | Process a PaymentIntent on a Terminal Reader | POST | `/terminal/readers/{{reader}}/process_payment_intent` | `conn_mod_def::GJ7KrQ9f8Ko::Wro_IhkWTNiCl8UYRmV1Ag` |
 | Set a Terminal Reader’s Display (Cart Details) | POST | `/terminal/readers/{{reader}}/set_reader_display` | `conn_mod_def::GJ7K6UY0sHs::p7sVSJckTNG__GPkX_-8iA` |
 
-4 more TerminalReaders actions are available through search.
+4 more TerminalReaders actions are available through `find_one_actions`.
 
 ### Subscriptions
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Stripe account and cannot be 
 | Migrate a Subscription | POST | `/subscriptions/{{subscription}}/migrate` | `conn_mod_def::GJ7KvGtYYeU::1l5buj-cSeGAxhX66HMhew` |
 | Resume a Subscription | POST | `/subscriptions/{{subscription}}/resume` | `conn_mod_def::GJ7Kw1qAUG8::zS3vvRJXRj6KPtHzU6TXQg` |
 
-2 more Subscriptions actions are available through search.
+2 more Subscriptions actions are available through `find_one_actions`.
 
 ### IssuingAuthorizations
 
@@ -176,13 +176,13 @@ Creates, updates, deletes and sends land on a real Stripe account and cannot be 
 | Retrieve a Tax ID | GET | `/tax_ids/{{id}}` | `conn_mod_def::GJ7K4YHoPcw::rCF6Qs2AQbyusmzI-hRQtg` |
 | Create a Customer’s Tax ID | POST | `/customers/{{customer}}/tax_ids` | `conn_mod_def::GJ7Km3ubkLQ::cBGR40ooRqeBRGcyWKjzGw` |
 
-3 more TaxIds actions are available through search.
+3 more TaxIds actions are available through `find_one_actions`.
 
-This lists 90 of 587 actions. For anything not here, call `search_one_platform_actions` with platform `stripe`. The full catalog is at https://www.withone.ai/knowledge/stripe.
+This lists 90 of 587 actions. For anything not here, call `find_one_actions` with platform `stripe` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/stripe.
 
 ## When a call fails
 
-The error comes from Stripe, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Stripe, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/stripe
 

@@ -13,15 +13,15 @@ metadata:
 
 BambooHR is an HR software platform that combines hiring and onboarding, employee data and reporting, payroll, time tracking, benefits administration, performance management, and compensation tools, allowing businesses to manage the employee lifecycle and workforce operations from a single system.
 
-One exposes BambooHR through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes BambooHR through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `bamboo-hr` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "bamboo-hr", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real BambooHR account and cannot b
 | Remove a Cycle Admin from a Compensation Planning Cycle | DELETE | `/api/v1/compensation/planning_cycles/{{id}}/admins/{{employeeId}}` | `conn_mod_def::GMSIZoU6sPw::rE0LgSEbS9apTUcDtKL1hw` |
 | Remove Employees From a Compensation Planning Cycle | DELETE | `/api/v1/compensation/planning_cycles/{{id}}/employees` | `conn_mod_def::GMSIZoo-AAI::3VWAZQdiS0y1mr8GbroekA` |
 
-4 more CompensationPlanningCycles actions are available through search.
+4 more CompensationPlanningCycles actions are available through `find_one_actions`.
 
 ### BreakPolicies
 
@@ -202,13 +202,13 @@ Creates, updates, deletes and sends land on a real BambooHR account and cannot b
 |---|---|---|---|
 | Get an Alert Configuration by ID | GET | `/api/v1/alert-configurations/{{id}}` | `conn_mod_def::GMSIX-YXaH4::UEULYNTMQjGQFoQUWFITrg` |
 
-3 more AlertConfigurations actions are available through search.
+3 more AlertConfigurations actions are available through `find_one_actions`.
 
-This lists 90 of 277 actions. For anything not here, call `search_one_platform_actions` with platform `bamboo-hr`. The full catalog is at https://www.withone.ai/knowledge/bamboo-hr.
+This lists 90 of 277 actions. For anything not here, call `find_one_actions` with platform `bamboo-hr` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/bamboo-hr.
 
 ## When a call fails
 
-The error comes from BambooHR, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from BambooHR, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/bamboo-hr
 

@@ -13,15 +13,15 @@ metadata:
 
 Mailchimp Marketing is an all-in-one marketing platform that helps businesses manage and automate their email campaigns, audience segmentation, social media ads, and more to grow and engage their customer base effectively.
 
-One exposes Mailchimp Marketing through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Mailchimp Marketing through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `mailchimp-marketing` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "mailchimp-marketing", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Mailchimp Marketing account a
 | Replicate a Campaign | POST | `/campaigns/{{campaignId}}/actions/replicate` | `conn_mod_def::GJ40ssOY2gA::BoZq0t0UQ9WreSknfgZvug` |
 | Resend a Campaign (Create Resend for a Campaign) | POST | `/campaigns/{{campaignId}}/actions/create-resend` | `conn_mod_def::GJ40s_rbIxA::Sxa64NzkTDOZWem7h4NK-A` |
 
-6 more Campaigns actions are available through search.
+6 more Campaigns actions are available through `find_one_actions`.
 
 ### Reports
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Mailchimp Marketing account a
 | List a Campaign’s Email Activity | GET | `/reports/{{campaignId}}/email-activity` | `conn_mod_def::GJ400kmomNI::dQO1WTQ2RniMekJ1_kzf5A` |
 | List a Campaign’s Feedback (Advice) | GET | `/reports/{{campaignId}}/advice` | `conn_mod_def::GJ400Mey9tM::gt3tNib-SJOdzmO5eOl3VA` |
 
-4 more Reports actions are available through search.
+4 more Reports actions are available through `find_one_actions`.
 
 ### Lists
 
@@ -194,13 +194,13 @@ Creates, updates, deletes and sends land on a real Mailchimp Marketing account a
 | List a Store Promo Rule’s Promo Codes | GET | `/ecommerce/stores/{{storeId}}/promo-rules/{{promoRuleId}}/promo-codes` | `conn_mod_def::GJ40vpyWQsg::EcPWqVxpQ32AqoGoATf3DA` |
 | Add a Promo Code to a Store’s Promo Rule | POST | `/ecommerce/stores/{{storeId}}/promo-rules/{{promoRuleId}}/promo-codes` | `conn_mod_def::GJ40uOCxlVo::k-x5_lOoSgGfr2l1dGdhAQ` |
 
-2 more PromoCodes actions are available through search.
+2 more PromoCodes actions are available through `find_one_actions`.
 
-This lists 90 of 282 actions. For anything not here, call `search_one_platform_actions` with platform `mailchimp-marketing`. The full catalog is at https://www.withone.ai/knowledge/mailchimp-marketing.
+This lists 90 of 282 actions. For anything not here, call `find_one_actions` with platform `mailchimp-marketing` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/mailchimp-marketing.
 
 ## When a call fails
 
-The error comes from Mailchimp Marketing, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Mailchimp Marketing, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/mailchimp-marketing
 

@@ -13,15 +13,15 @@ metadata:
 
 Spotify Web API is a RESTful service enabling developers to access Spotify's music catalog metadata, control playback, manage playlists, retrieve audio features, and integrate music streaming capabilities into applications through JSON endpoints.
 
-One exposes Spotify Web through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Spotify Web through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `spotify-web` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "spotify-web", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Spotify Web account and canno
 | Create a User’s Playlist (Deprecated) | POST | `/users/{{userId}}/playlists` | `conn_mod_def::GJ7JssLf9b4::2BbyiE95R8Sjw7Z8NTn8YQ` |
 | Follow a Playlist (Current User) | PUT | `/playlists/{{playlistId}}/followers` | `conn_mod_def::GJ7JtwjGtp4::OmUw1rwOQKuROUH80d3yUQ` |
 
-6 more Playlists actions are available through search.
+6 more Playlists actions are available through `find_one_actions`.
 
 ### Player
 
@@ -322,11 +322,11 @@ Creates, updates, deletes and sends land on a real Spotify Web account and canno
 |---|---|---|---|
 | Get a User’s Available Player Devices | GET | `/me/player/devices` | `conn_mod_def::GJ7JsIjpPgo::UlY7lcMyQd2P9Mc7GofHLg` |
 
-This lists 90 of 96 actions. For anything not here, call `search_one_platform_actions` with platform `spotify-web`. The full catalog is at https://www.withone.ai/knowledge/spotify-web.
+This lists 90 of 96 actions. For anything not here, call `find_one_actions` with platform `spotify-web` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/spotify-web.
 
 ## When a call fails
 
-The error comes from Spotify Web, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Spotify Web, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/spotify-web
 

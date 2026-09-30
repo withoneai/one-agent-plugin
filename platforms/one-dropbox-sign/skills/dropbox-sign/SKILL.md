@@ -13,15 +13,15 @@ metadata:
 
 Dropbox Sign is an eSignature and document workflow platform that enables users to send, sign, and manage legally binding documents online with templates, automated workflows, and integrations for streamlined business processes.
 
-One exposes Dropbox Sign through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Dropbox Sign through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `dropbox-sign` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "dropbox-sign", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Dropbox Sign account and cann
 | Send Signature Request | POST | `/signature_request/send` | `conn_mod_def::GKyetS9FCVA::a9LgmtY4RxeYtsgM2Fyo9g` |
 | Send Signature Request With Template | POST | `/signature_request/send_with_template` | `conn_mod_def::GKyetUL1iIA::hIURywKHRFW9WqGB6e301A` |
 
-1 more SignatureRequest actions are available through search.
+1 more SignatureRequest actions are available through `find_one_actions`.
 
 ### Templates
 
@@ -259,11 +259,11 @@ Creates, updates, deletes and sends land on a real Dropbox Sign account and cann
 |---|---|---|---|
 | Get Template Files as File URL | GET | `/v3/template/files_as_file_url/{{templateId}}` | `conn_mod_def::GKyeuU9b7FA::LbGZw9XlTKuZBY0RfLCKag` |
 
-This lists 72 of 73 actions. For anything not here, call `search_one_platform_actions` with platform `dropbox-sign`. The full catalog is at https://www.withone.ai/knowledge/dropbox-sign.
+This lists 72 of 73 actions. For anything not here, call `find_one_actions` with platform `dropbox-sign` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/dropbox-sign.
 
 ## When a call fails
 
-The error comes from Dropbox Sign, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Dropbox Sign, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/dropbox-sign
 

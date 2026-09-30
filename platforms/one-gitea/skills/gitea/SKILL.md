@@ -13,15 +13,15 @@ metadata:
 
 Gitea is a lightweight, self-hosted Git service that provides source code hosting, repository management, pull requests, issue tracking, and CI/CD integrations, allowing development teams to collaborate on software projects with control over deployment, access, and infrastructure.
 
-One exposes Gitea through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Gitea through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `gitea` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "gitea", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Gitea account and cannot be r
 | Delete an Issue in a Repository | DELETE | `/api/v1/repos/{{owner}}/{{repo}}/issues/{{index}}` | `conn_mod_def::GLxDaDd0pFg::x8a0N7XqSASFSIg8O7JsCw` |
 | Delete an Issue's Existing Stopwatch | DELETE | `/api/v1/repos/{{owner}}/{{repo}}/issues/{{index}}/stopwatch/delete` | `conn_mod_def::GLxDaNOtCTI::lIBXySVwSU6S4Zm4eCMDag` |
 
-18 more Issues actions are available through search.
+18 more Issues actions are available through `find_one_actions`.
 
 ### Repositories
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Gitea account and cannot be r
 | Add a Team to a Repository | PUT | `/api/v1/repos/{{owner}}/{{repo}}/teams/{{team}}` | `conn_mod_def::GLxDfV7OH3I::Y-6hRjsIRNGNVRPc3RYCHA` |
 | Adopt an Unadopted Repository | POST | `/api/v1/admin/unadopted/{{owner}}/{{repo}}` | `conn_mod_def::GLxDYgjtX_o::tlobmjBgQwSPdgTCTfrSvQ` |
 
-17 more Repositories actions are available through search.
+17 more Repositories actions are available through `find_one_actions`.
 
 ### Organizations
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Gitea account and cannot be r
 | Delete Avatar for an Organization | DELETE | `/api/v1/orgs/{{org}}/avatar` | `conn_mod_def::GLxDdYFxX9o::ZZydbGiORXSHhYlIdt54xQ` |
 | Edit an Organization | PATCH | `/api/v1/orgs/{{org}}` | `conn_mod_def::GLxDdY1a4mM::jFYFApnMTyuZCj65LmccUg` |
 
-2 more Organizations actions are available through search.
+2 more Organizations actions are available through `find_one_actions`.
 
 ### Teams
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Gitea account and cannot be r
 | Edit a Team | PATCH | `/api/v1/teams/{{id}}` | `conn_mod_def::GLxDdWSxhtE::CsLqz8kCSGyPsmpJie6zwg` |
 | Remove a Repository from a Team | DELETE | `/api/v1/teams/{{id}}/repos/{{org}}/{{repo}}` | `conn_mod_def::GLxDen-o0EY::SEZQCx4QSgaJHUcKo-klgw` |
 
-1 more Teams actions are available through search.
+1 more Teams actions are available through `find_one_actions`.
 
 ### Users
 
@@ -178,11 +178,11 @@ Creates, updates, deletes and sends land on a real Gitea account and cannot be r
 | Dismiss a Pull Request Review | POST | `/api/v1/repos/{{owner}}/{{repo}}/pulls/{{index}}/reviews/{{id}}/dismissals` | `conn_mod_def::GLxDhHpchR8::-82OtcdLT9OeAwmuOvQAuw` |
 | Undismiss a Pull Request Review for a Repository | POST | `/api/v1/repos/{{owner}}/{{repo}}/pulls/{{index}}/reviews/{{id}}/undismissals` | `conn_mod_def::GLxDfer7fhE::zcpHYXtcRS-yzceymo-0Cw` |
 
-This lists 90 of 471 actions. For anything not here, call `search_one_platform_actions` with platform `gitea`. The full catalog is at https://www.withone.ai/knowledge/gitea.
+This lists 90 of 471 actions. For anything not here, call `find_one_actions` with platform `gitea` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/gitea.
 
 ## When a call fails
 
-The error comes from Gitea, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Gitea, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/gitea
 

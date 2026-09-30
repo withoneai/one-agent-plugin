@@ -13,15 +13,15 @@ metadata:
 
 Plain is a customer support platform that provides a collaborative inbox, issue tracking, and API-driven workflows, allowing support and engineering teams to manage conversations, automate operations, and build support experiences directly into their products and internal tools.
 
-One exposes Plain through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Plain through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `plain` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "plain", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Plain account and cannot be r
 | Import Thread Using GraphQL v1 | POST | `/graphql/v1` | `conn_mod_def::GMKY3dUMS-U::yvhXh7gSQIqRid1-pPPLhw` |
 | List Threads | POST | `/graphql/v1` | `conn_mod_def::GMKY-J-UYUA::0jotb0orQey64wpkf81JHQ` |
 
-15 more Threads actions are available through search.
+15 more Threads actions are available through `find_one_actions`.
 
 ### Customers
 
@@ -202,13 +202,13 @@ Creates, updates, deletes and sends land on a real Plain account and cannot be r
 | Create Chat App | POST | `/graphql/v1` | `conn_mod_def::GMKY0U7pUng::BnKSX2epTE-da-adLunjsA` |
 | Delete Chat App | POST | `/graphql/v1` | `conn_mod_def::GMKY19Egjgg::7-eqKixPR3-ZrYsL6Rt_eA` |
 
-2 more ChatApp actions are available through search.
+2 more ChatApp actions are available through `find_one_actions`.
 
-This lists 90 of 493 actions. For anything not here, call `search_one_platform_actions` with platform `plain`. The full catalog is at https://www.withone.ai/knowledge/plain.
+This lists 90 of 493 actions. For anything not here, call `find_one_actions` with platform `plain` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/plain.
 
 ## When a call fails
 
-The error comes from Plain, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Plain, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/plain
 

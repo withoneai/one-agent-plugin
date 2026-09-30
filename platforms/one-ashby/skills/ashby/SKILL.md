@@ -13,15 +13,15 @@ metadata:
 
 Ashby is an all-in-one recruiting platform that combines applicant tracking, recruiting CRM, scheduling, sourcing, and analytics, with embedded AI and automation to help teams manage and scale hiring workflows from startups to large enterprises.
 
-One exposes Ashby through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Ashby through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `ashby` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "ashby", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -195,13 +195,13 @@ Creates, updates, deletes and sends land on a real Ashby account and cannot be r
 | Cancel an Interview Schedule | POST | `/interviewSchedule.cancel` | `conn_mod_def::GMPpX_1bn68::jvrGpeG7TB24h8Up14TC3Q` |
 | Create an Interview Schedule | POST | `/interviewSchedule.create` | `conn_mod_def::GMPpX_dKWqg::0tHdRH-jRJm89YUyqNLL1w` |
 
-1 more InterviewSchedule actions are available through search.
+1 more InterviewSchedule actions are available through `find_one_actions`.
 
-This lists 90 of 177 actions. For anything not here, call `search_one_platform_actions` with platform `ashby`. The full catalog is at https://www.withone.ai/knowledge/ashby.
+This lists 90 of 177 actions. For anything not here, call `find_one_actions` with platform `ashby` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/ashby.
 
 ## When a call fails
 
-The error comes from Ashby, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Ashby, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/ashby
 

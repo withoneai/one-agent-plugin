@@ -13,15 +13,15 @@ metadata:
 
 Encodian is a document automation platform that provides APIs and no-code actions for generating, converting, merging, signing, and processing files within business workflows, allowing developers and operations teams to automate document handling across cloud applications and Microsoft environments.
 
-One exposes Encodian through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Encodian through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `encodian` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "encodian", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Encodian account and cannot b
 | Array Add Items Using Utility | POST | `/api/v1/Utilities/ArrayAddItems` | `conn_mod_def::GLvu51mA7xg::rtNZ_ZY0S2iIUyG7ricx3g` |
 | Array Combine Using Utilities | POST | `/api/v1/Utilities/ArrayCombine` | `conn_mod_def::GLvu52UxAr8::nbFQJV1XQgCCn4XPllSC5A` |
 
-58 more Utilities actions are available through search.
+58 more Utilities actions are available through `find_one_actions`.
 
 ### Pdf
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Encodian account and cannot b
 | Delete PDF Pages Using PDF | POST | `/api/v1/PDF/DeletePdfPages` | `conn_mod_def::GLvu3kNR_S8::uHlu5Bj_Sd-NOxQbrz9QoQ` |
 | Extract Attachments From PDF Using PDF | POST | `/api/v1/PDF/ExtractAttachmentsFromPdf` | `conn_mod_def::GLvu3uqzANM::jn0WIAd8S36LNO7tle2Gyw` |
 
-23 more Pdf actions are available through search.
+23 more Pdf actions are available through `find_one_actions`.
 
 ### Conversion
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Encodian account and cannot b
 | Convert PDF to Excel | POST | `/api/v1/Conversion/ConvertPdfToExcel` | `conn_mod_def::GLvuy_lxFAs::vbfIFFbmRLewsJjxB6RTvA` |
 | Convert PDF to Images | POST | `/api/v1/Conversion/ConvertPdfToImages` | `conn_mod_def::GLvuy_IqL1I::a_6NxKIpRCiR8dBTOXOB9w` |
 
-13 more Conversion actions are available through search.
+13 more Conversion actions are available through `find_one_actions`.
 
 ### Word
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Encodian account and cannot b
 | Extract Word Pages Using Word | POST | `/api/v1/Word/ExtractWordPages` | `conn_mod_def::GLvu8IeIULI::1C6ZcT1xSte5zYrdaQyi-Q` |
 | Get Tracked Changes Using Word | POST | `/api/v1/Word/GetTrackedChanges` | `conn_mod_def::GLvu8JKOjpY::VqRPIBj8RKCF_40hV7UOow` |
 
-8 more Word actions are available through search.
+8 more Word actions are available through `find_one_actions`.
 
 ### Barcodes
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real Encodian account and cannot b
 | Create QR Code Using Barcodes | POST | `/api/v1/Barcodes/CreateQrCode` | `conn_mod_def::GLvuyZbJ4wQ::HeGSYysbT0G2U5kiAEm58A` |
 | Read Barcode From Document Using Barcodes | POST | `/api/v1/Barcodes/ReadBarcodeFromDocument` | `conn_mod_def::GLvuyIyF9wc::oTcMqhMQS9qtBIQMBGO3gA` |
 
-4 more Barcodes actions are available through search.
+4 more Barcodes actions are available through `find_one_actions`.
 
 ### General
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real Encodian account and cannot b
 | Process Tax US Document Using General | POST | `/api/v1/General/AIProcessTaxUS` | `conn_mod_def::GLvu1PeS_2U::zwbNIB9NSoSZfoXa7UvpxA` |
 | Replace Text with Image in a File | POST | `/api/v1/General/SearchAndReplaceTextWithImage` | `conn_mod_def::GLvu1h1o2IE::RXrtOpd9R_WUnWsICSZe5Q` |
 
-2 more General actions are available through search.
+2 more General actions are available through `find_one_actions`.
 
 ### Image
 
@@ -177,13 +177,13 @@ Creates, updates, deletes and sends land on a real Encodian account and cannot b
 | Get Operation Status Using PowerPoint | GET | `/api/v1/PowerPoint/GetOperationStatus` | `conn_mod_def::GLvu4_QwnqE::Pq7qTxhQQjGYXXSq6HJa3Q` |
 | Compress PowerPoint Using PowerPoint | POST | `/api/v1/PowerPoint/CompressPowerPoint` | `conn_mod_def::GLvu5Hc5eIA::J-AnNHL0QMC5jRkwtRid6w` |
 
-4 more PowerPoint actions are available through search.
+4 more PowerPoint actions are available through `find_one_actions`.
 
-This lists 90 of 345 actions. For anything not here, call `search_one_platform_actions` with platform `encodian`. The full catalog is at https://www.withone.ai/knowledge/encodian.
+This lists 90 of 345 actions. For anything not here, call `find_one_actions` with platform `encodian` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/encodian.
 
 ## When a call fails
 
-The error comes from Encodian, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Encodian, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/encodian
 

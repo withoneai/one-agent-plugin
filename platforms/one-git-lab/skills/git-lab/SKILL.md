@@ -13,15 +13,15 @@ metadata:
 
 GitLab is a complete DevOps platform that provides a single application for source code management, CI/CD, security, and project planning—enabling teams to collaborate more efficiently throughout the entire software development lifecycle.
 
-One exposes GitLab through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes GitLab through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `git-lab` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "git-lab", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real GitLab account and cannot be 
 | List a Project’s CI Job Token Scope Inbound Allowlist | GET | `/api/v4/projects/{{id}}/job_token_scope/allowlist` | `conn_mod_def::GJ3f3RJW1DA::y_cNRJDqRICeBWtwf3p28Q` |
 | List a Project’s CI_JOB_TOKEN Groups Allowlist | GET | `/projects/{{id}}/job_token_scope/groups_allowlist` | `conn_mod_def::GJ3f3al1LUU::phm-g7BjTTS5ysunrS9Byg` |
 
-44 more Projects actions are available through search.
+44 more Projects actions are available through `find_one_actions`.
 
 ### ProjectIntegrations
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real GitLab account and cannot be 
 | Create or Edit a Project’s Custom Issue Tracker Integration | PUT | `/api/v4/projects/{{id}}/integrations/custom-issue-tracker` | `conn_mod_def::GJ3eGEMVIiU::MPVIOnvnRfGqkTN3aJO9WA` |
 | Create or Edit a Project’s Diffblue Cover Integration | PUT | `/api/v4/projects/{{id}}/integrations/diffblue-cover` | `conn_mod_def::GJ3eG1Feb9U::1gpNJxcRR1GvC8FkLJudGA` |
 
-29 more ProjectIntegrations actions are available through search.
+29 more ProjectIntegrations actions are available through `find_one_actions`.
 
 ### Groups
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real GitLab account and cannot be 
 | List a Group’s Invited Groups | GET | `/api/v4/groups/{{id}}/invited_groups` | `conn_mod_def::GJ3d6X92y-E::wLKqD67EQlKVPTS-Va4aSw` |
 | List a Group’s Provisioned Users | GET | `/api/v4/groups/{{id}}/provisioned_users` | `conn_mod_def::GJ3d7gP4LTQ::jYdf4gLvTiiT65yFsDGIIw` |
 
-19 more Groups actions are available through search.
+19 more Groups actions are available through `find_one_actions`.
 
 ### GroupIntegrations
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real GitLab account and cannot be 
 | Create or Edit a Group’s GitHub Integration | PUT | `/api/v4/groups/{{id}}/integrations/github` | `conn_mod_def::GJ3eJXtznD8::mPaKjMcRQ0Oh2n3Bt1eWIg` |
 | Create or Edit a Group’s GitLab Slack Application Integration | PUT | `/api/v4/groups/{{id}}/integrations/gitlab-slack-application` | `conn_mod_def::GJ3eJyCxtfA::uYI0VngrTY2KCqVB5kyjNw` |
 
-14 more GroupIntegrations actions are available through search.
+14 more GroupIntegrations actions are available through `find_one_actions`.
 
 ### AwardEmoji
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real GitLab account and cannot be 
 | List a Project Merge Request’s Award Emoji Reactions | GET | `/api/v4/projects/{{id}}/merge_requests/{{mergeRequestIid}}/award_emoji` | `conn_mod_def::GJ3daANTaT4::dYoqXTapQCyBS7jq76mELQ` |
 | List a Project Snippet Note’s Award Emoji Reactions | GET | `/api/v4/projects/{{id}}/snippets/{{snippet_id}}/notes/{{note_id}}/award_emoji` | `conn_mod_def::GJ3dacKzrh0::GzphiQ6xSLu7RQECx3xMxw` |
 
-10 more AwardEmoji actions are available through search.
+10 more AwardEmoji actions are available through `find_one_actions`.
 
 ### MergeRequests
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real GitLab account and cannot be 
 | Approve a Project Merge Request | POST | `/api/v4/projects/{{id}}/merge_requests/{{mergeRequestIid}}/approve` | `conn_mod_def::GJ3ejOikK0Y::Dznbq25NRoa_4e0UGkV56g` |
 | Cancel a Project Merge Request’s “Merge When Pipeline Succeeds” | POST | `/api/v4/projects/{{id}}/merge_requests/{{mergeRequestIid}}/cancel_merge_when_pipeline_succeeds` | `conn_mod_def::GJ3ekCZc_fI::iwlr5x9lSjq9elB3LOEu5w` |
 
-10 more MergeRequests actions are available through search.
+10 more MergeRequests actions are available through `find_one_actions`.
 
 ### Jobs
 
@@ -166,7 +166,7 @@ Creates, updates, deletes and sends land on a real GitLab account and cannot be 
 | Request a Job (Runner) | POST | `/api/v4/jobs/request` | `conn_mod_def::GJ3eejivLx4::1mFhNDlCRmehIYmIrBtDDw` |
 | Retry a Project Job | POST | `/api/v4/projects/{{id}}/jobs/{{jobId}}/retry` | `conn_mod_def::GJ3dfIMhOvk::HlcD8WehTmezZPDbPcTdOg` |
 
-2 more Jobs actions are available through search.
+2 more Jobs actions are available through `find_one_actions`.
 
 ### DebianDistributions
 
@@ -179,13 +179,13 @@ Creates, updates, deletes and sends land on a real GitLab account and cannot be 
 | Get a Project’s Debian Distribution Unsigned Release File | GET | `/api/v4/projects/{{id}}/packages/debian/dists/{{distribution}}/Release` | `conn_mod_def::GJ3fe_O1rfs::MCXLURTdQbWY6Aewikeikw` |
 | List a Group's Debian Distributions | GET | `/api/v4/groups/{{id}}/-/debian_distributions` | `conn_mod_def::GJ3e0vvt-b4::rraJu-P6Qe-jiCmcBjb9yQ` |
 
-7 more DebianDistributions actions are available through search.
+7 more DebianDistributions actions are available through `find_one_actions`.
 
-This lists 90 of 1124 actions. For anything not here, call `search_one_platform_actions` with platform `git-lab`. The full catalog is at https://www.withone.ai/knowledge/git-lab.
+This lists 90 of 1124 actions. For anything not here, call `find_one_actions` with platform `git-lab` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/git-lab.
 
 ## When a call fails
 
-The error comes from GitLab, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from GitLab, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/git-lab
 

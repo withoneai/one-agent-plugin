@@ -13,15 +13,15 @@ metadata:
 
 Alchemy is a blockchain developer platform that provides APIs, node infrastructure, SDKs, and monitoring tools for building, scaling, and operating applications on multiple blockchain networks, allowing developers to access onchain data and manage Web3 infrastructure more reliably.
 
-One exposes Alchemy through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Alchemy through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `alchemy` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "alchemy", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Alchemy account and cannot be
 | Avalanche C-Chain Mainnet - Trace Block | POST | `/v2` | `conn_mod_def::GLGBZhaDNx4::TIKResdYR8W9Zg0YZLeysQ` |
 | Avalanche C-Chain Mainnet - Trace Block By Hash | POST | `/v2` | `conn_mod_def::GLGBZRpbFP0::E9anZkpdRFyDdLwHcnhtng` |
 
-60 more BlockTraces actions are available through search.
+60 more BlockTraces actions are available through `find_one_actions`.
 
 ### UserOperation
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Alchemy account and cannot be
 | Avalanche C-Chain Mainnet - Get User Operation By Hash | POST | `/v2` | `conn_mod_def::GLGBuco9tI0::Z_CjW_3HSbSxjvfsxsQLeg` |
 | Base Mainnet - eth_getUserOperationByHash | POST | `/v2` | `conn_mod_def::GLGBuvNdPZc::rJcztsCPSF-34t4NfC_BWA` |
 
-56 more UserOperation actions are available through search.
+56 more UserOperation actions are available through `find_one_actions`.
 
 ### Traces
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Alchemy account and cannot be
 | Berachain Mainnet - trace_transaction | POST | `/v2` | `conn_mod_def::GLGBa1mRP7c::zuVuV5P1RbGaFFxUELnFYQ` |
 | Blast Mainnet - Trace Transaction | POST | `/v2` | `conn_mod_def::GLGBbUyj6OY::aEstClKGR9yES4oiawMo6A` |
 
-51 more Traces actions are available through search.
+51 more Traces actions are available through `find_one_actions`.
 
 ### TokenBalances
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Alchemy account and cannot be
 | BSC Mainnet - Get Token Balances | POST | `/v2` | `conn_mod_def::GLGBKXB-qD0::GTNI90Q5QtuhqDVCCp9x2w` |
 | Celo Mainnet - alchemy_getTokenBalances | POST | `/v2` | `conn_mod_def::GLGBKo5jIEU::KFJKXnl8TuG6NGWRgzbnMA` |
 
-27 more TokenBalances actions are available through search.
+27 more TokenBalances actions are available through `find_one_actions`.
 
 ### PaymasterTokenQuote
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real Alchemy account and cannot be
 | BSC Mainnet - Request Paymaster Token Quote | POST | `/v2` | `conn_mod_def::GLGBwKX5Hj8::DmLC-p0WQcaBArtFK1xSrQ` |
 | Celo Mainnet - alchemy_requestPaymasterTokenQuote | POST | `/v2` | `conn_mod_def::GLGBwhALypw::7KfB2JnQQyuccVnMGkv2rg` |
 
-26 more PaymasterTokenQuote actions are available through search.
+26 more PaymasterTokenQuote actions are available through `find_one_actions`.
 
 ### TransactionReceipts
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real Alchemy account and cannot be
 | BSC Mainnet - Get Transaction Receipts | POST | `/v2` | `conn_mod_def::GLGBKgGbfDU::OZvO0viRR6mQf5UwXJB-Vg` |
 | Celo Mainnet - alchemy_getTransactionReceipts | POST | `/v2` | `conn_mod_def::GLGBLAFNopM::hBXBNFDvToGXeRXdn5kuVQ` |
 
-26 more TransactionReceipts actions are available through search.
+26 more TransactionReceipts actions are available through `find_one_actions`.
 
 ### TokenMetadata
 
@@ -166,7 +166,7 @@ Creates, updates, deletes and sends land on a real Alchemy account and cannot be
 | BSC Mainnet - Get Token Metadata | POST | `/v2` | `conn_mod_def::GLGBKfGywoM::woywwTh7R6mloixSHznI2A` |
 | Celo Mainnet - Get Token Metadata | POST | `/v2` | `conn_mod_def::GLGBKohy2m0::Xdg7C1e2TsiYNQKHvrzi5A` |
 
-26 more TokenMetadata actions are available through search.
+26 more TokenMetadata actions are available through `find_one_actions`.
 
 ### AssetTransfers
 
@@ -179,13 +179,13 @@ Creates, updates, deletes and sends land on a real Alchemy account and cannot be
 | Astar Mainnet - alchemy_getAssetTransfers | POST | `/v2` | `conn_mod_def::GLGBInl2x_o::PdgeGoVQRVSnUiKyI4PrgQ` |
 | Avalanche C-Chain Mainnet - Get Asset Transfers | POST | `/v2` | `conn_mod_def::GLGBI_I2kKk::oRwPkL18Qo-bGIyas3N0uQ` |
 
-32 more AssetTransfers actions are available through search.
+32 more AssetTransfers actions are available through `find_one_actions`.
 
-This lists 90 of 1418 actions. For anything not here, call `search_one_platform_actions` with platform `alchemy`. The full catalog is at https://www.withone.ai/knowledge/alchemy.
+This lists 90 of 1418 actions. For anything not here, call `find_one_actions` with platform `alchemy` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/alchemy.
 
 ## When a call fails
 
-The error comes from Alchemy, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Alchemy, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/alchemy
 

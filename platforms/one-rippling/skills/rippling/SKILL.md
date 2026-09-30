@@ -13,15 +13,15 @@ metadata:
 
 Rippling is a workforce management platform that unifies HR, IT, finance, and payroll data, enabling businesses to onboard, pay, and manage global employees and contractors while automating workflows, enforcing policies, and using AI to answer questions and complete tasks.
 
-One exposes Rippling through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Rippling through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `rippling` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "rippling", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -280,11 +280,11 @@ Creates, updates, deletes and sends land on a real Rippling account and cannot b
 |---|---|---|---|
 | List Platform Capabilities | GET | `/platform-capabilities/` | `conn_mod_def::GMjW9IWIxWI::u66AtpioQGCnynASz40fXQ` |
 
-This lists 90 of 102 actions. For anything not here, call `search_one_platform_actions` with platform `rippling`. The full catalog is at https://www.withone.ai/knowledge/rippling.
+This lists 90 of 102 actions. For anything not here, call `find_one_actions` with platform `rippling` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/rippling.
 
 ## When a call fails
 
-The error comes from Rippling, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Rippling, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/rippling
 

@@ -13,15 +13,15 @@ metadata:
 
 Freshdesk is a cloud-based customer support platform that offers ticketing, automation, self-service, and multichannel support to help businesses deliver excellent customer service.
 
-One exposes Freshdesk through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Freshdesk through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `freshdesk` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "freshdesk", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Freshdesk account and cannot 
 | Create a Ticket | POST | `/api/v2/tickets` | `conn_mod_def::GJ2hzCsTthU::HYqJKYEWQLutBGQxNMQ1BQ` |
 | Create an Outbound Email Ticket | POST | `/api/v2/tickets/outbound_email` | `conn_mod_def::GJ2hzLfe_zE::UgHWRreIT9qR-431uKm3TA` |
 
-16 more Tickets actions are available through search.
+16 more Tickets actions are available through `find_one_actions`.
 
 ### Contacts
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Freshdesk account and cannot 
 | Restore a Contact | PUT | `/api/v2/contacts/{{id}}/restore` | `conn_mod_def::GJ2hfHQ4sjY::SSE5xzXXTzu0m7geegsN_Q` |
 | Send Invite to a Contact | PUT | `/api/v2/contacts/{{id}}/send_invite` | `conn_mod_def::GJ2hfZcVgmg::4l8lBcUQRHOs2LEtnob4PQ` |
 
-2 more Contacts actions are available through search.
+2 more Contacts actions are available through `find_one_actions`.
 
 ### Groups
 
@@ -189,13 +189,13 @@ Creates, updates, deletes and sends land on a real Freshdesk account and cannot 
 | View a Forum | GET | `/api/v2/discussions/forums/{{id}}` | `conn_mod_def::GJ2hlkxJSVI::ozE24wcPSeiC6mZSmNABVg` |
 | Delete a Forum | DELETE | `/api/v2/discussions/forums/{{id}}` | `conn_mod_def::GJ2hjEShrUE::FTGpsAbdRp6czV9JVsr6zg` |
 
-2 more Forums actions are available through search.
+2 more Forums actions are available through `find_one_actions`.
 
-This lists 90 of 243 actions. For anything not here, call `search_one_platform_actions` with platform `freshdesk`. The full catalog is at https://www.withone.ai/knowledge/freshdesk.
+This lists 90 of 243 actions. For anything not here, call `find_one_actions` with platform `freshdesk` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/freshdesk.
 
 ## When a call fails
 
-The error comes from Freshdesk, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Freshdesk, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/freshdesk
 

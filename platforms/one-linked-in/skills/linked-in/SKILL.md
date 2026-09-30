@@ -13,15 +13,15 @@ metadata:
 
 LinkedIn is a professional networking platform where users can connect, share industry knowledge, and discover job opportunities. It's also widely used for recruiting and B2B marketing.
 
-One exposes LinkedIn through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes LinkedIn through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `linked-in` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "linked-in", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real LinkedIn account and cannot b
 | Batch Create Dynamic Follower Ads | POST | `/rest/creatives` | `conn_mod_def::GKRUPNESiEI::TYHsCIPCQ7CvFXNjdBbXqQ` |
 | Batch Create Dynamic Job Ads | POST | `/rest/creatives` | `conn_mod_def::GKRUPMexWoo::xXNfy062S3eRdFREbqBVvw` |
 
-25 more Creatives actions are available through search.
+25 more Creatives actions are available through `find_one_actions`.
 
 ### Posts
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real LinkedIn account and cannot b
 | Get Celebration Content From a Post | GET | `/rest/posts/{{postUrn}}` | `conn_mod_def::GKRUWM294oM::he4dIi8jSpyIC6nZ1O4xxA` |
 | Get MultiImage Content From a Post | GET | `/rest/posts/{{postId}}` | `conn_mod_def::GKRUWdDFcek::lsbe654eSMGmhOVxlu5p5A` |
 
-15 more Posts actions are available through search.
+15 more Posts actions are available through `find_one_actions`.
 
 ### DmpSegments
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real LinkedIn account and cannot b
 | Create List Upload DMP Segment | POST | `/rest/dmpSegments` | `conn_mod_def::GKRUX2HUSiE::QXxFa4udTd-zVk2NDj1wBw` |
 | Delete a DMP Segment | DELETE | `/rest/dmpSegments/{{segmentId}}` | `conn_mod_def::GKRUYAyZMo0::XysSkvO4RlSPzbByU7akyA` |
 
-2 more DmpSegments actions are available through search.
+2 more DmpSegments actions are available through `find_one_actions`.
 
 ### AdCampaigns
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real LinkedIn account and cannot b
 | Reactivate an Ad Account Campaign | POST | `/rest/adAccounts/{{adAccountId}}/adCampaigns/{{campaignId}}` | `conn_mod_def::GKRUVA6HFK0::SE7kYmfPRCSpkdmbV7LS2Q` |
 | Update a Campaign in an Ad Account | POST | `/rest/adAccounts/{{adAccountId}}/adCampaigns/{{campaignId}}` | `conn_mod_def::GKRUVR_2hF8::sCyvVIsSRn-B9KdX2nTPMw` |
 
-2 more AdCampaigns actions are available through search.
+2 more AdCampaigns actions are available through `find_one_actions`.
 
 ### AdAccountUsers
 
@@ -178,13 +178,13 @@ Creates, updates, deletes and sends land on a real LinkedIn account and cannot b
 | Create a Test Ad Account | POST | `/rest/adAccounts` | `conn_mod_def::GKRUOjc7Kk0::LsFW-ME_Qi-SuNfDWAUh-A` |
 | Create Ad Account | POST | `/rest/adAccounts` | `conn_mod_def::GKRUOYhPRew::g0law-asSJWfaAXCeUBxTQ` |
 
-2 more AdAccounts actions are available through search.
+2 more AdAccounts actions are available through `find_one_actions`.
 
-This lists 90 of 427 actions. For anything not here, call `search_one_platform_actions` with platform `linked-in`. The full catalog is at https://www.withone.ai/knowledge/linked-in.
+This lists 90 of 427 actions. For anything not here, call `find_one_actions` with platform `linked-in` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/linked-in.
 
 ## When a call fails
 
-The error comes from LinkedIn, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from LinkedIn, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/linked-in
 

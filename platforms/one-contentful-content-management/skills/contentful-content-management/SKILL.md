@@ -13,15 +13,15 @@ metadata:
 
 Contentful is a headless content management platform that provides APIs for modeling, managing, and delivering structured content across websites, apps, and digital experiences, allowing developers and content teams to build omnichannel publishing workflows and integrate content into custom applications.
 
-One exposes Contentful Content Management through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Contentful Content Management through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `contentful-content-management` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "contentful-content-management", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Contentful Content Management
 | Add or Update a ResourceLink Field on an Entry | PUT | `/spaces/{{spaceId}}/environments/{{environmentId}}/entries/{{entryId}}` | `conn_mod_def::GLU3P8ArWag::2nHBBMrrS5WuBFmEpmytKg` |
 | Archive an Entry in a Space Environment | PUT | `/spaces/{{spaceId}}/environments/{{environmentId}}/entries/{{entryId}}/archived` | `conn_mod_def::GLU3QWf-ohA::kmC-j4fDSkias2bALXmbZw` |
 
-16 more Entries actions are available through search.
+16 more Entries actions are available through `find_one_actions`.
 
 ### Releases
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Contentful Content Management
 | Publish a Release in a Space Environment | PUT | `/spaces/{{spaceId}}/environments/{{environmentId}}/releases/{{releaseId}}/published` | `conn_mod_def::GLU3T7jdPLA::TLZ3mtc9T42Nnc9VfbvcyQ` |
 | Publish a Release in a Space Environment | PUT | `/spaces/{{spaceId}}/environments/{{environmentId}}/releases/{{releaseId}}/published` | `conn_mod_def::GLU3YgOmtZg::RaxjgU5gSSCn3p-dwNNZIw` |
 
-6 more Releases actions are available through search.
+6 more Releases actions are available through `find_one_actions`.
 
 ### Assets
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Contentful Content Management
 | Process an Asset File Locale in a Release | PUT | `/spaces/{{spaceId}}/environments/{{environmentId}}/releases/{{releaseId}}/assets/{{assetId}}/files/{{localeCode}}/process` | `conn_mod_def::GLU3X83f7wg::PVUNZl2KRhi7vSmgBk6_5g` |
 | Publish an Asset in a Space Environment | PUT | `/spaces/{{spaceId}}/environments/{{environmentId}}/assets/{{assetId}}/published` | `conn_mod_def::GLU3NbP1qbg::4EHOG_SlTNivDosFmUkYqA` |
 
-5 more Assets actions are available through search.
+5 more Assets actions are available through `find_one_actions`.
 
 ### ContentTypes
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Contentful Content Management
 | Update a Content Type in a Space Environment | PUT | `/spaces/{{spaceId}}/environments/{{environmentId}}/content_types/{{contentTypeId}}` | `conn_mod_def::GLU3Px7vA3g::qX7X7tQkS0CSRsnnEGkTfA` |
 | Update a Content Type in a Space Environment | PUT | `/spaces/{{spaceId}}/environments/{{environmentId}}/content_types/{{contentTypeId}}` | `conn_mod_def::GLU3WnlncdA::5eBsTY0gS2i_01ov9z1DJQ` |
 
-3 more ContentTypes actions are available through search.
+3 more ContentTypes actions are available through `find_one_actions`.
 
 ### AiActions
 
@@ -183,13 +183,13 @@ Creates, updates, deletes and sends land on a real Contentful Content Management
 | Complete a Workflow in a Space Environment | PUT | `/spaces/{{spaceId}}/environments/{{environmentId}}/workflows/{{workflowId}}/completed` | `conn_mod_def::GLU3ahQZx1A::iD7vvn77THCho5IuSWt4Og` |
 | Create a Workflow in a Space Environment | POST | `/spaces/{{spaceId}}/environments/{{environmentId}}/workflows` | `conn_mod_def::GLU3aiIp_5A::fABPNiizTWm1JC-TWwfyMw` |
 
-3 more Workflows actions are available through search.
+3 more Workflows actions are available through `find_one_actions`.
 
-This lists 90 of 371 actions. For anything not here, call `search_one_platform_actions` with platform `contentful-content-management`. The full catalog is at https://www.withone.ai/knowledge/contentful-content-management.
+This lists 90 of 371 actions. For anything not here, call `find_one_actions` with platform `contentful-content-management` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/contentful-content-management.
 
 ## When a call fails
 
-The error comes from Contentful Content Management, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Contentful Content Management, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/contentful-content-management
 

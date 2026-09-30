@@ -13,15 +13,15 @@ metadata:
 
 Daytona is a developer infrastructure platform for creating and managing secure, reproducible development environments, enabling engineering teams to provision workspaces, automate setup, and integrate cloud-based development workflows into their tools and platforms through APIs and infrastructure components.
 
-One exposes Daytona through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Daytona through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `daytona` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "daytona", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Daytona account and cannot be
 | Resize a Sandbox | POST | `/api/sandbox/{{sandboxIdOrName}}/resize` | `conn_mod_def::GMgWYrgt87g::HDnfIi0WTKeIk4eKwjzpww` |
 | Revoke SSH Access for a Sandbox | DELETE | `/api/sandbox/{{sandboxIdOrName}}/ssh-access` | `conn_mod_def::GMgWYrkJ9Ag::mSOTCSLVTg2J5GfqQSLmYg` |
 
-11 more Sandbox actions are available through search.
+11 more Sandbox actions are available through `find_one_actions`.
 
 ### Runners
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Daytona account and cannot be
 | Delete a Runner | DELETE | `/api/admin/runners/{{id}}` | `conn_mod_def::GMgWUbUCZgg::OBuwOHK7QS-l9G7gjU8rvg` |
 | Delete a Runner | DELETE | `/api/runners/{{id}}` | `conn_mod_def::GMgWXjnFtcg::ChoEInm9Tv6UgbzrDv_zXw` |
 
-4 more Runners actions are available through search.
+4 more Runners actions are available through `find_one_actions`.
 
 ### Organizations
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Daytona account and cannot be
 | Update Experimental Configuration for an Organization | PUT | `/api/organizations/{{organizationId}}/experimental-config` | `conn_mod_def::GMgWW-yr_Lg::152T0yWWT8q-pOkMjMCFTQ` |
 | Update Organization OpenTelemetry Configuration | PUT | `/api/organizations/{{organizationId}}/otel-config` | `conn_mod_def::GMgWXIzj2zg::LGZvnmDVQF-zuN5ERjbDvA` |
 
-2 more Organizations actions are available through search.
+2 more Organizations actions are available through `find_one_actions`.
 
 ### Snapshots
 
@@ -196,13 +196,13 @@ Creates, updates, deletes and sends land on a real Daytona account and cannot be
 | Get Job Details | GET | `/api/jobs/{{jobId}}` | `conn_mod_def::GMgWVnkRkrg::TVA_f1_lRGKikkmudlm54Q` |
 | List Jobs for the Runner | GET | `/api/jobs` | `conn_mod_def::GMgWVpz_SAA::zqZk5hLDS5aTnW0_AOzsIQ` |
 
-2 more Jobs actions are available through search.
+2 more Jobs actions are available through `find_one_actions`.
 
-This lists 90 of 179 actions. For anything not here, call `search_one_platform_actions` with platform `daytona`. The full catalog is at https://www.withone.ai/knowledge/daytona.
+This lists 90 of 179 actions. For anything not here, call `find_one_actions` with platform `daytona` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/daytona.
 
 ## When a call fails
 
-The error comes from Daytona, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Daytona, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/daytona
 

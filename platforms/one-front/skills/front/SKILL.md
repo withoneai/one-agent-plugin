@@ -13,15 +13,15 @@ metadata:
 
 Front is a shared inbox and communication platform that brings email, apps, and teammates into a single view. It helps teams manage customer communication and collaborate more effectively.
 
-One exposes Front through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Front through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `front` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "front", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Front account and cannot be r
 | Add Tags to a Conversation | POST | `/conversations/{{conversationId}}/tags` | `conn_mod_def::GJ2jSzfj0Cs::7Ewug0ofTXuS-BX_6CY2Qg` |
 | Create a Discussion Conversation | POST | `/conversations` | `conn_mod_def::GJ2jS8IExrU::4yutoO24RRmaIK3PSfNQgw` |
 
-6 more Conversations actions are available through search.
+6 more Conversations actions are available through `find_one_actions`.
 
 ### Contacts
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Front account and cannot be r
 | Delete a Contact Handle | DELETE | `/contacts/{{contactId}}/handles` | `conn_mod_def::GJ2jOnLUSyc::gXCrjJIWTV-6cyfo3pAEPw` |
 | Merge Contacts | POST | `/contacts/merge` | `conn_mod_def::GJ2jSRVv7UU::2yoyVVh0RkiS3bVrLq736w` |
 
-1 more Contacts actions are available through search.
+1 more Contacts actions are available through `find_one_actions`.
 
 ### MessageTemplateFolders
 
@@ -174,13 +174,13 @@ Creates, updates, deletes and sends land on a real Front account and cannot be r
 | Get a Knowledge Base Article’s Localized Content | GET | `/knowledge_base_articles/{{articleId}}/locales/{{locale}}/content` | `conn_mod_def::GJ2jaBvBGI0::EiIksuSVQY-5rNLWVfvOpw` |
 | List a Knowledge Base’s Articles | GET | `/knowledge_bases/{{knowledgeBaseId}}/articles` | `conn_mod_def::GJ2jaa9PiTs::EslEdBvCSNyqmC_2Tm1spw` |
 
-5 more KnowledgeBaseArticles actions are available through search.
+5 more KnowledgeBaseArticles actions are available through `find_one_actions`.
 
-This lists 90 of 238 actions. For anything not here, call `search_one_platform_actions` with platform `front`. The full catalog is at https://www.withone.ai/knowledge/front.
+This lists 90 of 238 actions. For anything not here, call `find_one_actions` with platform `front` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/front.
 
 ## When a call fails
 
-The error comes from Front, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Front, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/front
 

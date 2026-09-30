@@ -13,15 +13,15 @@ metadata:
 
 JumpCloud is a cloud directory and identity management platform that provides single sign-on, device management, and access control APIs, allowing IT teams to manage users, endpoints, and authentication policies across applications, networks, and operating systems from a unified service.
 
-One exposes JumpCloud through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes JumpCloud through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `jump-cloud` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "jump-cloud", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real JumpCloud account and cannot 
 | Reset a System User's MFA Token | POST | `/systemusers/{{id}}/resetmfa` | `conn_mod_def::GLCUouj_tZg::eHh7Xx1xRlmYw5lQ-lpnwA` |
 | Search System Users | POST | `/api/search/systemusers` | `conn_mod_def::GLCUkvkLP9A::PBhCUUGyQ4m92RWY0Vav0A` |
 
-5 more SystemUsers actions are available through search.
+5 more SystemUsers actions are available through `find_one_actions`.
 
 ### Applications
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real JumpCloud account and cannot 
 | Delete an Application Image | DELETE | `/applications/{{applicationId}}/logo` | `conn_mod_def::GLCUSiUZeNg::UHpxPOv3Rqm_TDMdSCiI8w` |
 | Manage an Application's Associations | POST | `/applications/{{applicationId}}/associations` | `conn_mod_def::GLCUa8bNs1g::FmkZqXooQzuvEx0mt-6A8A` |
 
-3 more Applications actions are available through search.
+3 more Applications actions are available through `find_one_actions`.
 
 ### Systems
 
@@ -174,13 +174,13 @@ Creates, updates, deletes and sends land on a real JumpCloud account and cannot 
 | Reset Password of a Device | POST | `/google-emm/devices/{{deviceId}}/resetpassword` | `conn_mod_def::GLCUWY_Ycig::_yhDMwQ9RwWACAG3jqrL-w` |
 | Start Lost Mode for a Google EMM Device | POST | `/google-emm/devices/{{deviceId}}/lostmode/start` | `conn_mod_def::GLCUWZIKzwA::QW2mEwU3TTehC9U_mMfjLQ` |
 
-1 more GoogleEmmDevices actions are available through search.
+1 more GoogleEmmDevices actions are available through `find_one_actions`.
 
-This lists 90 of 703 actions. For anything not here, call `search_one_platform_actions` with platform `jump-cloud`. The full catalog is at https://www.withone.ai/knowledge/jump-cloud.
+This lists 90 of 703 actions. For anything not here, call `find_one_actions` with platform `jump-cloud` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/jump-cloud.
 
 ## When a call fails
 
-The error comes from JumpCloud, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from JumpCloud, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/jump-cloud
 

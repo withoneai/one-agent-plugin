@@ -13,15 +13,15 @@ metadata:
 
 Asana is a scalable work management platform that helps teams organize projects, set company-wide goals, automate workflows, and track progress in real time—all within a single, integrated workspace.
 
-One exposes Asana through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Asana through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `asana` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "asana", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Asana account and cannot be r
 | Search Tasks in a Workspace | GET | `/workspaces/{{workspaceGid}}/tasks/search` | `conn_mod_def::GJ0BmJsc69Q::2k2XfYayTCahfyAcdAYtYA` |
 | Add a Project to a Task | POST | `/tasks/{{taskGid}}/addProject` | `conn_mod_def::GJ0Bi1o6GZk::R8fHKPrpTnOl6Z7whAxLfA` |
 
-15 more Tasks actions are available through search.
+15 more Tasks actions are available through `find_one_actions`.
 
 ### Projects
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Asana account and cannot be r
 | Delete a Project | DELETE | `/projects/{{projectGid}}` | `conn_mod_def::GJ0BbYg3A_8::3wYv9ycTTEq32IE6h8tANg` |
 | Duplicate a Project | POST | `/projects/{{projectGid}}/duplicate` | `conn_mod_def::GJ0BbhCINN4::pl8RXfJpQWGliIhFLW97zQ` |
 
-4 more Projects actions are available through search.
+4 more Projects actions are available through `find_one_actions`.
 
 ### Goals
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Asana account and cannot be r
 | Remove a Goal’s Supporting Relationship | POST | `/goals/{{goalGid}}/removeSupportingRelationship` | `conn_mod_def::GJ0BSR9rOyE::Z2-74I0yR8yWqsutqHZ7dQ` |
 | Remove Followers from a Goal | POST | `/goals/{{goalGid}}/removeFollowers` | `conn_mod_def::GJ0BTywEDw0::9XWLKKTsReiYI6UA1S8HYQ` |
 
-2 more Goals actions are available through search.
+2 more Goals actions are available through `find_one_actions`.
 
 ### Portfolios
 
@@ -186,13 +186,13 @@ Creates, updates, deletes and sends land on a real Asana account and cannot be r
 | Delete a Custom Field | DELETE | `/custom_fields/{{customFieldGid}}` | `conn_mod_def::GJ0BQDneuUY::vThd-8aeQu-jPv_-EK4-aw` |
 | Reorder a Custom Field’s Enum Options | POST | `/custom_fields/{{customFieldGid}}/enum_options/insert` | `conn_mod_def::GJ0BQkHR6vA::DKZ84rA_Qe64GnwmvD9nRg` |
 
-1 more CustomFields actions are available through search.
+1 more CustomFields actions are available through `find_one_actions`.
 
-This lists 90 of 223 actions. For anything not here, call `search_one_platform_actions` with platform `asana`. The full catalog is at https://www.withone.ai/knowledge/asana.
+This lists 90 of 223 actions. For anything not here, call `find_one_actions` with platform `asana` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/asana.
 
 ## When a call fails
 
-The error comes from Asana, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Asana, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/asana
 

@@ -13,15 +13,15 @@ metadata:
 
 Anchor Browser is a cloud-hosted automation platform that lets AI agents interact with web pages like a human—navigating sites, clicking, typing, submitting forms and extracting data—so teams can automate workflows where APIs are unavailable or limited.
 
-One exposes Anchor Browser through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Anchor Browser through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `anchor-browser` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "anchor-browser", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Anchor Browser account and ca
 | Perform Drag and Drop in a Session | POST | `/v1/sessions/{{SESSIONID}}/drag-and-drop` | `conn_mod_def::GJkCB1wAp-8::jeTyZhLCQIWJE1-womZF0g` |
 | Perform Mouse Up in a Session | POST | `/v1/sessions/{{SESSIONID}}/mouse/up` | `conn_mod_def::GJkCBkz-M9M::3TwufSP4RbSTVK71W6j3sQ` |
 
-3 more Sessions actions are available through search.
+3 more Sessions actions are available through `find_one_actions`.
 
 ### Tasks
 
@@ -323,11 +323,11 @@ Creates, updates, deletes and sends land on a real Anchor Browser account and ca
 |---|---|---|---|
 | Get a Task Execution Result (Legacy) | GET | `/v1/task/{{TASKID}}/executions/{{EXECUTIONID}}` | `conn_mod_def::GJkCFftiXEc::JVj82TijTL2aYtAjKJoByw` |
 
-This lists 81 of 84 actions. For anything not here, call `search_one_platform_actions` with platform `anchor-browser`. The full catalog is at https://www.withone.ai/knowledge/anchor-browser.
+This lists 81 of 84 actions. For anything not here, call `find_one_actions` with platform `anchor-browser` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/anchor-browser.
 
 ## When a call fails
 
-The error comes from Anchor Browser, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Anchor Browser, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/anchor-browser
 

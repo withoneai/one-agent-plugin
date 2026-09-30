@@ -13,15 +13,15 @@ metadata:
 
 Dropbox is a cloud storage platform that enables users to store, share, and collaborate on files and documents securely across devices and teams.
 
-One exposes Dropbox through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Dropbox through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `dropbox` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "dropbox", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Dropbox account and cannot be
 | Export a File | POST | `/files/export` | `conn_mod_def::GJ2YesPdC2I::Ztd7vzMQRZei_WNw-N3ukQ` |
 | Finish a File Upload Session (Commit Uploaded Data) | POST | `/2/files/upload_session/finish` | `conn_mod_def::GJ2YoaCU9q4::rOQW3wkXR3aedsPj9Zuj5g` |
 
-19 more Files actions are available through search.
+19 more Files actions are available through `find_one_actions`.
 
 ### Sharing
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Dropbox account and cannot be
 | Relinquish the Current User’s Membership in a Shared Folder | POST | `/sharing/relinquish_folder_membership` | `conn_mod_def::GJ2Ys0Zeym0::QYFJ5eLmT3my6J1HTfZZYQ` |
 | Remove a Member From a Shared File | POST | `/sharing/remove_file_member_2` | `conn_mod_def::GJ2Ys84hqts::SwM5bXa0Tbuni7vF1YzyDQ` |
 
-6 more Sharing actions are available through search.
+6 more Sharing actions are available through `find_one_actions`.
 
 ### FileRequests
 
@@ -279,11 +279,11 @@ Creates, updates, deletes and sends land on a real Dropbox account and cannot be
 |---|---|---|---|
 | Get Thumbnails for a Batch of Files | POST | `/files/get_thumbnail_batch` | `conn_mod_def::GJ2YfkEbIMU::o-vdqQiMS4WVFFY2k6_sbA` |
 
-This lists 90 of 121 actions. For anything not here, call `search_one_platform_actions` with platform `dropbox`. The full catalog is at https://www.withone.ai/knowledge/dropbox.
+This lists 90 of 121 actions. For anything not here, call `find_one_actions` with platform `dropbox` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/dropbox.
 
 ## When a call fails
 
-The error comes from Dropbox, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Dropbox, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/dropbox
 

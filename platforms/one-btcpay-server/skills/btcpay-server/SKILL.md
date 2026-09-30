@@ -13,15 +13,15 @@ metadata:
 
 BTCPay Server is an open-source cryptocurrency payment platform that enables merchants to accept Bitcoin and other digital asset payments without intermediaries, providing self-hosted invoicing, wallet integration, point-of-sale tools, and APIs for managing payments, stores, and checkout workflows.
 
-One exposes BTCPay Server through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes BTCPay Server through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `btcpay-server` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "btcpay-server", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real BTCPay Server account and can
 | Delete Current User Profile | DELETE | `/api/v1/users/me` | `conn_mod_def::GLNXZRaB_Sg::61ar15lhT1KhesL1cktD5w` |
 | Delete Current User Profile | DELETE | `/api/v1/users/me` | `conn_mod_def::GLNl3dMx_8g::RNvFLA1FRParJ9W_3Gk-6w` |
 
-11 more Users actions are available through search.
+11 more Users actions are available through `find_one_actions`.
 
 ### Invoices
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real BTCPay Server account and can
 | Create Invoice for a Store | POST | `/api/v1/stores/{{storeId}}/invoices` | `conn_mod_def::GLNXRD8tcEg::6loGt88DQCmsVAX6LO-eJA` |
 | Mark Invoice Status for a Store Invoice | POST | `/api/v1/stores/{{storeId}}/invoices/{{invoiceId}}/status` | `conn_mod_def::GLNXRSlEfIA::WCEl9uxjQ-KuGLV4kjpfDw` |
 
-6 more Invoices actions are available through search.
+6 more Invoices actions are available through `find_one_actions`.
 
 ### Stores
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real BTCPay Server account and can
 | Send Email for a Store | POST | `/api/v1/stores/{{storeId}}/email/send` | `conn_mod_def::GLNl1GkNBTg::u9ScNCnwQAKoRdwXmMsQTw` |
 | Send Email Using a Store | POST | `/api/v1/stores/{{storeId}}/email/send` | `conn_mod_def::GLNXWsoU6Ng::gUzVlwGRRJ6eg6UIA9---g` |
 
-4 more Stores actions are available through search.
+4 more Stores actions are available through `find_one_actions`.
 
 ### Apps
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real BTCPay Server account and can
 | Update a Point of Sale App | PUT | `/api/v1/apps/pos/{{appId}}` | `conn_mod_def::GLNlusWAb2g::nK1UZvPtSO-wNGXQm5GpkA` |
 | Upload Image for an App Item | POST | `/api/v1/apps/{{appId}}/image` | `conn_mod_def::GLNXQWTbhkg::CdJpNtnYTmCHT-xSGlxfow` |
 
-1 more Apps actions are available through search.
+1 more Apps actions are available through `find_one_actions`.
 
 ### PullPayments
 
@@ -173,13 +173,13 @@ Creates, updates, deletes and sends land on a real BTCPay Server account and can
 | Create a New API Key | POST | `/api/v1/api-keys` | `conn_mod_def::GLNluKdw6wg::X7RefjkBR7ORgYkYm7xbTw` |
 | Create an API Key | POST | `/api/v1/api-keys` | `conn_mod_def::GLNXPvx0d7A::Li830IaCRBGbRWSyeYjrYw` |
 
-4 more ApiKeys actions are available through search.
+4 more ApiKeys actions are available through `find_one_actions`.
 
-This lists 90 of 390 actions. For anything not here, call `search_one_platform_actions` with platform `btcpay-server`. The full catalog is at https://www.withone.ai/knowledge/btcpay-server.
+This lists 90 of 390 actions. For anything not here, call `find_one_actions` with platform `btcpay-server` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/btcpay-server.
 
 ## When a call fails
 
-The error comes from BTCPay Server, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from BTCPay Server, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/btcpay-server
 

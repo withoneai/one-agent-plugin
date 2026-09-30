@@ -13,15 +13,15 @@ metadata:
 
 Stormboard is a collaborative digital whiteboard and workflow platform that enables teams to brainstorm, organize ideas, and turn discussions into structured, data-driven workspaces for planning, decision-making, and project execution in real time.
 
-One exposes Stormboard through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Stormboard through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `stormboard` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "stormboard", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Stormboard account and cannot
 | Re-open a Storm | POST | `/storms/{{stormId}}/reopen` | `conn_mod_def::GKo2OYaJ9ZA::p0YKMIcfT2643mBErjkWVQ` |
 | Remove a Favorite From a Storm | DELETE | `/storms/{{stormId}}/favorite` | `conn_mod_def::GKo2OYPWmUg::sI7xpHvUTsKsQgo6rguLiw` |
 
-3 more Storms actions are available through search.
+3 more Storms actions are available through `find_one_actions`.
 
 ### Ideas
 
@@ -189,11 +189,11 @@ Creates, updates, deletes and sends land on a real Stormboard account and cannot
 |---|---|---|---|
 | Get Authentication Info | GET | `/users/auth` | `conn_mod_def::GKo2PA7yPQA::0JNzBWqpS_CbqsRTfHhIJA` |
 
-This lists 52 of 55 actions. For anything not here, call `search_one_platform_actions` with platform `stormboard`. The full catalog is at https://www.withone.ai/knowledge/stormboard.
+This lists 52 of 55 actions. For anything not here, call `find_one_actions` with platform `stormboard` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/stormboard.
 
 ## When a call fails
 
-The error comes from Stormboard, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Stormboard, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/stormboard
 

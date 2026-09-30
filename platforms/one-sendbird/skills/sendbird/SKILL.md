@@ -13,15 +13,15 @@ metadata:
 
 Sendbird is an AI customer experience and communications platform that provides chat, voice, video, support, and AI agent capabilities, allowing enterprises to build personalized customer interactions and service experiences across the customer journey.
 
-One exposes Sendbird through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Sendbird through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `sendbird` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "sendbird", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Sendbird account and cannot b
 | Retrieve a User's Call Summary | GET | `/v1/users/{{userId}}/call_summary` | `conn_mod_def::GMMGYDwYsng::pxJEM10MRNmPcYPonertow` |
 | Retrieve a User's Push Tokens | GET | `/v1/users/{{userId}}/push/{{tokenType}}` | `conn_mod_def::GMMGX5l7iwc::brTuIsDPReyy3NCk_safCg` |
 
-21 more Users actions are available through search.
+21 more Users actions are available through `find_one_actions`.
 
 ### GroupChannels
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Sendbird account and cannot b
 | Create Group Channels | POST | `/v3/group_channels` | `conn_mod_def::GMMGTh-ytsE::B2_irst_S5uyG3ZLAQvDag` |
 | Decline an Invitation for a Group Channel | PUT | `/v3/group_channels/{{channelUrl}}/decline` | `conn_mod_def::GMMGTigmEHU::lTn5SEeHRBOb1-Y5Sqi8lQ` |
 
-18 more GroupChannels actions are available through search.
+18 more GroupChannels actions are available through `find_one_actions`.
 
 ### Messages
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Sendbird account and cannot b
 | Pin an Existing Message in a Channel | POST | `/v3/{{channelType}}/{{channelUrl}}/messages/{{messageId}}/pin` | `conn_mod_def::GMMGSh4UkY8::IALX5JvhQ-CYvU8KLzCsJA` |
 | Reply to a Message in a Channel | POST | `/v3/{{channelType}}/{{channelUrl}}/messages` | `conn_mod_def::GMMGStXlhxg::Yr0EgEl-TQS1npY6IxO6EA` |
 
-5 more Messages actions are available through search.
+5 more Messages actions are available through `find_one_actions`.
 
 ### OpenChannels
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Sendbird account and cannot b
 | Mute a Participant in an Open Channel | POST | `/v3/open_channels/{{channelUrl}}/mute` | `conn_mod_def::GMMGVR2jI3E::jtzxS-plSV-cZx0WDxYGhQ` |
 | Unban a Participant from an Open Channel | DELETE | `/v3/open_channels/{{channelUrl}}/ban/{{bannedUserId}}` | `conn_mod_def::GMMGVYmulY8::g5BexypGRF6wAEC4eiS0BA` |
 
-2 more OpenChannels actions are available through search.
+2 more OpenChannels actions are available through `find_one_actions`.
 
 ### Bots
 
@@ -183,11 +183,11 @@ Creates, updates, deletes and sends land on a real Sendbird account and cannot b
 | Delete Custom Items of a Room | DELETE | `/v1/rooms/{{roomId}}/custom_items` | `conn_mod_def::GMMGWVi5UKs::AxE0Qm98QuKZGKLnsnmPAA` |
 | Update Custom Items for a Room | PUT | `/v1/rooms/{{roomId}}/custom_items` | `conn_mod_def::GMMGWfye8_g::EMncZHTgQT6Waw9HISL60g` |
 
-This lists 90 of 262 actions. For anything not here, call `search_one_platform_actions` with platform `sendbird`. The full catalog is at https://www.withone.ai/knowledge/sendbird.
+This lists 90 of 262 actions. For anything not here, call `find_one_actions` with platform `sendbird` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/sendbird.
 
 ## When a call fails
 
-The error comes from Sendbird, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Sendbird, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/sendbird
 

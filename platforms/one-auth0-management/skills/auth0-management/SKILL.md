@@ -13,15 +13,15 @@ metadata:
 
 Auth0 delivers a flexible, drop-in authentication and authorization platform that lets developers secure applications and APIs with features like social login, single sign-on, passwordless and multifactor authentication, breached password detection, and IoT device flows—all without building identity systems from scratch.
 
-One exposes Auth0 Management through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Auth0 Management through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `auth0-management` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "auth0-management", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Auth0 Management account and 
 | Create a Connection’s Directory Provisioning Configuration | POST | `/api/v2/connections/{{id}}/directory-provisioning` | `conn_mod_def::GJ0DMFKoNJo::7TN7cWXOSHmfAEfW29vPGQ` |
 | Create a Connection’s SCIM Configuration | POST | `/api/v2/connections/{{id}}/scim-configuration` | `conn_mod_def::GJ0DMMs09qI::vfiVwbRhTaqcQwOZfsJMkw` |
 
-10 more Connections actions are available through search.
+10 more Connections actions are available through `find_one_actions`.
 
 ### Users
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Auth0 Management account and 
 | Invalidate All Remembered Browsers for a User's Multi-factor Authentication | POST | `/api/v2/users/{{id}}/multifactor/actions/invalidate-remember-browser` | `conn_mod_def::GJ0Dw1WaaLo::Vk-tznwGRkKBwRMCwA-6CA` |
 | Link a User Account (Link Secondary Identity to a Primary User) | POST | `/api/v2/users/{{id}}/identities` | `conn_mod_def::GJ0Dw86mfF0::tEZuKqWSQcuulFBr2E_aDg` |
 
-7 more Users actions are available through search.
+7 more Users actions are available through `find_one_actions`.
 
 ### Roles
 
@@ -184,13 +184,13 @@ Creates, updates, deletes and sends land on a real Auth0 Management account and 
 | Delete a Client | DELETE | `/api/v2/clients/{{id}}` | `conn_mod_def::GJ0DJYXkNMc::wv3eytIiQRmZdXHw5kyP2A` |
 | Rotate a Client's Secret | POST | `/api/v2/clients/{{id}}/rotate-secret` | `conn_mod_def::GJ0DKmVAf2U::0LeHBNP-R9qzW87QJn5ZpA` |
 
-1 more Clients actions are available through search.
+1 more Clients actions are available through `find_one_actions`.
 
-This lists 90 of 390 actions. For anything not here, call `search_one_platform_actions` with platform `auth0-management`. The full catalog is at https://www.withone.ai/knowledge/auth0-management.
+This lists 90 of 390 actions. For anything not here, call `find_one_actions` with platform `auth0-management` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/auth0-management.
 
 ## When a call fails
 
-The error comes from Auth0 Management, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Auth0 Management, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/auth0-management
 

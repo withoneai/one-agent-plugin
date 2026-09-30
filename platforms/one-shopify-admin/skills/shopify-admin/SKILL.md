@@ -13,15 +13,15 @@ metadata:
 
 Shopify Admin is the backend interface for managing your Shopify store. It provides tools for product listings, order fulfillment, customer management, and store analytics.
 
-One exposes Shopify Admin through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Shopify Admin through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `shopify-admin` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "shopify-admin", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Shopify Admin account and can
 | Get a Product by Identifier | POST | `/admin/api/2026-04/graphql.json` | `conn_mod_def::GKbQiWFNogo::groPM0jESP26Nh7O91csNw` |
 | List Products | POST | `/admin/api/2026-04/graphql.json` | `conn_mod_def::GKbQiyxlSRc::ZTlGg0A_Q0q2nYOCUHqDYA` |
 
-9 more Products actions are available through search.
+9 more Products actions are available through `find_one_actions`.
 
 ### Customers
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Shopify Admin account and can
 | Remove Tax Exemptions From a Customer | POST | `/admin/api/2026-04/graphql.json` | `conn_mod_def::GKbP9x_0CkE::BUlHYiJIQIeFlUxR8VSMIw` |
 | Replace a Customer's Tax Exemptions | POST | `/admin/api/2026-04/graphql.json` | `conn_mod_def::GKbP-f-rkCM::S0_aeY8KSfy8sC9XUydkDw` |
 
-4 more Customers actions are available through search.
+4 more Customers actions are available through `find_one_actions`.
 
 ### Orders
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Shopify Admin account and can
 | Mark an Order as Paid | POST | `/admin/api/2026-04/graphql.json` | `conn_mod_def::GKbQNERVOLE::Srvq87_BQlCtchAVBYzkKw` |
 | Open an Order | POST | `/admin/api/2026-04/graphql.json` | `conn_mod_def::GKbQNF9oicQ::v1voQ81kQJyl_J2Vphh8-A` |
 
-4 more Orders actions are available through search.
+4 more Orders actions are available through `find_one_actions`.
 
 ### Collections
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Shopify Admin account and can
 | Publish a Collection to Sales Channels | POST | `/admin/api/2026-04/graphql.json` | `conn_mod_def::GKbP37xCg30::ccO1Xj_eRJqYHJJ2NjuVbw` |
 | Remove Products From a Manual Collection | POST | `/admin/api/2026-04/graphql.json` | `conn_mod_def::GKbP37mr6Ys::eQv9FR0vTp2khL9saphd2w` |
 
-3 more Collections actions are available through search.
+3 more Collections actions are available through `find_one_actions`.
 
 ### Returns
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real Shopify Admin account and can
 | Remove Return and/or Exchange Lines From a Return | POST | `/admin/api/2026-04/graphql.json` | `conn_mod_def::GKbQQ7Fx5iQ::_sv_u-3FR8aAOfno_uq1kQ` |
 | Remove Return Line Items From a Return | POST | `/admin/api/2026-04/graphql.json` | `conn_mod_def::GKbQRIzGaJ8::sDQJmE3-RwahfFBpyU_sEA` |
 
-1 more Returns actions are available through search.
+1 more Returns actions are available through `find_one_actions`.
 
 ### FulfillmentOrder
 
@@ -175,13 +175,13 @@ Creates, updates, deletes and sends land on a real Shopify Admin account and can
 | Get an Inventory Transfer by ID | POST | `/admin/api/2026-04/graphql.json` | `conn_mod_def::GKbQeoV4Otk::wMu5IUP-RsaitmgVi-4c2w` |
 | Mark an Inventory Transfer as Ready to Ship | POST | `/admin/api/2026-04/graphql.json` | `conn_mod_def::GKbQHtHtmHw::EdeVlIVSSGWztW3OQulWCg` |
 
-2 more InventoryTransfer actions are available through search.
+2 more InventoryTransfer actions are available through `find_one_actions`.
 
-This lists 90 of 796 actions. For anything not here, call `search_one_platform_actions` with platform `shopify-admin`. The full catalog is at https://www.withone.ai/knowledge/shopify-admin.
+This lists 90 of 796 actions. For anything not here, call `find_one_actions` with platform `shopify-admin` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/shopify-admin.
 
 ## When a call fails
 
-The error comes from Shopify Admin, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Shopify Admin, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/shopify-admin
 

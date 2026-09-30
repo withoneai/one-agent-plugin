@@ -13,15 +13,15 @@ metadata:
 
 Zoho offers a suite of cloud-based applications for businesses, including CRM, project management, accounting, and collaboration tools. Its integrated ecosystem supports businesses in managing operations, sales, marketing, and finance.
 
-One exposes Zoho through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Zoho through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `zoho` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "zoho", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Zoho account and cannot be re
 | Get a Lead Record’s Share Details | GET | `/crm/v8/Leads/{{recordId}}/actions/share` | `conn_mod_def::GJ8dxKIASA0::Qws7Nq9zSuapSmFaGwFMqA` |
 | Get a Lead Record’s Subform Data | GET | `/crm/v8/Leads/{{recordId}}` | `conn_mod_def::GJ8d3fokh5I::XDqGiSxyQ42Sr8Scz6YvUQ` |
 
-39 more Leads actions are available through search.
+39 more Leads actions are available through `find_one_actions`.
 
 ### Contacts
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Zoho account and cannot be re
 | Add Tags to Contact Records | POST | `/crm/v8/Contacts/actions/add_tags` | `conn_mod_def::GJ8drh_OWi4::rFkycOSeQDaAQR19nK3DNg` |
 | Attach a File to a Contact (Add Attachment) | POST | `/crm/v8/Contacts/{{recordId}}/Attachments` | `conn_mod_def::GJ8drboVcHE::voX5lQKRSBa6yZ9AN17AGQ` |
 
-14 more Contacts actions are available through search.
+14 more Contacts actions are available through `find_one_actions`.
 
 ### Products
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Zoho account and cannot be re
 | Add a Product Record Photo | POST | `/crm/v8/Products/{{recordId}}/photo` | `conn_mod_def::GJ8dzh0oPaU::kHw2_TIjQMmKfsHHlSX_Jw` |
 | Add Tags to Product Records | POST | `/crm/v8/Products/actions/add_tags` | `conn_mod_def::GJ8dzjh0DtA::nsFbFHLiTNu4aMwasAR3Zg` |
 
-12 more Products actions are available through search.
+12 more Products actions are available through `find_one_actions`.
 
 ### Deals
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Zoho account and cannot be re
 | Associate an Email to a Deal Record | POST | `/crm/v8/Deals/{{recordId}}/actions/associate_email` | `conn_mod_def::GJ8doxfFVX0::h6-2vRJoQnapvDlsVHCo3Q` |
 | Associate Email with a Deal Record | POST | `/crm/v8/Deals/{{dealId}}/actions/associate_email` | `conn_mod_def::GJ8do8Lq_Xk::UN-0CDoDR9eKxcGErVS11g` |
 
-11 more Deals actions are available through search.
+11 more Deals actions are available through `find_one_actions`.
 
 ### Quotes
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real Zoho account and cannot be re
 | Add Tags to Quote Records | POST | `/crm/v8/Quotes/actions/add_tags` | `conn_mod_def::GJ8d096_2g0::tOmXkYFFS7iEneRFmzzj1g` |
 | Attach a File to a Quote Record | POST | `/crm/v8/Quotes/{{recordId}}/Attachments` | `conn_mod_def::GJ8d0t0QIDI::Yhi6-ZKDSd2FDIYv4JhPdQ` |
 
-11 more Quotes actions are available through search.
+11 more Quotes actions are available through `find_one_actions`.
 
 ### SalesOrders
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real Zoho account and cannot be re
 | Add Tags to Sales Orders Records | POST | `/crm/v8/Sales_Orders/actions/add_tags` | `conn_mod_def::GJ8d18BpzPA::CtF4RHb4RZOMXHCFP4C6eQ` |
 | Attach a File to a Sales Order Record | POST | `/crm/v8/Sales_Orders/{{recordId}}/Attachments` | `conn_mod_def::GJ8d2AnAung::JtdkACfgT-6XexGZ0_uHcA` |
 
-11 more SalesOrders actions are available through search.
+11 more SalesOrders actions are available through `find_one_actions`.
 
 ### Accounts
 
@@ -166,7 +166,7 @@ Creates, updates, deletes and sends land on a real Zoho account and cannot be re
 | Add Tags to Account Records | POST | `/crm/v8/Accounts/actions/add_tags` | `conn_mod_def::GJ8dn0JqPB8::5FO-GgB6QeWvh-fULtWerw` |
 | Create an Account | POST | `/crm/v8/Accounts` | `conn_mod_def::GJ8doCcWghM::SIYv9nMaSJ6UFcBK0PpWeg` |
 
-10 more Accounts actions are available through search.
+10 more Accounts actions are available through `find_one_actions`.
 
 ### PurchaseOrders
 
@@ -179,13 +179,13 @@ Creates, updates, deletes and sends land on a real Zoho account and cannot be re
 | List a Contact’s Purchase Orders | GET | `/crm/v8/Contacts/{{recordId}}/PurchaseOrders` | `conn_mod_def::GJ8d0Vc_hfQ::EWDsuvYmQ7mff8iaReojYw` |
 | List a Vendor's Purchase Orders | GET | `/crm/v8/Vendors/{{recordId}}/PurchaseOrders` | `conn_mod_def::GJ8d0YkR00Y::drmQiKY1RO6fGHzQX9CmFA` |
 
-16 more PurchaseOrders actions are available through search.
+16 more PurchaseOrders actions are available through `find_one_actions`.
 
-This lists 90 of 759 actions. For anything not here, call `search_one_platform_actions` with platform `zoho`. The full catalog is at https://www.withone.ai/knowledge/zoho.
+This lists 90 of 759 actions. For anything not here, call `find_one_actions` with platform `zoho` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/zoho.
 
 ## When a call fails
 
-The error comes from Zoho, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Zoho, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/zoho
 

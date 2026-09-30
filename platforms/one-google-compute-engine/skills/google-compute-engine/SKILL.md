@@ -13,15 +13,15 @@ metadata:
 
 Google Compute Engine is an infrastructure-as-a-service platform that provides scalable virtual machines, networking, and storage for running workloads in the cloud, enabling developers and IT teams to deploy, manage, and automate applications with fine-grained control over compute resources.
 
-One exposes Google Compute Engine through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Google Compute Engine through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `google-compute-engine` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "google-compute-engine", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Google Compute Engine account
 | Bulk Insert Instances in a Region | POST | `/projects/{{project}}/regions/{{region}}/instances/bulkInsert` | `conn_mod_def::GKoh9tdf7l0::39HTLarOQ_qVImR5i1v3Pg` |
 | Bulk Insert Instances in a Zone for a Project | POST | `/projects/{{project}}/zones/{{zone}}/instances/bulkInsert` | `conn_mod_def::GKohskWbr5M::xSYt0CM8QYa7Huvg52NatQ` |
 
-33 more Instances actions are available through search.
+33 more Instances actions are available through `find_one_actions`.
 
 ### InstanceGroupManagers
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Google Compute Engine account
 | Create a Zonal Managed Instance Group in a Project and Zone | POST | `/projects/{{project}}/zones/{{zone}}/instanceGroupManagers` | `conn_mod_def::GKohra8VGSY::KgSTlcTgSWmzR5jzU2qGdA` |
 | Create Instances in a Zonal Managed Instance Group | POST | `/projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{instanceGroupManager}}/createInstances` | `conn_mod_def::GKohrISnUlQ::9vwbhzQ9TP29X9prch0kWw` |
 
-22 more InstanceGroupManagers actions are available through search.
+22 more InstanceGroupManagers actions are available through `find_one_actions`.
 
 ### SecurityPolicies
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Google Compute Engine account
 | Create a Global Security Policy in a Project | POST | `/projects/{{project}}/global/securityPolicies` | `conn_mod_def::GKoiFHw5mMc::bZ7DDwe7QyC-sdZMdYjR5A` |
 | Create a Regional Security Policy in a Project | POST | `/projects/{{project}}/regions/{{region}}/securityPolicies` | `conn_mod_def::GKoiADMU_1k::df--9wL_SlWoGPDfg8bfzw` |
 
-10 more SecurityPolicies actions are available through search.
+10 more SecurityPolicies actions are available through `find_one_actions`.
 
 ### FirewallPolicies
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Google Compute Engine account
 | Clone Rules for a Global Firewall Policy in a Project | POST | `/projects/{{project}}/global/firewallPolicies/{{firewallPolicy}}/cloneRules` | `conn_mod_def::GKohzXdgpms::tzvxIljCRr-vz9bgjFN-jw` |
 | Create a Global Firewall Policy | POST | `/compute/v1/locations/global/firewallPolicies` | `conn_mod_def::GKohm2gzrM8::uQ3NXbIFQDyjkyqUf1EufQ` |
 
-7 more FirewallPolicies actions are available through search.
+7 more FirewallPolicies actions are available through `find_one_actions`.
 
 ### BackendBuckets
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real Google Compute Engine account
 | Delete a Project's Global Backend Bucket | DELETE | `/projects/{{project}}/global/backendBuckets/{{backendBucket}}` | `conn_mod_def::GKohj9m2iPY::kps3LIGPQ8CQNmpP17MEVw` |
 | Delete a Regional Backend Bucket | DELETE | `/compute/v1/projects/{{project}}/regions/{{region}}/backendBuckets/{{backendBucket}}` | `conn_mod_def::GKoh4J_goZg::Gl-78UO6Snab3uSN5a9RcQ` |
 
-6 more BackendBuckets actions are available through search.
+6 more BackendBuckets actions are available through `find_one_actions`.
 
 ### Disks
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real Google Compute Engine account
 | Resize a Zonal Persistent Disk | POST | `/projects/{{project}}/zones/{{zone}}/disks/{{disk}}/resize` | `conn_mod_def::GKohlyWaQbY::obwbgDJdTf-S7zlUKpThuQ` |
 | Rotate a Zonal Disk's Customer-Managed Encryption Key | POST | `/projects/{{project}}/zones/{{zone}}/disks/{{disk}}/updateKmsKey` | `conn_mod_def::GKohmStUHc0::6paahrsCR8SLGK40DFc_PQ` |
 
-6 more Disks actions are available through search.
+6 more Disks actions are available through `find_one_actions`.
 
 ### NetworkEndpointGroups
 
@@ -166,7 +166,7 @@ Creates, updates, deletes and sends land on a real Google Compute Engine account
 | Create a Regional Network Endpoint Group in a Project | POST | `/projects/{{project}}/regions/{{region}}/networkEndpointGroups` | `conn_mod_def::GKoh-imcbiM::b4s0hAF6SbaMIS8KYvM1kw` |
 | Create a Zonal Network Endpoint Group in a Project | POST | `/projects/{{project}}/zones/{{zone}}/networkEndpointGroups` | `conn_mod_def::GKohy9-pJvU::booJ5C-vQrC8jDBmEBHNxQ` |
 
-6 more NetworkEndpointGroups actions are available through search.
+6 more NetworkEndpointGroups actions are available through `find_one_actions`.
 
 ### BackendServices
 
@@ -179,13 +179,13 @@ Creates, updates, deletes and sends land on a real Google Compute Engine account
 | List a Region's Backend Services | GET | `/projects/{{project}}/regions/{{region}}/backendServices` | `conn_mod_def::GKoh4y4U7R8::rbWesiWYR--lRfxhKUkFZQ` |
 | List Usable Backend Services in a Project | GET | `/projects/{{project}}/global/backendServices/listUsable` | `conn_mod_def::GKohkx6VN7Y::47NKuo7zR02kxis5iBURJA` |
 
-11 more BackendServices actions are available through search.
+11 more BackendServices actions are available through `find_one_actions`.
 
-This lists 90 of 977 actions. For anything not here, call `search_one_platform_actions` with platform `google-compute-engine`. The full catalog is at https://www.withone.ai/knowledge/google-compute-engine.
+This lists 90 of 977 actions. For anything not here, call `find_one_actions` with platform `google-compute-engine` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/google-compute-engine.
 
 ## When a call fails
 
-The error comes from Google Compute Engine, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Google Compute Engine, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/google-compute-engine
 

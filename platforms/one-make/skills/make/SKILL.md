@@ -13,15 +13,15 @@ metadata:
 
 Make is a no-code automation platform that allows users to visually build workflows connecting apps and services, enabling the automation of tasks and data transfer across systems.
 
-One exposes Make through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Make through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `make` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "make", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Make account and cannot be re
 | Add Buildtime Variables to a Scenario | POST | `/api/v2/scenarios/{{scenarioId}}/build-variables` | `conn_mod_def::GJ43QMLpU5Q::O3RxSR97SrqbuWBvPMWk9Q` |
 | Clone a Scenario | POST | `/api/v2/scenarios/{{scenarioId}}/clone` | `conn_mod_def::GJ43QhMPVek::2pH6u1vaRLyNE9zJNRwi4Q` |
 
-13 more Scenarios actions are available through search.
+13 more Scenarios actions are available through `find_one_actions`.
 
 ### Organizations
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Make account and cannot be re
 | Cancel an Organization's Active Subscription | DELETE | `/api/v2/organizations/{{organizationId}}/subscription` | `conn_mod_def::GJ43PHH7qb8::L8zG22W9SvWtMsb5mVvbzA` |
 | Change an Organization’s Subscription | PATCH | `/api/v2/organizations/{{organizationId}}/subscription` | `conn_mod_def::GJ43PPTbOdI::eaZjAXT3TkmLFj2A8PnmNw` |
 
-9 more Organizations actions are available through search.
+9 more Organizations actions are available through `find_one_actions`.
 
 ### SdkApps
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Make account and cannot be re
 | Set an App’s Opensource Status | POST | `/api/v2/sdk/apps/{{sdkAppName}}/{{sdkAppVersion}}/opensource` | `conn_mod_def::GJ43TGvPn3M::7mMBhG5RQ--XYwN_3qu1Zg` |
 | Set an SDK App Version to Closed Source | POST | `/api/v2/sdk/apps/{{sdkAppName}}/{{sdkAppVersion}}/closedsource` | `conn_mod_def::GJ43S-3kQqQ::tiOxGgmHQ2ulhs1aasrPcw` |
 
-6 more SdkApps actions are available through search.
+6 more SdkApps actions are available through `find_one_actions`.
 
 ### Users
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Make account and cannot be re
 | Set a User’s UI Settings | POST | `/api/v2/users/set-ui-settings` | `conn_mod_def::GJ43WJfp3Zw::5iGjcPXqRsqRG2uAd4d0lw` |
 | Update a User | PATCH | `/api/v2/users/{{userId}}` | `conn_mod_def::GJ43V_ng9Kg::7TkB9tjsQkW4XlTGwUhgfQ` |
 
-2 more Users actions are available through search.
+2 more Users actions are available through `find_one_actions`.
 
 ### Hooks
 
@@ -173,13 +173,13 @@ Creates, updates, deletes and sends land on a real Make account and cannot be re
 | Delete a Credential Request | DELETE | `/api/v2/credential-requests/requests/{{requestId}}` | `conn_mod_def::GJ43KoN5WJw::ymunfcmIQ7O66EGvkoyp4Q` |
 | Delete a Remote Credential for a Credential Request | POST | `/api/v2/credential-requests/credentials/{{credentialId}}/delete-remote` | `conn_mod_def::GJ43KoZdOzU::vrkpOi4wRhWyzWDqyzzIPQ` |
 
-1 more CredentialRequests actions are available through search.
+1 more CredentialRequests actions are available through `find_one_actions`.
 
-This lists 90 of 441 actions. For anything not here, call `search_one_platform_actions` with platform `make`. The full catalog is at https://www.withone.ai/knowledge/make.
+This lists 90 of 441 actions. For anything not here, call `find_one_actions` with platform `make` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/make.
 
 ## When a call fails
 
-The error comes from Make, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Make, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/make
 

@@ -13,15 +13,15 @@ metadata:
 
 An email platform that offers robust inbox organization, integrated calendar functionality, and enterprise-grade security for both individuals and organizations.
 
-One exposes Outlook Mail through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Outlook Mail through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `outlook-mail` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "outlook-mail", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Outlook Mail account and cann
 | Get a User Mail Folder Message MIME Content | GET | `/users/{{userId}}/mailFolders/{{mailFolderId}}/messages/{{messageId}}/$value` | `conn_mod_def::GJ58vuZ9lfg::VTk_e9PbQFqfDCYsj3ITkw` |
 | Get a User Message’s MIME Content | GET | `/users/{{userId}}/messages/{{messageId}}/$value` | `conn_mod_def::GJ58yhusQDU::HxiwBNQ9SoqzCdeZUFKKPw` |
 
-98 more Messages actions are available through search.
+98 more Messages actions are available through `find_one_actions`.
 
 ### MailFolders
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Outlook Mail account and cann
 | Invoke Mail Folder Delta for a User (Track Changes) | GET | `/users/{{userId}}/mailFolders/microsoft.graph.delta()` | `conn_mod_def::GJ58xkp4FOc::Yy8JpAzHTO6AtvrVrLA8Yg` |
 | List a User Mail Folder’s Child Folders | GET | `/users/{{userId}}/mailFolders/{{mailFolderId}}/childFolders` | `conn_mod_def::GJ58vUb-W4A::OChKpkomSKu2tpNKrOMxlQ` |
 
-23 more MailFolders actions are available through search.
+23 more MailFolders actions are available through `find_one_actions`.
 
 ### MessageExtensions
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Outlook Mail account and cann
 | Get Extension Count for a Message in a Child Mail Folder | GET | `/v1.0/me/mailFolders/{{mailFolderId}}/childFolders/{{mailFolderId1}}/messages/{{messageId}}/extensions/$count` | `conn_mod_def::GMIYxF3J17I::hzpUWYVwS1ua1fD1FrwiyQ` |
 | List a User MailFolder Message Extensions | GET | `/users/{{userId}}/mailFolders/{{mailFolderId}}/messages/{{messageId}}/extensions` | `conn_mod_def::GJ58vkxq0xY::Ozxs1joYSQqJIcAj78FmEA` |
 
-20 more MessageExtensions actions are available through search.
+20 more MessageExtensions actions are available through `find_one_actions`.
 
 ### MessageRules
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Outlook Mail account and cann
 | List Message Rules in a Mail Folder | GET | `/v1.0/me/mailFolders/{{mailFolderId}}/messageRules` | `conn_mod_def::GMIYwSM2EgU::Pp-Mh028Q8a-Gq_4Dc9z3w` |
 | List Message Rules in a User’s Child Mail Folder | GET | `/users/{{userId}}/mailFolders/{{mailFolderId}}/childFolders/{{mailFolderId1}}/messageRules` | `conn_mod_def::GJ58vtCt9ZQ::ZGPw0TeXTTOWemjcY9mqnQ` |
 
-12 more MessageRules actions are available through search.
+12 more MessageRules actions are available through `find_one_actions`.
 
 ### Attachments
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real Outlook Mail account and cann
 | List a User Message’s Attachments (in a Child Mail Folder) | GET | `/users/{{userId}}/mailFolders/{{mailFolderId}}/childFolders/{{mailFolderId1}}/messages/{{messageId}}/attachments` | `conn_mod_def::GJ58vTzcuf4::bv0On9IhStG370mpawgc6w` |
 | List Attachments in a Message in a Child Mail Folder | GET | `/v1.0/me/mailFolders/{{mailFolderId}}/childFolders/{{mailFolderId1}}/messages/{{messageId}}/attachments` | `conn_mod_def::GMIYvwepm9g::V5NxH7x0Qge401AMdlDA4g` |
 
-8 more Attachments actions are available through search.
+8 more Attachments actions are available through `find_one_actions`.
 
 ### MessageAttachments
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real Outlook Mail account and cann
 | Delete a Message Attachment in a Child Mail Folder | DELETE | `/v1.0/me/mailFolders/{{mailFolderId}}/childFolders/{{mailFolderId1}}/messages/{{messageId}}/attachments/{{attachmentId}}` | `conn_mod_def::GMIYvTj0c0I::F1NzGyk4QS-PokBkiCAmBg` |
 | Delete a User Message Attachment | DELETE | `/users/{{userId}}/messages/{{messageId}}/attachments/{{attachmentId}}` | `conn_mod_def::GJ58yCxPqRU::hgW-kXuNRz2MkFipUdQwmw` |
 
-2 more MessageAttachments actions are available through search.
+2 more MessageAttachments actions are available through `find_one_actions`.
 
 ### InferenceClassificationOverrides
 
@@ -177,11 +177,11 @@ Creates, updates, deletes and sends land on a real Outlook Mail account and cann
 | Move a Signed-In User's Mail Folder | POST | `/v1.0/me/mailFolders/{{mailFolderId}}/microsoft.graph.move` | `conn_mod_def::GMIYx4HUC10::5SxgaKS_RKqL6RuELpvzDg` |
 | Update a Signed-In User's Mail Folder | PATCH | `/v1.0/me/mailFolders/{{mailFolderId}}` | `conn_mod_def::GMIYy0plVjs::4bAvg8bTSr6Og2_35_0Lpw` |
 
-This lists 90 of 278 actions. For anything not here, call `search_one_platform_actions` with platform `outlook-mail`. The full catalog is at https://www.withone.ai/knowledge/outlook-mail.
+This lists 90 of 278 actions. For anything not here, call `find_one_actions` with platform `outlook-mail` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/outlook-mail.
 
 ## When a call fails
 
-The error comes from Outlook Mail, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Outlook Mail, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/outlook-mail
 

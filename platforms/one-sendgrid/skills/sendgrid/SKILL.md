@@ -13,15 +13,15 @@ metadata:
 
 SendGrid is a cloud-based email service that enables businesses to send transactional and marketing emails at scale. It offers email APIs, analytics, and deliverability support.
 
-One exposes SendGrid through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes SendGrid through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `sendgrid` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "sendgrid", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real SendGrid account and cannot b
 | Remove an IP Address from an IP Pool | DELETE | `/v3/ips/pools/{{poolName}}/ips/{{ip}}` | `conn_mod_def::GJ6Yk8tETaA::JOUFI7ZQQIW1G0AWgkUlyQ` |
 | Rename an IP Pool | PUT | `/v3/ips/pools/{{poolName}}` | `conn_mod_def::GJ6YlGXYyeY::24NJHI3lRaWT4ynjVShSUw` |
 
-1 more IpPools actions are available through search.
+1 more IpPools actions are available through `find_one_actions`.
 
 ### MailSettings
 
@@ -177,11 +177,11 @@ Creates, updates, deletes and sends land on a real SendGrid account and cannot b
 | Remove Contacts from a Marketing List | DELETE | `/v3/marketing/lists/{{id}}/contacts` | `conn_mod_def::GJ6YmH5u9D4::foN6vpWeS4-J5XZxiMjxvg` |
 | Update a Marketing List | PATCH | `/marketing/lists/{{id}}` | `conn_mod_def::GJ6YmVQOxY4::BQ6A0854RIWRrWqKabnt1A` |
 
-This lists 90 of 389 actions. For anything not here, call `search_one_platform_actions` with platform `sendgrid`. The full catalog is at https://www.withone.ai/knowledge/sendgrid.
+This lists 90 of 389 actions. For anything not here, call `find_one_actions` with platform `sendgrid` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/sendgrid.
 
 ## When a call fails
 
-The error comes from SendGrid, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from SendGrid, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/sendgrid
 

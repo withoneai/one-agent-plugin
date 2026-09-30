@@ -13,15 +13,15 @@ metadata:
 
 Pipedrive is a sales CRM designed to help small teams manage leads and deals. It offers visual pipelines, activity tracking, automation, and reporting to streamline sales processes.
 
-One exposes Pipedrive through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Pipedrive through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `pipedrive` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "pipedrive", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Pipedrive account and cannot 
 | List Deals | GET | `/deals` | `conn_mod_def::GJ6GYx2X67A::dxPBax3VRkWDLXL_Qy9fig` |
 | Search Deals | GET | `/api/v2/deals/search` | `conn_mod_def::GJ6GZt3aNa4::8x8BmP6ITweiPEvEQau5sA` |
 
-8 more Deals actions are available through search.
+8 more Deals actions are available through `find_one_actions`.
 
 ### Persons
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Pipedrive account and cannot 
 | Add a Person | POST | `/persons` | `conn_mod_def::GJ6Gef5QX28::-8Cvrsa0Qv6CFWD2ZsUFDw` |
 | Add a Person’s Picture | POST | `/v1/persons/{{id}}/picture` | `conn_mod_def::GJ6GetEHd5w::JCO0lImYTHGhlbhZNK1Cbw` |
 
-4 more Persons actions are available through search.
+4 more Persons actions are available through `find_one_actions`.
 
 ### Organizations
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Pipedrive account and cannot 
 | Delete an Organization | DELETE | `/api/v2/organizations/{{id}}` | `conn_mod_def::GJ6GddMsrVo::MXmSZr4rQ12R1ouHa7j69Q` |
 | Merge an Organization with Another Organization | PUT | `/organizations/{{id}}/merge` | `conn_mod_def::GJ6Gd2lBo5Y::1WXlcwOlSzKwzH9dLjuuAQ` |
 
-1 more Organizations actions are available through search.
+1 more Organizations actions are available through `find_one_actions`.
 
 ### DealFields
 
@@ -171,13 +171,13 @@ Creates, updates, deletes and sends land on a real Pipedrive account and cannot 
 | List Users | GET | `/users` | `conn_mod_def::GJ6GjMvtvOM::9WO5y6cDQpqWKkZ4inSeBg` |
 | Add a New User | POST | `/users` | `conn_mod_def::GJ6Gi_ZBTf8::gatgzD6HSV-063aqDINCqA` |
 
-1 more Users actions are available through search.
+1 more Users actions are available through `find_one_actions`.
 
-This lists 90 of 312 actions. For anything not here, call `search_one_platform_actions` with platform `pipedrive`. The full catalog is at https://www.withone.ai/knowledge/pipedrive.
+This lists 90 of 312 actions. For anything not here, call `find_one_actions` with platform `pipedrive` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/pipedrive.
 
 ## When a call fails
 
-The error comes from Pipedrive, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Pipedrive, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/pipedrive
 

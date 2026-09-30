@@ -13,15 +13,15 @@ metadata:
 
 Chargebee is a subscription billing and revenue operations platform that helps SaaS and subscription-based businesses manage recurring billing, invoicing, taxes, and analytics.
 
-One exposes Chargebee through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Chargebee through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `chargebee` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "chargebee", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Chargebee account and cannot 
 | Create a Cancellation Estimate for a Subscription’s Items | POST | `/subscriptions/{{subscriptionId}}/cancel_subscription_for_items_estimate` | `conn_mod_def::GJ1IsH1hO0U::M8-ZeV5XQYatZSdtyfxxNQ` |
 | Create a Customer Subscription for Items | POST | `/customers/{{customerId}}/subscription_for_items` | `conn_mod_def::GJ1I6Llrgeo::OkN35JmUS_GO1W6YsgEW6A` |
 
-27 more Subscriptions actions are available through search.
+27 more Subscriptions actions are available through `find_one_actions`.
 
 ### Invoices
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Chargebee account and cannot 
 | Apply Payments for an Invoice | POST | `/invoices/{{invoiceId}}/apply_payments` | `conn_mod_def::GJ1IqUOikgs::ESJpO1DmT6WuvtJe3dFG_g` |
 | Close a Pending Invoice | POST | `/invoices/{{invoiceId}}/close` | `conn_mod_def::GJ1Iuah_rDk::mbZe-co8Tla4ttZo3zNl0Q` |
 
-22 more Invoices actions are available through search.
+22 more Invoices actions are available through `find_one_actions`.
 
 ### Customers
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Chargebee account and cannot 
 | Copy a Customer’s Card to Another Payment Gateway (Deprecated) | POST | `/customers/{{customerId}}/copy_card` | `conn_mod_def::GJ1Iv3H-3Ig::mPs2GFXAR8SXguG59uLsAw` |
 | Create a Customer | POST | `/api/v2/customers` | `conn_mod_def::GJ1IxZASSls::Ccyy7SlMQq2PLYSGn3uJFg` |
 
-17 more Customers actions are available through search.
+17 more Customers actions are available through `find_one_actions`.
 
 ### HostedPages
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Chargebee account and cannot 
 | Create Hosted Page Checkout for a New Subscription (New Subscription Items) | POST | `/hosted_pages/checkout_new_for_items` | `conn_mod_def::GJ1I4xGo_Ng::tuRMbizuQYKru9cYoxjqzA` |
 | Extend a Subscription (Hosted Page) | POST | `/hosted_pages/extend_subscription` | `conn_mod_def::GJ1JHH3hYHU::gaX0UoJXQHaw4vwKMzBKcw` |
 
-5 more HostedPages actions are available through search.
+5 more HostedPages actions are available through `find_one_actions`.
 
 ### PaymentSources
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real Chargebee account and cannot 
 | Delete a Payment Source | POST | `/payment_sources/{{custPaymentSourceId}}/delete` | `conn_mod_def::GJ1I9I4N4rc::uCtJBI-5R66PntCT2TwAGw` |
 | Export a Payment Source to a Gateway | POST | `/payment_sources/{{custPaymentSourceId}}/export_payment_source` | `conn_mod_def::GJ1JF8jlWnI::3QbQTmqDQbqvLF4b8aYs0g` |
 
-4 more PaymentSources actions are available through search.
+4 more PaymentSources actions are available through `find_one_actions`.
 
 ### Exports
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real Chargebee account and cannot 
 | Export Items | POST | `/exports/items` | `conn_mod_def::GJ1JFhph_oA::5y7XVqd5R2OvYJBPMMQmlw` |
 | Export Orders | POST | `/api/v2/exports/orders` | `conn_mod_def::GJ1JFvdVazs::d8MS6ki7Qm605RtUgaB7uw` |
 
-4 more Exports actions are available through search.
+4 more Exports actions are available through `find_one_actions`.
 
 ### CreditNotes
 
@@ -166,7 +166,7 @@ Creates, updates, deletes and sends land on a real Chargebee account and cannot 
 | Retrieve a Credit Note PDF Download URL | POST | `/credit_notes/{{creditNoteId}}/pdf` | `conn_mod_def::GJ1Jw6qV66c::2fB5Re9ZR2GXW0H3Woxw5w` |
 | Send an E-Invoice for a Credit Note | POST | `/credit_notes/{{creditNoteId}}/send_einvoice` | `conn_mod_def::GJ1Jz6i8Hho::6xbyXidTSiubVviGrkzdfA` |
 
-1 more CreditNotes actions are available through search.
+1 more CreditNotes actions are available through `find_one_actions`.
 
 ### Quotes
 
@@ -179,13 +179,13 @@ Creates, updates, deletes and sends land on a real Chargebee account and cannot 
 | Create a Quote for Charge Items and One-Time Charges | POST | `/api/v2/quotes/create_for_charge_items_and_charges` | `conn_mod_def::GJ1I01kgqOA::elPePRqDRPW0hss3Xpyzqg` |
 | Create a Quote for Updating a Subscription (Items) | POST | `/api/v2/quotes/update_subscription_quote_for_items` | `conn_mod_def::GJ1I1OEZ2uU::l88SxRsqS3Ot5YyvA8-_1Q` |
 
-7 more Quotes actions are available through search.
+7 more Quotes actions are available through `find_one_actions`.
 
-This lists 90 of 409 actions. For anything not here, call `search_one_platform_actions` with platform `chargebee`. The full catalog is at https://www.withone.ai/knowledge/chargebee.
+This lists 90 of 409 actions. For anything not here, call `find_one_actions` with platform `chargebee` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/chargebee.
 
 ## When a call fails
 
-The error comes from Chargebee, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Chargebee, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/chargebee
 

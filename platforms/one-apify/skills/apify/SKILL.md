@@ -13,15 +13,15 @@ metadata:
 
 Apify is a full‑stack web scraping and browser automation platform where developers can deploy serverless “Actors,” leverage 5,000+ prebuilt tools, manage proxies, scheduling, and data storage, and extract structured data from any website at scale via API or UI.
 
-One exposes Apify through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Apify through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `apify` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "apify", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Apify account and cannot be r
 | Metamorph an Actor Run (Transform Run to Another Actor) | POST | `/v2/actor-runs/{{runId}}/metamorph` | `conn_mod_def::GJ0Afqme6v0::gLh8oGTHTiStIylOey6oPg` |
 | Metamorph an Actor Run into Another Actor (Deprecated) | POST | `/v2/acts/{{actorId}}/runs/{{runId}}/metamorph` | `conn_mod_def::GJ0AkrXsWJc::1ziJWLd6Tf-uCAa-qTPibA` |
 
-7 more ActorRuns actions are available through search.
+7 more ActorRuns actions are available through `find_one_actions`.
 
 ### RequestQueues
 
@@ -197,13 +197,13 @@ Creates, updates, deletes and sends land on a real Apify account and cannot be r
 | Get an Actor Task’s Last Run | GET | `/v2/actor-tasks/{{actorTaskId}}/runs/last` | `conn_mod_def::GJ0AgrijtH0::IretlCLtSPCzsu4qvBLKtg` |
 | List a Task’s Runs | GET | `/v2/actor-tasks/{{actorTaskId}}/runs` | `conn_mod_def::GJ0Ag0DpJjs::FprV91AZRS-xvI9Vx5f0JA` |
 
-1 more ActorTaskRuns actions are available through search.
+1 more ActorTaskRuns actions are available through `find_one_actions`.
 
-This lists 90 of 120 actions. For anything not here, call `search_one_platform_actions` with platform `apify`. The full catalog is at https://www.withone.ai/knowledge/apify.
+This lists 90 of 120 actions. For anything not here, call `find_one_actions` with platform `apify` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/apify.
 
 ## When a call fails
 
-The error comes from Apify, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Apify, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/apify
 

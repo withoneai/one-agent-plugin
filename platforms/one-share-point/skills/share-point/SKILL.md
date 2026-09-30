@@ -13,15 +13,15 @@ metadata:
 
 Microsoft SharePoint is a web-based collaboration and content management platform that enables organizations to create websites for secure document storage, information sharing, workflow automation, and team collaboration, accessible from any device.
 
-One exposes SharePoint through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes SharePoint through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `share-point` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "share-point", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real SharePoint account and cannot
 | Get a Relation’s fromTerm for a Group’s Site Term Store Term | GET | `/groups/{{GROUP-ID}}/sites/{{SITE-ID}}/termStores/{{STORE-ID}}/sets/{{SET-ID}}/terms/{{TERM-ID}}/relations/{{RELATION-ID}}/fromTerm` | `conn_mod_def::GJYtVwAsOH4::Xk1Nx9pGS42UdO8SNWllmw` |
 | Get a Relation’s fromTerm for a Site Term Store Term | GET | `/sites/{{SITE-ID}}/termStores/{{STORE-ID}}/groups/{{GROUP-ID}}/sets/{{SET-ID}}/children/{{TERM-ID}}/relations/{{RELATION-ID}}/fromTerm` | `conn_mod_def::GJYu__zThPk::vhY5VxeLRwudGIDVSGZADA` |
 
-92 more TermStoreTerm actions are available through search.
+92 more TermStoreTerm actions are available through `find_one_actions`.
 
 ### TermStoreSet
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real SharePoint account and cannot
 | Get a Related Set for a Relation in a Site's Term Store (Set) | GET | `/sites/{{SITE-ID}}/termStore/sets/{{SET-ID}}/parentGroup/sets/{{SET-ID1}}/relations/{{RELATION-ID}}/set` | `conn_mod_def::GJYuwxzCQlQ::noyUe8uERqKwIDyS085XNg` |
 | Get a Related Set for a Term Store Relation (from a Site) | GET | `/sites/{{SITE-ID}}/termStores/{{STORE-ID}}/sets/{{SET-ID}}/parentGroup/sets/{{SET-ID1}}/relations/{{RELATION-ID}}/set` | `conn_mod_def::GJYvR4UP-dM::Xj3cVSy2Qim7piFUQBrPtg` |
 
-77 more TermStoreSet actions are available through search.
+77 more TermStoreSet actions are available through `find_one_actions`.
 
 ### MailboxSettings
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real SharePoint account and cannot
 | Get a Drive Root's Last Modified By User Mailbox Settings | GET | `/drives/{{DRIVE-ID}}/root/lastModifiedByUser/mailboxSettings` | `conn_mod_def::GJYCo3oyk-g::_FufIc54SwyZZUAvHoIi-g` |
 | Get a Drive's Last Modified By User Mailbox Settings | GET | `/drives/{{DRIVE-ID}}/lastModifiedByUser/mailboxSettings` | `conn_mod_def::GJYDV4A-k_Q::vUrpPIG4T1CqwlB-9p2QVA` |
 
-47 more MailboxSettings actions are available through search.
+47 more MailboxSettings actions are available through `find_one_actions`.
 
 ### DriveItem
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real SharePoint account and cannot
 | Get a User Drive Item’s Child (by ID) | GET | `/users/{{USER-ID}}/drives/{{DRIVE-ID}}/root/children/{{DRIVEITEM-ID}}` | `conn_mod_def::GJYwD0ubWZY::ckO1WYDCTimuv5VWRzKGfw` |
 | Get a User Drive's Special Drive Item | GET | `/users/{{USER-ID}}/drives/{{DRIVE-ID}}/special/{{DRIVEITEM-ID}}` | `conn_mod_def::GJYwSqIlc-s::WXXRgGNTR9a-cKlaLgbz3Q` |
 
-43 more DriveItem actions are available through search.
+43 more DriveItem actions are available through `find_one_actions`.
 
 ### TermStoreRelation
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real SharePoint account and cannot
 | Get a Relation for a Child Term in a Site Term Store Set | GET | `/sites/{{SITE-ID}}/termStores/{{STORE-ID}}/sets/{{SET-ID}}/parentGroup/sets/{{SET-ID1}}/terms/{{TERM-ID}}/children/{{TERM-ID1}}/relations/{{RELATION-ID}}` | `conn_mod_def::GJYvUAbB5VQ::xWxmAp2uQeSRlxckIQsZbA` |
 | Get a Relation for a Term in a Site Term Store | GET | `/sites/{{SITE-ID}}/termStore/sets/{{SET-ID}}/parentGroup/sets/{{SET-ID1}}/children/{{TERM-ID}}/children/{{TERM-ID1}}/relations/{{RELATION-ID}}` | `conn_mod_def::GJYutZouRQE::XdwNnkIIS16i5kwPkshIEg` |
 
-38 more TermStoreRelation actions are available through search.
+38 more TermStoreRelation actions are available through `find_one_actions`.
 
 ### ServiceProvisioningErrors
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real SharePoint account and cannot
 | Get a List Item's Last Modified By User Service Provisioning Errors | GET | `/users/{{USER-ID}}/drives/{{DRIVE-ID}}/list/items/{{LISTITEM-ID}}/lastModifiedByUser/serviceProvisioningErrors` | `conn_mod_def::GJYv7sJbEP8::yBRrbyqzQDa8UaxvK6p98w` |
 | Get a List Item’s lastModifiedByUser serviceProvisioningErrors | GET | `/sites/{{SITE-ID}}/lists/{{LIST-ID}}/items/{{LISTITEM-ID}}/lastModifiedByUser/serviceProvisioningErrors` | `conn_mod_def::GJYuQBHwEXw::aE2hxoWGRAW89_8mkvJWHA` |
 
-26 more ServiceProvisioningErrors actions are available through search.
+26 more ServiceProvisioningErrors actions are available through `find_one_actions`.
 
 ### ContentTypes
 
@@ -166,7 +166,7 @@ Creates, updates, deletes and sends land on a real SharePoint account and cannot
 | List Compatible Hub Content Types for a Group Drive List | GET | `/groups/{{GROUP-ID}}/drives/{{DRIVE-ID}}/list/contentTypes/microsoft.graph.getCompatibleHubContentTypes()` | `conn_mod_def::GJYEGQDxmMY::2bH9SrboSDGFKzZEreWqCg` |
 | List Content Types by Path for a Group Site | GET | `/groups/{{GROUP-ID}}/sites/{{SITE-ID}}/microsoft.graph.getByPath(path='{{PATH}}')/contentTypes` | `conn_mod_def::GJYruHboOJE::eIljdHa6Tc-ccoFL-iKS4w` |
 
-20 more ContentTypes actions are available through search.
+20 more ContentTypes actions are available through `find_one_actions`.
 
 ### TermStoreFromTerm
 
@@ -179,13 +179,13 @@ Creates, updates, deletes and sends land on a real SharePoint account and cannot
 | Get a Relation’s fromTerm for a Child Term in a Site Term Store | GET | `/sites/{{SITE-ID}}/termStore/sets/{{SET-ID}}/parentGroup/sets/{{SET-ID1}}/children/{{TERM-ID}}/children/{{TERM-ID1}}/relations/{{RELATION-ID}}/fromTerm` | `conn_mod_def::GJYut2V-bv8::_ECeVqBGTUGRVrG4e2TS1A` |
 | Get a Relation’s fromTerm for a Child Term in a Site Term Store | GET | `/sites/{{SITE-ID}}/termStore/sets/{{SET-ID}}/terms/{{TERM-ID}}/children/{{TERM-ID1}}/relations/{{RELATION-ID}}/fromTerm` | `conn_mod_def::GJYu4Po3cCU::X1-2uMHtR2SrIjVomzWBOQ` |
 
-20 more TermStoreFromTerm actions are available through search.
+20 more TermStoreFromTerm actions are available through `find_one_actions`.
 
-This lists 90 of 3334 actions. For anything not here, call `search_one_platform_actions` with platform `share-point`. The full catalog is at https://www.withone.ai/knowledge/share-point.
+This lists 90 of 3334 actions. For anything not here, call `find_one_actions` with platform `share-point` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/share-point.
 
 ## When a call fails
 
-The error comes from SharePoint, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from SharePoint, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/share-point
 

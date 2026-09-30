@@ -13,15 +13,15 @@ metadata:
 
 HighLevel is an all-in-one sales and marketing automation platform that helps agencies and businesses manage CRM, funnels, messaging, bookings, and campaigns from a single system, with extensible integrations via its marketplace.
 
-One exposes HighLevel through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes HighLevel through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `high-level` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "high-level", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real HighLevel account and cannot 
 | Delete a Contact from a Workflow | DELETE | `/contacts/{{contactId}}/workflow/{{workflowId}}` | `conn_mod_def::GJ32ML8yu74::m7l9gqXgQvuhNTxvQcN_Hg` |
 | Remove a Contact From Every Campaign | DELETE | `/contacts/{{contactId}}/campaigns/removeAll` | `conn_mod_def::GJ32N2_VP1o::8OaM5q9VTKuhnIyanhQEHg` |
 
-7 more Contacts actions are available through search.
+7 more Contacts actions are available through `find_one_actions`.
 
 ### Invoices
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real HighLevel account and cannot 
 | Send an Invoice (by Invoice ID) | POST | `/invoices/{{invoiceId}}/send` | `conn_mod_def::GJ32Z3UaRns::2EuujccfSY-NFaAnxQwDBg` |
 | Update an Invoice by ID | PUT | `/invoices/{{invoiceId}}` | `conn_mod_def::GJ32aZ_fQFY::NLWn1QdGTk2XqffEmnlhrQ` |
 
-3 more Invoices actions are available through search.
+3 more Invoices actions are available through `find_one_actions`.
 
 ### CustomFields
 
@@ -184,13 +184,13 @@ Creates, updates, deletes and sends land on a real HighLevel account and cannot 
 |---|---|---|---|
 | Get an Invoice Schedule | GET | `/invoices/schedule/{{scheduleId}}` | `conn_mod_def::GJ32YBuyJqs::03pQPJapQ8O5g3aUD2bybw` |
 
-5 more InvoiceSchedules actions are available through search.
+5 more InvoiceSchedules actions are available through `find_one_actions`.
 
-This lists 90 of 413 actions. For anything not here, call `search_one_platform_actions` with platform `high-level`. The full catalog is at https://www.withone.ai/knowledge/high-level.
+This lists 90 of 413 actions. For anything not here, call `find_one_actions` with platform `high-level` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/high-level.
 
 ## When a call fails
 
-The error comes from HighLevel, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from HighLevel, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/high-level
 

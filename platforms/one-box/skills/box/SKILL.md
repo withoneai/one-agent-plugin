@@ -13,15 +13,15 @@ metadata:
 
 Box is a cloud content management and file sharing platform that enables secure collaboration, content governance, and workflow automation across teams and organizations.
 
-One exposes Box through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Box through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `box` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "box", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Box account and cannot be rec
 | Delete a File | DELETE | `/files/{{fileId}}` | `conn_mod_def::GJ0OjC2sdpM::aKQY37EmRIySxatNg07W6A` |
 | Permanently Delete a Trashed File | DELETE | `/files/{{fileId}}/trash` | `conn_mod_def::GJ0O3YnP3bY::Ygg3a7HLSCetfHdzvZttrw` |
 
-10 more Files actions are available through search.
+10 more Files actions are available through `find_one_actions`.
 
 ### Folders
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Box account and cannot be rec
 | Remove a Folder’s Security Classification (Metadata) | DELETE | `/folders/{{folderId}}/metadata/enterprise/securityClassification-6VMVochwUWo` | `conn_mod_def::GJ0Oc45cNls::yoXhuLG_T6i2cSq4vtxneg` |
 | Remove a Folder’s Shared Link | PUT | `/folders/{{folderId}}` | `conn_mod_def::GJ0OwgX3SDY::p5hAXG3UQcOYmiDBiFombA` |
 
-5 more Folders actions are available through search.
+5 more Folders actions are available through `find_one_actions`.
 
 ### WebLinks
 
@@ -184,13 +184,13 @@ Creates, updates, deletes and sends land on a real Box account and cannot be rec
 |---|---|---|---|
 | Get a Box Sign Request by ID | GET | `/sign_requests/{{signRequestId}}` | `conn_mod_def::GJ0ObHm8yII::ZxfPgd7ZRROmpgbk_OIzCg` |
 
-4 more SignRequests actions are available through search.
+4 more SignRequests actions are available through `find_one_actions`.
 
-This lists 90 of 296 actions. For anything not here, call `search_one_platform_actions` with platform `box`. The full catalog is at https://www.withone.ai/knowledge/box.
+This lists 90 of 296 actions. For anything not here, call `find_one_actions` with platform `box` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/box.
 
 ## When a call fails
 
-The error comes from Box, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Box, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/box
 

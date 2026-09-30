@@ -13,15 +13,15 @@ metadata:
 
 Zoom is a video conferencing platform that enables virtual meetings, webinars, and collaboration. It offers features like screen sharing, breakout rooms, and integrations with productivity tools, making it a go-to solution for remote teams and events.
 
-One exposes Zoom through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Zoom through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `zoom` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "zoom", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Zoom account and cannot be re
 | Update a User’s Email Address | PUT | `/users/{{userId}}/email` | `conn_mod_def::GJ8e6GITB6A::9MQlBPwQSs2bfbeAMC-Ttw` |
 | Update a User’s Password | PUT | `/users/{{userId}}/password` | `conn_mod_def::GJ8e6GU4TvQ::eW0DoWcaQFyi-qSn-CUidA` |
 
-5 more Users actions are available through search.
+5 more Users actions are available through `find_one_actions`.
 
 ### ChatChannels
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Zoom account and cannot be re
 | Leave a Chat Channel (Current User) | DELETE | `/chat/channels/{{channelId}}/members/me` | `conn_mod_def::GJ8eYggjZUs::ReOWOpGPS--BzKZuMY2cXA` |
 | Perform Operations on Channels (Archive/Unarchive) | PATCH | `/chat/channels/events` | `conn_mod_def::GJ8eYpQgUq4::Vey7fEf1SsW53hdfAHezsw` |
 
-4 more ChatChannels actions are available through search.
+4 more ChatChannels actions are available through `find_one_actions`.
 
 ### Meetings
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Zoom account and cannot be re
 | Get a Meeting’s SIP URI (With Optional Passcode) | POST | `/meetings/{{meetingId}}/sip_dialing` | `conn_mod_def::GJ8enH5EpCE::837dcbFQSO-sc6-MuAHTTg` |
 | Update a Meeting | PATCH | `/v2/meetings/{{meetingId}}` | `conn_mod_def::GJ8encftcNg::rhh2j05vRlWZaa-tULRzTw` |
 
-4 more Meetings actions are available through search.
+4 more Meetings actions are available through `find_one_actions`.
 
 ### Workspaces
 
@@ -176,13 +176,13 @@ Creates, updates, deletes and sends land on a real Zoom account and cannot be re
 |---|---|---|---|
 | Get a Contact Center Team | GET | `/contact_center/teams/{{teamId}}` | `conn_mod_def::GJ8e2q_SIgo::fORFbJ6RSYCfGX-0TOMX0Q` |
 
-8 more ContactCenterTeams actions are available through search.
+8 more ContactCenterTeams actions are available through `find_one_actions`.
 
-This lists 90 of 1748 actions. For anything not here, call `search_one_platform_actions` with platform `zoom`. The full catalog is at https://www.withone.ai/knowledge/zoom.
+This lists 90 of 1748 actions. For anything not here, call `find_one_actions` with platform `zoom` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/zoom.
 
 ## When a call fails
 
-The error comes from Zoom, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Zoom, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/zoom
 

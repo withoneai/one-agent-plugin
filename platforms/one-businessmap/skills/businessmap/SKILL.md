@@ -13,15 +13,15 @@ metadata:
 
 Businessmap is a work management and Kanban platform that provides planning, workflow visualization, and automation tools, enabling teams to manage projects, track delivery, and integrate operational data across business processes for improved coordination, transparency, and execution.
 
-One exposes Businessmap through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Businessmap through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `businessmap` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "businessmap", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Businessmap account and canno
 | Get a Card's Predecessor Graph | GET | `/cards/{{cardId}}/predecessorGraph` | `conn_mod_def::GKz3xbmJqUA::JR9O_lsUR56X3iYwtOu3zA` |
 | Get a Card's Successor Cards | GET | `/cards/{{cardId}}/successors` | `conn_mod_def::GKz3yKlD_4g::MOBBcypuTKeFZTo0miorvA` |
 
-42 more Cards actions are available through search.
+42 more Cards actions are available through `find_one_actions`.
 
 ### Boards
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Businessmap account and canno
 | Delete a Board | DELETE | `/boards/{{boardId}}` | `conn_mod_def::GKz3uhsycqA::GiebqDLSQO6sWsUB5FBkEw` |
 | Make a Board Standard Field Visible | PUT | `/boards/{{boardId}}/visibleStandardFields/{{fieldName}}` | `conn_mod_def::GKz3ueIe78A::YYUBXg7YTh64PKaZEmXMvg` |
 
-10 more Boards actions are available through search.
+10 more Boards actions are available through `find_one_actions`.
 
 ### CardTemplates
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Businessmap account and canno
 | Delete Many Card Templates | POST | `/api/v2/cardTemplates/deleteMany` | `conn_mod_def::GKz30q8g3lg::DP_ekMkCRtS88rNLTpKm0g` |
 | Disable Many Card Templates | POST | `/api/v2/cardTemplates/disableMany` | `conn_mod_def::GKz30r9ZEzA::elayIbYkQMihxouU4ZA0nA` |
 
-7 more CardTemplates actions are available through search.
+7 more CardTemplates actions are available through `find_one_actions`.
 
 ### DashboardPages
 
@@ -109,7 +109,7 @@ Creates, updates, deletes and sends land on a real Businessmap account and canno
 | Remove a Team's Access to a Dashboard Page | DELETE | `/dashboardPages/{{dashboardPageId}}/teams/{{teamId}}` | `conn_mod_def::GKz34Aedz0g::My0pQwY9RX2q7yIJxfgHqQ` |
 | Remove a User's Access to a Dashboard Page | DELETE | `/dashboardPages/{{dashboardPageId}}/users/{{userId}}` | `conn_mod_def::GKz34DVj-tg::9FYR6PHCQzWdZ6ZVbnCYOQ` |
 
-2 more DashboardPages actions are available through search.
+2 more DashboardPages actions are available through `find_one_actions`.
 
 ### CustomFields
 
@@ -128,7 +128,7 @@ Creates, updates, deletes and sends land on a real Businessmap account and canno
 | Disable Many Custom Fields | POST | `/api/v2/customFields/disableMany` | `conn_mod_def::GKz33hyoQ0g::rGgbsrTdQeqnoplePUbnFQ` |
 | Enable Many Custom Fields | POST | `/api/v2/customFields/enableMany` | `conn_mod_def::GKz33rBtq2g::asIOApOzSjWcFm8bw1E4-g` |
 
-2 more CustomFields actions are available through search.
+2 more CustomFields actions are available through `find_one_actions`.
 
 ### Docs
 
@@ -147,7 +147,7 @@ Creates, updates, deletes and sends land on a real Businessmap account and canno
 | Delete a Doc Attachment | DELETE | `/docs/{{docId}}/attachments/{{attachmentId}}` | `conn_mod_def::GKz35OaMWSg::5vgk9p_VRcOB8UkfjcZMew` |
 | Update a Doc | PATCH | `/docs/{{docId}}` | `conn_mod_def::GKz35vIORwA::_jKzlbC_SMuvYeC6BNAwPQ` |
 
-2 more Docs actions are available through search.
+2 more Docs actions are available through `find_one_actions`.
 
 ### Users
 
@@ -166,7 +166,7 @@ Creates, updates, deletes and sends land on a real Businessmap account and canno
 | Resend a User's Invitation | POST | `/users/{{userId}}/resendInvitation` | `conn_mod_def::GKz4CK8QBeg::-74NvRyPQSOLhrYvj6dFwA` |
 | Set a User Attribute Value | PUT | `/users/{{userId}}/attributes/{{attributeId}}` | `conn_mod_def::GKz4CV5im1A::il4jS91RRkSeN5GnU7e10A` |
 
-1 more Users actions are available through search.
+1 more Users actions are available through `find_one_actions`.
 
 ### Stickers
 
@@ -179,13 +179,13 @@ Creates, updates, deletes and sends land on a real Businessmap account and canno
 | List Stickers | GET | `/stickers` | `conn_mod_def::GKz4AgXffTg::UmxMUmtJRfSiqCcXaqfqfA` |
 | List Stickers for a Card in a Card Template | GET | `/cardTemplates/{{templateId}}/cards/{{cardId}}/stickers` | `conn_mod_def::GKz3ztYXPJA::jl-1a6GKTA6IhQ5Ca2HsnQ` |
 
-7 more Stickers actions are available through search.
+7 more Stickers actions are available through `find_one_actions`.
 
-This lists 90 of 742 actions. For anything not here, call `search_one_platform_actions` with platform `businessmap`. The full catalog is at https://www.withone.ai/knowledge/businessmap.
+This lists 90 of 742 actions. For anything not here, call `find_one_actions` with platform `businessmap` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/businessmap.
 
 ## When a call fails
 
-The error comes from Businessmap, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Businessmap, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/businessmap
 

@@ -13,15 +13,15 @@ metadata:
 
 Benchmark Email is an intuitive email-marketing platform that enables marketers to design mobile-responsive campaigns with drag-and-drop ease, segment contacts for targeted sends, and track real-time engagement metrics to optimize performance.
 
-One exposes Benchmark Email through four MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can skip search and go straight to reading the action's parameters.
+One exposes Benchmark Email through three MCP tools. The table below carries real action ids from One's knowledge base, so for a common operation you can go straight to reading the action's documentation.
 
 ## How to run an action
 
-1. Find the action in the table below, or call `search_one_platform_actions` with platform `benchmark-email` if it is not listed.
-2. Call `get_one_action_knowledge` with the action id. Do this every time, including for actions in this table. The table gives you the id, not the parameters.
-3. Call `execute_one_action` with parameters copied from that knowledge.
+1. Find the action in the table below and read its documentation by calling `find_one_actions` with `load: [{ action_id: "<id>" }]`. If it is not listed, call `find_one_actions` with `requests: [{ platform: "benchmark-email", intent: "<the operation, in a few words>" }]` instead: it returns the best action with its documentation.
+2. Read that documentation every time, including for actions in this table. The table gives you the id, not the parameters.
+3. Call `execute_one_action` with parameters copied from that documentation.
 
-Never guess a parameter name, a body field, or an enum value. The knowledge has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
+Never guess a parameter name, a body field, or an enum value. The documentation has the real schema, and a guessed field is either a 400 or a silent write of the wrong thing.
 
 ## Before you start
 
@@ -52,7 +52,7 @@ Creates, updates, deletes and sends land on a real Benchmark Email account and c
 | Get an Email’s Hourly Opens Report | GET | `/Emails/{{id}}/Report/Opens/Hourly` | `conn_mod_def::GJ0HrjPKPog::zzbtvp71QMuHjcyKnvj6dA` |
 | Get an Email’s Link Detail | GET | `/Emails/{{id}}/LinkDetail` | `conn_mod_def::GJ0Hrb1rbtg::HD_PAEivQgKhcO-jDKj2ow` |
 
-32 more Emails actions are available through search.
+32 more Emails actions are available through `find_one_actions`.
 
 ### Contacts
 
@@ -71,7 +71,7 @@ Creates, updates, deletes and sends land on a real Benchmark Email account and c
 | Get Unique Contact Count | GET | `/Contact/UniqueCount` | `conn_mod_def::GJ0HlaMB7tM::fxGqARSgSwipHvFzKcV4IQ` |
 | List Contacts | GET | `/Contact/` | `conn_mod_def::GJ0HhOr9Ew0::NHXdkw7JQUezv6AjTSa4DA` |
 
-19 more Contacts actions are available through search.
+19 more Contacts actions are available through `find_one_actions`.
 
 ### Integration
 
@@ -90,7 +90,7 @@ Creates, updates, deletes and sends land on a real Benchmark Email account and c
 | Twitter Tweet Test | GET | `/Integration/TwitterTweetsTest` | `conn_mod_def::GJ0H6BLgasU::6bAgrNHDTdehhS5W-cSc-A` |
 | Connect to a Service (Get Auth URL with Extra Data) | POST | `/Integration/AuthUrlExtra/{{authSite}}` | `conn_mod_def::GJ0Hzy71Rhs::WAiqBtPPSJKWALzjY5QvFQ` |
 
-4 more Integration actions are available through search.
+4 more Integration actions are available through `find_one_actions`.
 
 ### ContactLists
 
@@ -186,13 +186,13 @@ Creates, updates, deletes and sends land on a real Benchmark Email account and c
 |---|---|---|---|
 | Get a Sub-Account’s Balance | GET | `/Client/SubAccount/{{id}}/Balance` | `conn_mod_def::GJ0IEeX3gaM::gdZgNo_aTPunfuVRqiNR4g` |
 
-5 more SubAccounts actions are available through search.
+5 more SubAccounts actions are available through `find_one_actions`.
 
-This lists 90 of 348 actions. For anything not here, call `search_one_platform_actions` with platform `benchmark-email`. The full catalog is at https://www.withone.ai/knowledge/benchmark-email.
+This lists 90 of 348 actions. For anything not here, call `find_one_actions` with platform `benchmark-email` and the operation as the intent. The full catalog is at https://www.withone.ai/knowledge/benchmark-email.
 
 ## When a call fails
 
-The error comes from Benchmark Email, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the knowledge and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
+The error comes from Benchmark Email, not from One. A 400 or 422 means your parameters do not match the schema, so re-read the action's documentation and fix the field. A 401 or 403 means the connection needs re-authorizing, which no retry will fix. A 404 means the id is not on this account. A 429 means slow down. Never retry a write more than once: the first attempt may have landed.
 
 Full catalog: https://www.withone.ai/knowledge/benchmark-email
 
