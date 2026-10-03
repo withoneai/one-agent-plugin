@@ -1,7 +1,5 @@
-// Conformance rules for Agent Plugins 1.0.0, in one place.
-//
-// Both the CLI validator and the per-platform generator call this, so a
-// generated plugin is held to exactly the same rules as the hand-written one.
+// Conformance rules for Agent Plugins 1.0.0, in one place: the schemas, plus
+// the rules the schemas cannot express.
 // Schemas are vendored under schemas/ because the spec forbids clients
 // fetching a schema at load time (5.2); we hold ourselves to the same rule.
 
